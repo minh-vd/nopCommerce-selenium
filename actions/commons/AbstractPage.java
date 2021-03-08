@@ -115,9 +115,9 @@ public class AbstractPage {
         return driver.findElements(getByXPath(xpathLocator));
     }
 
-    public String getDynamicXPathLocator(String locator, String... values) {
-        locator = String.format(locator, (Object[]) values);
-        return locator;
+    public String getDynamicXPathLocator(String xpathLocator, String... dynamicValues) {
+        xpathLocator = String.format(xpathLocator, (Object[]) dynamicValues);
+        return xpathLocator;
     }
 
     public void clickOnElement(WebDriver driver, String xpathLocator) {
@@ -125,51 +125,53 @@ public class AbstractPage {
         element.click();
     }
 
-    public void clickOnElement(WebDriver driver, String xpathLocator, String... values) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, values));
+    public void clickOnElement(WebDriver driver, String xpathLocator, String... dynamicValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicValues));
         element.click();
     }
 
-    public void sendkeyToElement(WebDriver driver, String xpathLocator, String value) {
+    public void sendKeysToElement(WebDriver driver, String xpathLocator, String inputData) {
         element = getElementByXPath(driver, xpathLocator);
         element.clear();
-        element.sendKeys(value);
+        element.sendKeys(inputData);
     }
 
-    public void sendkeyToElement(WebDriver driver, String xpathLocator, String keyValue, String... values) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, values));
+    public void sendKeysToElement(WebDriver driver, String xpathLocator, String inputData, String... dynamicValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicValues));
         element.clear();
-        element.sendKeys(keyValue);
+        element.sendKeys(inputData);
     }
 
-    public void selectItemInDefaultDropdown(WebDriver driver, String xpathLocator, String dropdownItemValue) {
-        WebElement elementDropdown = getElementByXPath(driver, xpathLocator);
-        select = new Select(elementDropdown);
-        select.selectByVisibleText(dropdownItemValue);
+    // Default Dropdown
+    public void selectItemInDefaultDropdown(WebDriver driver, String selectXPathLocator, String itemValue) {
+        WebElement selectElement = getElementByXPath(driver, selectXPathLocator);
+        select = new Select(selectElement);
+        select.selectByVisibleText(itemValue);
     }
 
-    public String getSelectedTextInDefaultDropdown(WebDriver driver, String xpathLocator) {
-        WebElement elementDropdown = getElementByXPath(driver, xpathLocator);
-        select = new Select(elementDropdown);
+    public String getSelectedTextInDefaultDropdown(WebDriver driver, String selectXPathLocator) {
+        WebElement selectElement = getElementByXPath(driver, selectXPathLocator);
+        select = new Select(selectElement);
         return select.getFirstSelectedOption().getText();
     }
 
-    public boolean isDefaultDropdownMultiple(WebDriver driver, String xpathLocator) {
-        WebElement elementDropdown = getElementByXPath(driver, xpathLocator);
-        select = new Select(elementDropdown);
+    public boolean isDefaultDropdownMultiple(WebDriver driver, String selectXPathLocator) {
+        WebElement selectElement = getElementByXPath(driver, selectXPathLocator);
+        select = new Select(selectElement);
         return select.isMultiple();
     }
 
-    public void selectItemInCustomDropdown(WebDriver driver, String parentLocator, String childItemLocator, String expectedItem) {
-        getElementByXPath(driver, parentLocator).click();
+    // Custom Dropdown
+    public void selectItemInCustomDropdown(WebDriver driver, String dropdownLocator, String allChildItemsLocator, String expectedItem) {
+        getElementByXPath(driver, dropdownLocator).click();
         sleepInSecond(1);
 
         explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-        explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXPath(childItemLocator)));
+        explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXPath(allChildItemsLocator)));
 
-        List<WebElement> allItems = getElementsByXPath(driver, childItemLocator);
+        List<WebElement> allChildItems = getElementsByXPath(driver, allChildItemsLocator);
 
-        for (WebElement item : allItems) {
+        for (WebElement item : allChildItems) {
             if (item.getText().equals(expectedItem)) {
                 jsExecutor = (JavascriptExecutor) driver;
                 jsExecutor.executeScript("arguments[0].scrollIntoView(true);", item);
