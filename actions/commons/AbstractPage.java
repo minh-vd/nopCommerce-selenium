@@ -115,8 +115,8 @@ public class AbstractPage {
         return driver.findElements(getByXPath(xpathLocator));
     }
 
-    public String getDynamicXPathLocator(String xpathLocator, String... dynamicValues) {
-        xpathLocator = String.format(xpathLocator, (Object[]) dynamicValues);
+    public String getDynamicXPathLocator(String xpathLocator, String... dynamicXPathValues) {
+        xpathLocator = String.format(xpathLocator, (Object[]) dynamicXPathValues);
         return xpathLocator;
     }
 
@@ -125,8 +125,8 @@ public class AbstractPage {
         element.click();
     }
 
-    public void clickOnElement(WebDriver driver, String xpathLocator, String... dynamicValues) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicValues));
+    public void clickOnElement(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         element.click();
     }
 
@@ -136,8 +136,8 @@ public class AbstractPage {
         element.sendKeys(inputData);
     }
 
-    public void sendKeysToElement(WebDriver driver, String xpathLocator, String inputData, String... dynamicValues) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicValues));
+    public void sendKeysToElement(WebDriver driver, String xpathLocator, String inputData, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         element.clear();
         element.sendKeys(inputData);
     }
@@ -189,8 +189,8 @@ public class AbstractPage {
         return element.getAttribute(attributeName);
     }
 
-    public String getElementAttributeValue(WebDriver driver, String xpathLocator, String attributeName, String... values) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, values));
+    public String getElementAttributeValue(WebDriver driver, String xpathLocator, String attributeName, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         return element.getAttribute(attributeName);
     }
 
@@ -199,8 +199,8 @@ public class AbstractPage {
         return element.getText();
     }
 
-    public String getElementText(WebDriver driver, String xpathLocator, String... values) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, values));
+    public String getElementText(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         return element.getText();
     }
 
@@ -209,21 +209,21 @@ public class AbstractPage {
         return elements.size();
     }
 
-    public void checkToCheckbox(WebDriver driver, String xpathLocator) {
+    public void checkOnCheckbox(WebDriver driver, String xpathLocator) {
         element = getElementByXPath(driver, xpathLocator);
         if (!element.isSelected()) {
             element.click();
         }
     }
 
-    public void checkToCheckbox(WebDriver driver, String xpathLocator, String... values) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, values));
+    public void checkOnCheckbox(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         if (!element.isSelected()) {
             element.click();
         }
     }
 
-    public void uncheckToCheckbox(WebDriver driver, String xpathLocator) {
+    public void uncheckCheckbox(WebDriver driver, String xpathLocator) {
         element = getElementByXPath(driver, xpathLocator);
         if (element.isSelected()) {
             element.click();
@@ -235,8 +235,8 @@ public class AbstractPage {
         return element.isDisplayed();
     }
 
-    public boolean isElementDisplayed(WebDriver driver, String xpathLocator, String... values) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, values));
+    public boolean isElementDisplayed(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         return element.isDisplayed();
     }
 
