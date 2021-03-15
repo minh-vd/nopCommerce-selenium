@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 //import pageObjects.*;
-//import pageUIs.AbstractPageUI;
+import pageUIs.AbstractPageUI;
 
 import java.util.List;
 import java.util.Set;
@@ -357,6 +357,7 @@ public class AbstractPage {
         jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeToRemove + "');", element);
     }
 
+    // Need to recheck NOT that usable
     public boolean waitForJQueryAndJSLoadedSuccess(WebDriver driver) {
         explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
         jsExecutor = (JavascriptExecutor) driver;
@@ -397,9 +398,9 @@ public class AbstractPage {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXPath(xpathLocator)));
     }
 
-    public void waitForElementVisible(WebDriver driver, String xpathLocator, String... values) {
+    public void waitForElementVisible(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
         explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXPath(getDynamicXPathLocator(xpathLocator, values))));
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXPath(getDynamicXPathLocator(xpathLocator, dynamicXPathValues))));
     }
 
     public void overrideImplicitWaitTimeout(WebDriver driver, long timeInSecond) {
@@ -413,9 +414,9 @@ public class AbstractPage {
         overrideImplicitWaitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
     }
 
-    public void waitForElementInvisible(WebDriver driver, String xpathLocator, String... values) {
+    public void waitForElementInvisible(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
         explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXPath(getDynamicXPathLocator(xpathLocator, values))));
+        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXPath(getDynamicXPathLocator(xpathLocator, dynamicXPathValues))));
     }
 
     public void waitForElementClickable(WebDriver driver, String xpathLocator) {
@@ -423,9 +424,9 @@ public class AbstractPage {
         explicitWait.until(ExpectedConditions.elementToBeClickable(getByXPath(xpathLocator)));
     }
 
-    public void waitForElementClickable(WebDriver driver, String xpathLocator, String... values) {
+    public void waitForElementClickable(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
         explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-        explicitWait.until(ExpectedConditions.elementToBeClickable(getByXPath(getDynamicXPathLocator(xpathLocator, values))));
+        explicitWait.until(ExpectedConditions.elementToBeClickable(getByXPath(getDynamicXPathLocator(xpathLocator, dynamicXPathValues))));
     }
 
     public void sleepInSecond(long timeout) {
@@ -436,58 +437,23 @@ public class AbstractPage {
         }
     }
 
-    public UserSearchPO openSearchPage(WebDriver driver) {
+    /*public UserSearchPO openSearchPage(WebDriver driver) {
         waitForElementVisible(driver, AbstractPageUI.SEARCH_LINK);
         clickOnElement(driver, AbstractPageUI.SEARCH_LINK);
         return PageGeneratorManager.getUserSearchPage(driver);
-    }
+    }*/
 
-    public UserShippingAndReturnsPO openShippingAndReturnsPage(WebDriver driver) {
-        waitForElementVisible(driver, AbstractPageUI.SHIPPING_AND_RETURNS_LINK);
-        clickOnElement(driver, AbstractPageUI.SHIPPING_AND_RETURNS_LINK);
-        return PageGeneratorManager.getUserShippingAndReturnsPage(driver);
-    }
-
-    public UserSitemapPO openSitemapPage(WebDriver driver) {
-        waitForElementVisible(driver, AbstractPageUI.SITEMAP_LINK);
-        clickOnElement(driver, AbstractPageUI.SITEMAP_LINK);
-        return PageGeneratorManager.getUserSitemapPage(driver);
-    }
-
-    public UserCustomerInfoPO openCustomerInfoPage(WebDriver driver) {
-        waitForElementVisible(driver, AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);
-        clickOnElement(driver, AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);
-        return PageGeneratorManager.getUserCustomerInfoPage(driver);
-    }
-
-    public UserHomePO openHomePage(WebDriver driver) {
-        waitForElementVisible(driver, AbstractPageUI.HEADER_LOGO_HOMEPAGE_LINK);
-        clickOnElement(driver, AbstractPageUI.HEADER_LOGO_HOMEPAGE_LINK);
-        return PageGeneratorManager.getUserHomePage(driver);
-    }
-
-    public UserWishlistPO openWishlistPage(WebDriver driver) {
-        waitForElementVisible(driver, AbstractPageUI.HEADER_WISHLIST_LINK);
-        clickOnElement(driver, AbstractPageUI.HEADER_WISHLIST_LINK);
-        return PageGeneratorManager.getUserWishlistPage(driver);
-    }
-
-    public void openFooterLinkByPageName(WebDriver driver, String pageName) {
+    /*public void openFooterLinkByPageName(WebDriver driver, String pageName) {
         waitForElementClickable(driver, AbstractPageUI.FOOTER_DYNAMIC_LINK, pageName);
         clickOnElement(driver, AbstractPageUI.FOOTER_DYNAMIC_LINK, pageName);
-    }
+    }*/
 
-    public void openAdminLeftMenuLinkByPageName(WebDriver driver, String pageName) {
-        waitForElementClickable(driver, AbstractPageUI.ADMIN_LEFT_MENU_DYNAMIC_LINK, pageName);
-        clickOnElement(driver, AbstractPageUI.ADMIN_LEFT_MENU_DYNAMIC_LINK, pageName);
-    }
-
-    public void waitForAnyAdminPageFinishedLoading(WebDriver driver) {
+    /*public void waitForAnyAdminPageFinishedLoading(WebDriver driver) {
         waitForElementInvisible(driver, AbstractPageUI.LOADING_ICON);
-    }
+    }*/
 
-    public int countNumberOfElementsLocatedByXPath(WebDriver driver, String locator, String... values) {
-        return getElementsByXPath(driver, getDynamicXPathLocator(locator, values)).size();
+    public int countNumberOfElementsLocatedByXPath(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        return getElementsByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues)).size();
     }
 
     public void uploadFileByPanelId(WebDriver driver, String panelId, String... fileNames) {
@@ -497,12 +463,13 @@ public class AbstractPage {
             fullFilePath = fullFilePath + uploadFolderPath + file + "\n";
         }
         fullFilePath = fullFilePath.trim();
+
         //sendkeyToElement(driver, AbstractPageUI.DYNAMIC_UPLOAD_FILES_INPUT_BY_PANEL_ID, fullFilePath, panelId);
 
         getElementByXPath(driver, getDynamicXPathLocator(AbstractPageUI.DYNAMIC_UPLOAD_FILES_INPUT_BY_PANEL_ID, panelId)).sendKeys(fullFilePath);
     }
 
-    public void clickToExpandPanelByPanelId(WebDriver driver, String panelId) {
+    /*public void clickToExpandPanelByPanelId(WebDriver driver, String panelId) {
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID, panelId);
         String iconClassValue = getElementAttributeValue(driver, AbstractPageUI.DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID, "class", panelId);
         if (iconClassValue.contains("plus")) {
@@ -517,11 +484,11 @@ public class AbstractPage {
 
     public void inputIntoTextboxByID(WebDriver driver, String textboxId, String inputValue) {
         waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, textboxId);
-        sendkeyToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, inputValue, textboxId);
+        sendKeysToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, inputValue, textboxId);
     }
 
     public void clickOnButtonByValue(WebDriver driver, String buttonValue){
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
         clickOnElement(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
-    }
+    }*/
 }
