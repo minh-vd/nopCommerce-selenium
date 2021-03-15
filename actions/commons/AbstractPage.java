@@ -269,21 +269,21 @@ public class AbstractPage {
         driver.switchTo().frame(elementFrame);
     }
 
-    public void switchToDefaultContent(WebDriver driver) {
+    public void switchToDefaultFrame(WebDriver driver) {
         driver.switchTo().defaultContent();
     }
 
-    public void doubleClickToElement(WebDriver driver, String xpathLocator) {
+    public void doubleClickOnElement(WebDriver driver, String xpathLocator) {
         action = new Actions(driver);
         action.doubleClick(getElementByXPath(driver, xpathLocator)).perform();
     }
 
-    public void hoverMouseToElement(WebDriver driver, String xpathLocator) {
+    public void hoverMouseOnElement(WebDriver driver, String xpathLocator) {
         action = new Actions(driver);
         action.moveToElement(getElementByXPath(driver, xpathLocator)).perform();
     }
 
-    public void rightClickToElement(WebDriver driver, String xpathLocator) {
+    public void rightClickOnElement(WebDriver driver, String xpathLocator) {
         action = new Actions(driver);
         action.contextClick(getElementByXPath(driver, xpathLocator)).perform();
     }
@@ -298,33 +298,33 @@ public class AbstractPage {
         action.sendKeys(getElementByXPath(driver, xpathLocator), key).perform();
     }
 
-    public Object executeForBrowser(WebDriver driver, String javaScript) {
+    public Object executeJavascript(WebDriver driver, String javaScript) {
         jsExecutor = (JavascriptExecutor) driver;
         return jsExecutor.executeScript(javaScript);
     }
 
-    public String getInnerText(WebDriver driver) {
+    public String getInnerTextUsingJS(WebDriver driver) {
         jsExecutor = (JavascriptExecutor) driver;
         return (String) jsExecutor.executeScript("return document.documentElement.innerText;");
     }
 
-    public boolean isExpectedTextInInnerText(WebDriver driver, String expectedText) {
+    public boolean isExpectedTextInInnerTextUsingJS(WebDriver driver, String expectedText) {
         jsExecutor = (JavascriptExecutor) driver;
         String actualText = (String) jsExecutor.executeScript("return document.documentElement.innerText.match('" + expectedText + "')[0]");
         return actualText.equals(expectedText);
     }
 
-    public void scrollToBottomPage(WebDriver driver) {
+    public void scrollToPageBottomUsingJS(WebDriver driver) {
         jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
     }
 
-    public void navigateToUrlByJS(WebDriver driver, String url) {
+    public void navigateToUrlUsingJS(WebDriver driver, String url) {
         jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("window.location = '" + url + "'");
     }
 
-    public void highlightElement(WebDriver driver, String xpathLocator) {
+    public void highlightElementUsingJS(WebDriver driver, String xpathLocator) {
         jsExecutor = (JavascriptExecutor) driver;
         element = getElementByXPath(driver, xpathLocator);
         String originalStyle = element.getAttribute("style");
@@ -333,25 +333,25 @@ public class AbstractPage {
         jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
     }
 
-    public void clickOnElementByJS(WebDriver driver, String xpathLocator) {
+    public void clickOnElementUsingJS(WebDriver driver, String xpathLocator) {
         jsExecutor = (JavascriptExecutor) driver;
         element = getElementByXPath(driver, xpathLocator);
         jsExecutor.executeScript("arguments[0].click();", element);
     }
 
-    public void scrollToElement(WebDriver driver, String xpathLocator) {
+    public void scrollToElementUsingJS(WebDriver driver, String xpathLocator) {
         jsExecutor = (JavascriptExecutor) driver;
         element = getElementByXPath(driver, xpathLocator);
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void sendkeyToElementByJS(WebDriver driver, String xpathLocator, String value) {
+    public void sendKeysToElementUsingJS(WebDriver driver, String xpathLocator, String inputData) {
         jsExecutor = (JavascriptExecutor) driver;
         element = getElementByXPath(driver, xpathLocator);
-        jsExecutor.executeScript("arguments[0].setAttribute('value', '" + value + "')", element);
+        jsExecutor.executeScript("arguments[0].setAttribute('value', '" + inputData + "')", element);
     }
 
-    public void removeAttributeInDOM(WebDriver driver, String xpathLocator, String attributeToRemove) {
+    public void removeAttributeInDomUsingJS(WebDriver driver, String xpathLocator, String attributeToRemove) {
         jsExecutor = (JavascriptExecutor) driver;
         element = getElementByXPath(driver, xpathLocator);
         jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeToRemove + "');", element);
