@@ -6,7 +6,10 @@
     </listeners>-->
 
     <test name="Run on Chrome">
-        <parameter name="browser" value="chrome_ui" />
+        <parameter name="browserName" value="chrome_ui" />
+        <parameter name="url" value="https://demo.nopcommerce.com/" />
+        <parameter name="param1" value="Test1" />
+        <parameter name="param2" value="Test2" />
         <classes>
             <class name="com.nopcommerce.user.Register"/>
             </classes>

@@ -74,7 +74,6 @@ public class AbstractTest {
             Assert.assertFalse(condition);
         } catch (Throwable e) {
             pass = false;
-
             /*VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);*/
         }
@@ -92,7 +91,6 @@ public class AbstractTest {
             log.info(" -------------------------- PASSED -------------------------- ");
         } catch (Throwable e) {
             pass = false;
-
             log.info(" -------------------------- FAILED -------------------------- ");
             /*VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);*/
@@ -102,11 +100,6 @@ public class AbstractTest {
 
     protected boolean verifyEquals(Object actual, Object expected) {
         return checkEquals(actual, expected);
-    }
-
-    public int getRandomNumber() {
-        Random rand = new Random();
-        return rand.nextInt(9999);
     }
 
     protected void closeBrowserAndDriver(WebDriver driver) {

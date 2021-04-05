@@ -5,6 +5,7 @@ import java.io.File;
 public class GlobalConstants {
     public static final int SHORT_TIMEOUT = 5;
     public static final int LONG_TIMEOUT = 30;
+    public static final int SLEEP_TIME_WAIT_FOR_PAGE_LOAD = 2;
 
     public static final String OS_NAME = System.getProperty("os.name");
     public static final String ROOT_FOLDER = System.getProperty("user.dir");
