@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
+import org.testng.Reporter;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -53,8 +54,8 @@ public class AbstractTest {
             pass = false;
 
             // Add lỗi vào ReportNG
-            /*VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-            Reporter.getCurrentTestResult().setThrowable(e);*/
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
         }
         return pass;
     }
@@ -74,8 +75,8 @@ public class AbstractTest {
             Assert.assertFalse(condition);
         } catch (Throwable e) {
             pass = false;
-            /*VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-            Reporter.getCurrentTestResult().setThrowable(e);*/
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
         }
         return pass;
     }
@@ -92,8 +93,8 @@ public class AbstractTest {
         } catch (Throwable e) {
             pass = false;
             log.info(" -------------------------- FAILED -------------------------- ");
-            /*VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-            Reporter.getCurrentTestResult().setThrowable(e);*/
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
         }
         return pass;
     }

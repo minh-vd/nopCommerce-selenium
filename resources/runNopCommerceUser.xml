@@ -5,6 +5,10 @@
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>-->
 
+    <listeners>
+        <listener class-name="commons.MethodListener" />
+    </listeners>
+
     <test name="Run on Chrome">
         <parameter name="browserName" value="chrome_ui" />
         <parameter name="url" value="https://demo.nopcommerce.com/" />

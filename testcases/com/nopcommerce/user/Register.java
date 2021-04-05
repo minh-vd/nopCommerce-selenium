@@ -46,7 +46,7 @@ public class Register extends AbstractTest {
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("Password"), "Password is required.");
 
         log.info("Register With Empty Data - Step: Verify Error Message of Confirm Password field");
-        verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("ConfirmPassword"), "APassword is required.");
+        verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("ConfirmPassword"), "Password is required.");
     }
 
     @Test
