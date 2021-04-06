@@ -28,30 +28,37 @@ public class Register extends AbstractTest {
         userRegisterPage = userHomePage.clickOnRegisterLink();
     }
 
-    @Test
+    //@Test
     public void TC_01_Register_With_Empty_Data() {
-        log.info("Register With Empty Data - Step: Click on Register button");
+        log.info("TC 01 - Register With Empty Data - Step: Click on Register button");
         userRegisterPage.clickOnRegisterButton();
 
-        log.info("Register With Empty Data - Step: Verify Error Message of First Name field");
+        log.info("TC 01 - Register With Empty Data - Step: Verify Error Message of First Name field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("FirstName"), "First name is required.");
 
-        log.info("Register With Empty Data - Step: Verify Error Message of Last Name field");
+        log.info("TC 01 - Register With Empty Data - Step: Verify Error Message of Last Name field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("LastName"), "Last name is required.");
 
-        log.info("Register With Empty Data - Step: Verify Error Message of Email field");
+        log.info("TC 01 - Register With Empty Data - Step: Verify Error Message of Email field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("Email"), "Email is required.");
 
-        log.info("Register With Empty Data - Step: Verify Error Message of Password field");
+        log.info("TC 01 - Register With Empty Data - Step: Verify Error Message of Password field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("Password"), "Password is required.");
 
-        log.info("Register With Empty Data - Step: Verify Error Message of Confirm Password field");
+        log.info("TC 01 - Register With Empty Data - Step: Verify Error Message of Confirm Password field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("ConfirmPassword"), "Password is required.");
     }
 
     @Test
-    public void TC_02_Login() {
-        System.out.println("Test Case 02");
+    public void TC_02_Register_With_Invalid_Email() {
+        log.info("TC 02 - Register With Invalid Email - Step: Input Invalid Email into Email field");
+        userRegisterPage.inputIntoField("Email", "abc.com");
+
+        log.info("TC 02 - Register With Invalid Email - Step: Click on Register button");
+        userRegisterPage.clickOnRegisterButton();
+
+        log.info("TC 02 - Register With Invalid Email - Step: Verify Error Message of Email field");
+        verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("Email"), "Wrong email");
     }
 
     @AfterClass(alwaysRun = true)
