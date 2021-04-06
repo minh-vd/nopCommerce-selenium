@@ -28,7 +28,7 @@ public class Register extends AbstractTest {
         userRegisterPage = userHomePage.clickOnRegisterLink();
     }
 
-    //@Test
+    @Test
     public void TC_01_Register_With_Empty_Data() {
         log.info("TC 01 - Register With Empty Data - Step: Click on Register button");
         userRegisterPage.clickOnRegisterButton();
@@ -59,6 +59,18 @@ public class Register extends AbstractTest {
 
         log.info("TC 02 - Register With Invalid Email - Step: Verify Error Message of Email field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("Email"), "Wrong email");
+    }
+
+    @Test
+    public void TC_03_Register_With_Password_Below_6_Characters() {
+        log.info("TC_03_Register_With_Password_Below_6_Characters - Step: Input Password below 6 characters into Password field");
+        userRegisterPage.inputIntoField("Password", "12345");
+
+        log.info("TC_03_Register_With_Password_Below_6_Characters - Step: Click on Register button");
+        userRegisterPage.clickOnRegisterButton();
+
+        log.info("TC_03_Register_With_Password_Below_6_Characters - Step: Verify Error Message of Password field");
+        verifyEquals(userRegisterPage.getTextOfPasswordUnderSixCharactersErrorMessage(), "Password must meet the following rules: must have at least 6 characters");
     }
 
     @AfterClass(alwaysRun = true)
