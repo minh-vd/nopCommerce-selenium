@@ -73,6 +73,21 @@ public class Register extends AbstractTest {
         verifyEquals(userRegisterPage.getTextOfPasswordUnderSixCharactersErrorMessage(), "Password must meet the following rules: must have at least 6 characters");
     }
 
+    @Test
+    public void TC_04_Register_With_Not_Matching_Password_And_Confirm_Password() {
+        log.info("TC_04_Register_With_Not_Matching_Password_And_Confirm_Password - Step: Input Password into Password field");
+        userRegisterPage.inputIntoField("Password", "123456");
+
+        log.info("TC_04_Register_With_Not_Matching_Password_And_Confirm_Password - Step: Input NOT matching Password into Confirm Password field");
+        userRegisterPage.inputIntoField("ConfirmPassword", "1234567");
+
+        log.info("TC_04_Register_With_Not_Matching_Password_And_Confirm_Password - Step: Click on Register button");
+        userRegisterPage.clickOnRegisterButton();
+
+        log.info("TC_04_Register_With_Not_Matching_Password_And_Confirm_Password - Step: Verify Error Message of Confirm Password field");
+        verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("ConfirmPassword"), "The password and confirmation password do not match.");
+    }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         //closeBrowserAndDriver(driver);
