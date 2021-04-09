@@ -9,4 +9,7 @@ public class PageGeneratorManager {
     public static UserRegisterPO getUserRegisterPage(WebDriver driver) {
         return new UserRegisterPO(driver);
     }
+    public static UserRegisterResultPO getUserRegisterResultPage(WebDriver driver) {
+        return new UserRegisterResultPO(driver);
+    }
 }
