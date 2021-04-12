@@ -31,11 +31,23 @@ public class Login extends AbstractTest {
 
     @Test
     public void TC_01_Login_With_Empty_Data() {
-        log.info("TC_01_Login_With_Empty_Data - Step: Click on Login button");
+        log.info("TC 01 Login With Empty Data - Step: Click on Login button");
         userLoginPage.clickOnLoginButton();
 
-        log.info("TC_01_Login_With_Empty_Data - Step: Verify Required Email Error Message");
+        log.info("TC 01 Login With Empty Data - Step: Verify Required Email Error Message");
         verifyEquals(userLoginPage.getTextOfEmailErrorMessage(), "Please enter your email");
+    }
+
+    @Test
+    public void TC_02_Login_With_Invalid_Email() {
+        log.info("TC 02 Login With Invalid Email - Step: Input Invalid Email");
+        userLoginPage.inputIntoEmailField("abc.com");
+
+        log.info("TC 02 Login With Invalid Email - Step: Click on Login button");
+        userLoginPage.clickOnLoginButton();
+
+        log.info("TC 02 Login With Invalid Email - Step: Verify Invalid Email Error Message");
+        verifyEquals(userLoginPage.getTextOfEmailErrorMessage(), "Wrong email");
     }
 
     @AfterClass(alwaysRun = true)

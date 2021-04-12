@@ -22,4 +22,9 @@ public class UserLoginPO extends AbstractPage {
         waitForElementVisible(driver, UserLoginPUI.EMAIL_ERROR_MESSAGE);
         return getElementText(driver, UserLoginPUI.EMAIL_ERROR_MESSAGE);
     }
+
+    public void inputIntoEmailField(String inputData) {
+        waitForElementVisible(driver, UserLoginPUI.EMAIL_TEXT_BOX);
+        sendKeysToElement(driver,UserLoginPUI.EMAIL_TEXT_BOX, inputData);
+    }
 }
