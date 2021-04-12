@@ -50,6 +50,18 @@ public class Login extends AbstractTest {
         verifyEquals(userLoginPage.getTextOfEmailErrorMessage(), "Wrong email");
     }
 
+    @Test
+    public void TC_03_Login_With_Unregistered_Email() {
+        log.info("TC 03 Login With Unregistered Email - Step: Input Unregistered Email");
+        userLoginPage.inputIntoEmailField("abc@mail.com");
+
+        log.info("TC 03 Login With Unregistered Email - Step: Click on Login button");
+        userLoginPage.clickOnLoginButton();
+
+        log.info("TC 03 Login With Unregistered Email - Step: Verify Unregistered Email Error Message");
+        verifyEquals(userLoginPage.getTextOfUnregisteredEmailErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. No customer account found");
+    }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         //closeBrowserAndDriver(driver);
