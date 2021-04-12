@@ -18,4 +18,7 @@ public class AbstractPageUI {
     public static final String DYNAMIC_RADIO_BUTTON_BY_ID = "//input[@id='%s']";
     public static final String DYNAMIC_TEXTBOX_BY_ID = "//input[@id='%s']";
     public static final String DYNAMIC_BUTTON_BY_VALUE = "//input[@value='%s']";
+
+
+    public static final String LOGIN_LINK_AT_TOP_BAR = "//a[@class='ico-login']";
 }

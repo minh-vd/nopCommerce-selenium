@@ -12,4 +12,8 @@ public class PageGeneratorManager {
     public static UserRegisterResultPO getUserRegisterResultPage(WebDriver driver) {
         return new UserRegisterResultPO(driver);
     }
+
+    public static UserLoginPO getUserLoginPage(WebDriver driver) {
+        return new UserLoginPO(driver);
+    }
 }

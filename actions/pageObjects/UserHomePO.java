@@ -3,6 +3,7 @@ package pageObjects;
 import commons.AbstractPage;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
+import pageUIs.AbstractPageUI;
 import pageUIs.UserHomePageUI;
 
 public class UserHomePO extends AbstractPage {
@@ -17,5 +18,12 @@ public class UserHomePO extends AbstractPage {
         clickOnElement(driver, UserHomePageUI.REGISTER_LINK);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getUserRegisterPage(driver);
+    }
+
+    public UserLoginPO clickOnLoginLink() {
+        waitForElementClickable(driver, AbstractPageUI.LOGIN_LINK_AT_TOP_BAR);
+        clickOnElement(driver, AbstractPageUI.LOGIN_LINK_AT_TOP_BAR);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getUserLoginPage(driver);
     }
 }
