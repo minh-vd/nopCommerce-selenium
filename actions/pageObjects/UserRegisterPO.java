@@ -54,4 +54,9 @@ public class UserRegisterPO extends AbstractPage {
         waitForElementVisible(driver, UserRegisterPageUI.YEAR_OF_BIRTH_DROPDOWN);
         selectItemInDefaultDropdown(driver, UserRegisterPageUI.YEAR_OF_BIRTH_DROPDOWN, selectItemValue);
     }
+
+    public String getTextOfExistingEmailErrorMessage() {
+        waitForElementVisible(driver, UserRegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+        return getElementText(driver, UserRegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+    }
 }

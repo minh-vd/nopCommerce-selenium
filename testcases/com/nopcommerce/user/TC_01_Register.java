@@ -1,6 +1,6 @@
 package com.nopcommerce.user;
 
-//import com.nopcommerce.common.Common_01_Register_User;
+import com.nopcommerce.common.Common_01_Register;
 import commons.AbstractTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class Register extends AbstractTest {
+public class TC_01_Register extends AbstractTest {
     WebDriver driver;
 
     UserHomePO userHomePage;
@@ -75,69 +75,93 @@ public class Register extends AbstractTest {
     }
 
     @Test
-    public void TC_03_Register_With_Password_Below_6_Characters() {
-        log.info("TC 03 Register With Password Below 6 Characters - Step: Input Password below 6 characters into Password field");
-        userRegisterPage.inputIntoField("Password", "12345");
+    public void TC_03_Register_With_Existing_Email() {
+        log.info("TC 03 Register With Existing Email - Step: Input into First Name field");
+        userRegisterPage.inputIntoField("FirstName", firstName);
 
-        log.info("TC 03 Register With Password Below 6 Characters - Step: Click on Register button");
+        log.info("TC 03 Register With Existing Email - Step: Input into Last Name field");
+        userRegisterPage.inputIntoField("LastName", lastName);
+        
+        log.info("TC 03 Register With Existing Email - Step: Input existing email into Email field");
+        userRegisterPage.inputIntoField("Email", Common_01_Register.email);
+
+        log.info("TC 03 Register With Existing Email - Step: Input into Password field");
+        userRegisterPage.inputIntoField("Password", password);
+
+        log.info("TC 03 Register With Existing Email - Step: Input into Confirm Password field");
+        userRegisterPage.inputIntoField("ConfirmPassword", confirmPassword);
+
+        log.info("TC 03 Register With Existing Email - Step: Click on Register button");
         userRegisterPage.clickOnRegisterButton();
 
-        log.info("TC 03 Register With Password Below 6 Characters - Step: Verify Error Message of Password field");
+        log.info("TC 03 Register With Existing Email - Step: Verify Error Message of Email field");
+        verifyEquals(userRegisterPage.getTextOfExistingEmailErrorMessage(), "The specified email already exists");
+    }
+
+    @Test
+    public void TC_04_Register_With_Password_Below_6_Characters() {
+        log.info("TC 04 Register With Password Below 6 Characters - Step: Input Password below 6 characters into Password field");
+        userRegisterPage.inputIntoField("Password", "12345");
+
+        log.info("TC 04 Register With Password Below 6 Characters - Step: Click on Register button");
+        userRegisterPage.clickOnRegisterButton();
+
+        log.info("TC 04 Register With Password Below 6 Characters - Step: Verify Error Message of Password field");
         verifyEquals(userRegisterPage.getTextOfPasswordUnderSixCharactersErrorMessage(), "Password must meet the following rules: must have at least 6 characters");
     }
 
     @Test
-    public void TC_04_Register_With_Not_Matching_Password_And_Confirm_Password() {
-        log.info("TC 04 Register With Not Matching Password And Confirm Password - Step: Input Password into Password field");
+    public void TC_05_Register_With_Not_Matching_Password_And_Confirm_Password() {
+        log.info("TC 05 Register With Not Matching Password And Confirm Password - Step: Input Password into Password field");
         userRegisterPage.inputIntoField("Password", "123456");
 
-        log.info("TC 04 Register With Not Matching Password And Confirm Password - Step: Input NOT matching Password into Confirm Password field");
+        log.info("TC 05 Register With Not Matching Password And Confirm Password - Step: Input NOT matching Password into Confirm Password field");
         userRegisterPage.inputIntoField("ConfirmPassword", "1234567");
 
-        log.info("TC 04 Register With Not Matching Password And Confirm Password - Step: Click on Register button");
+        log.info("TC 05 Register With Not Matching Password And Confirm Password - Step: Click on Register button");
         userRegisterPage.clickOnRegisterButton();
 
-        log.info("TC 04 Register With Not Matching Password And Confirm Password - Step: Verify Error Message of Confirm Password field");
+        log.info("TC 05 Register With Not Matching Password And Confirm Password - Step: Verify Error Message of Confirm Password field");
         verifyEquals(userRegisterPage.getTextOfErrorMessageDisplayedAtFieldName("ConfirmPassword"), "The password and confirmation password do not match.");
     }
 
     @Test
-    public void TC_05_Register_With_Valid_Data() {
-        log.info("TC 05 Register With Valid Data - Step: Check on Gender Male checkbox");
+    public void TC_06_Register_With_Valid_Data() {
+        log.info("TC 06 Register With Valid Data - Step: Check on Gender Male checkbox");
         userRegisterPage.checkOnGenderMaleCheckbox();
 
-        log.info("TC 05 Register With Valid Data - Step: Input into First Name field");
+        log.info("TC 06 Register With Valid Data - Step: Input into First Name field");
         userRegisterPage.inputIntoField("FirstName", firstName);
 
-        log.info("TC 05 Register With Valid Data - Step: Input into Last Name field");
+        log.info("TC 06 Register With Valid Data - Step: Input into Last Name field");
         userRegisterPage.inputIntoField("LastName", lastName);
 
-        log.info("TC 05 Register With Valid Data - Step: Select Day of Birth");
+        log.info("TC 06 Register With Valid Data - Step: Select Day of Birth");
         userRegisterPage.selectDayOfBirth(dayOfBirth);
 
-        log.info("TC 05 Register With Valid Data - Step: Select Month of Birth");
+        log.info("TC 06 Register With Valid Data - Step: Select Month of Birth");
         userRegisterPage.selectMonthOfBirth(monthOfBirth);
 
-        log.info("TC 05 Register With Valid Data - Step: Select Year of Birth");
+        log.info("TC 06 Register With Valid Data - Step: Select Year of Birth");
         userRegisterPage.selectYearOfBirth(yearOfBirth);
 
-        log.info("TC 05 Register With Valid Data - Step: Input into Email field");
+        log.info("TC 06 Register With Valid Data - Step: Input into Email field");
         userRegisterPage.inputIntoField("Email", email);
 
-        log.info("TC 05 Register With Valid Data - Step: Input into Company Name field");
+        log.info("TC 06 Register With Valid Data - Step: Input into Company Name field");
         userRegisterPage.inputIntoField("Company", company);
 
-        log.info("TC 05 Register With Valid Data - Step: Input into Password field");
+        log.info("TC 06 Register With Valid Data - Step: Input into Password field");
         userRegisterPage.inputIntoField("Password", password);
 
-        log.info("TC 05 Register With Valid Data - Step: Input into Confirm Password field");
+        log.info("TC 06 Register With Valid Data - Step: Input into Confirm Password field");
         userRegisterPage.inputIntoField("ConfirmPassword", confirmPassword);
 
-        log.info("TC 05 Register With Valid Data - Step: Click on Register button");
+        log.info("TC 06 Register With Valid Data - Step: Click on Register button");
         userRegisterPage.clickOnRegisterButton();
         userRegisterResultPage = PageGeneratorManager.getUserRegisterResultPage(driver);
 
-        log.info("TC 05 Register With Valid Data - Step: Verify Register Success Message");
+        log.info("TC 06 Register With Valid Data - Step: Verify Register Success Message");
         verifyEquals(userRegisterResultPage.getRegisterResultText(), "Your registration completed");
     }
 

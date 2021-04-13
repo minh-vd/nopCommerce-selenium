@@ -8,7 +8,7 @@ public class UserRegisterPageUI {
     public static final String DAY_OF_BIRTH_DROPDOWN = "//select[@name='DateOfBirthDay']";
     public static final String MONTH_OF_BIRTH_DROPDOWN = "//select[@name='DateOfBirthMonth']";
     public static final String YEAR_OF_BIRTH_DROPDOWN = "//select[@name='DateOfBirthYear']";
-
+    public static final String EXISTING_EMAIL_ERROR_MESSAGE = "//div[@class='message-error validation-summary-errors']";
 
     // Dynamic Locator
     public static final String DYNAMIC_REQUIRED_ERROR_MESSAGE_BY_FIELD_NAME = "//span[@id='%s-error']";

@@ -1,7 +1,5 @@
 package com.nopcommerce.user;
 
-//import com.nopcommerce.common.Common_01_Register_User;
-
 import commons.AbstractTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -10,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class Login extends AbstractTest {
+public class TC_02_Login extends AbstractTest {
     WebDriver driver;
 
     UserHomePO userHomePage;
@@ -52,6 +50,18 @@ public class Login extends AbstractTest {
 
     @Test
     public void TC_03_Login_With_Unregistered_Email() {
+        log.info("TC 03 Login With Unregistered Email - Step: Input Unregistered Email");
+        userLoginPage.inputIntoEmailField("abc@mail.com");
+
+        log.info("TC 03 Login With Unregistered Email - Step: Click on Login button");
+        userLoginPage.clickOnLoginButton();
+
+        log.info("TC 03 Login With Unregistered Email - Step: Verify Unregistered Email Error Message");
+        verifyEquals(userLoginPage.getTextOfUnregisteredEmailErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. No customer account found");
+    }
+
+    @Test
+    public void TC_04_Login_With_Unregistered_Email() {
         log.info("TC 03 Login With Unregistered Email - Step: Input Unregistered Email");
         userLoginPage.inputIntoEmailField("abc@mail.com");
 
