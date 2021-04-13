@@ -32,4 +32,9 @@ public class UserLoginPO extends AbstractPage {
         waitForElementVisible(driver, UserLoginPUI.UNREGISTERED_EMAIL_ERROR_MESSAGE);
         return getElementText(driver, UserLoginPUI.UNREGISTERED_EMAIL_ERROR_MESSAGE).replace("\n", " ");
     }
+
+    public void inputIntoPasswordField(String inputData) {
+        waitForElementVisible(driver, UserLoginPUI.PASSWORD_TEXT_BOX);
+        sendKeysToElement(driver, UserLoginPUI.PASSWORD_TEXT_BOX, inputData);
+    }
 }

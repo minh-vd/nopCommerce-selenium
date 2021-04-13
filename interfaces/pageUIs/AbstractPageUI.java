@@ -21,4 +21,5 @@ public class AbstractPageUI {
 
 
     public static final String LOGIN_LINK_AT_TOP_BAR = "//a[@class='ico-login']";
+    public static final String MY_ACCOUNT_LINK_AT_TOP_BAR = "//a[@class='ico-account']";
 }

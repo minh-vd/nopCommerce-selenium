@@ -26,4 +26,9 @@ public class UserHomePO extends AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getUserLoginPage(driver);
     }
+
+    public boolean isMyAccountLinkDisplayed() {
+        waitForElementVisible(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
+        return isElementDisplayed(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
+    }
 }
