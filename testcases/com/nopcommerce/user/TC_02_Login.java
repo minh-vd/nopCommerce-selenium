@@ -1,5 +1,6 @@
 package com.nopcommerce.user;
 
+import com.nopcommerce.common.Common_01_Register;
 import commons.AbstractTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -57,19 +58,19 @@ public class TC_02_Login extends AbstractTest {
         userLoginPage.clickOnLoginButton();
 
         log.info("TC 03 Login With Unregistered Email - Step: Verify Unregistered Email Error Message");
-        verifyEquals(userLoginPage.getTextOfUnregisteredEmailErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. No customer account found");
+        verifyEquals(userLoginPage.getTextOfLoginValidationErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. No customer account found");
     }
 
     @Test
-    public void TC_04_Login_With_Unregistered_Email() {
-        log.info("TC 03 Login With Unregistered Email - Step: Input Unregistered Email");
-        userLoginPage.inputIntoEmailField("abc@mail.com");
+    public void TC_04_Login_With_Registered_Email_But_Not_Input_Password() {
+        log.info("TC 04 Login With Registered Email But Not Input Password - Step: Input Registered Email");
+        userLoginPage.inputIntoEmailField(Common_01_Register.email);
 
-        log.info("TC 03 Login With Unregistered Email - Step: Click on Login button");
+        log.info("TC 04 Login With Registered Email But Not Input Password - Step: Click on Login button");
         userLoginPage.clickOnLoginButton();
 
-        log.info("TC 03 Login With Unregistered Email - Step: Verify Unregistered Email Error Message");
-        verifyEquals(userLoginPage.getTextOfUnregisteredEmailErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. No customer account found");
+        log.info("TC 04 Login With Registered Email But Not Input Password - Step: Verify Email Error Message");
+        verifyEquals(userLoginPage.getTextOfLoginValidationErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect");
     }
 
     @AfterClass(alwaysRun = true)

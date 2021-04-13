@@ -28,7 +28,7 @@ public class UserLoginPO extends AbstractPage {
         sendKeysToElement(driver,UserLoginPUI.EMAIL_TEXT_BOX, inputData);
     }
 
-    public String getTextOfUnregisteredEmailErrorMessage() {
+    public String getTextOfLoginValidationErrorMessage() {
         waitForElementVisible(driver, UserLoginPUI.UNREGISTERED_EMAIL_ERROR_MESSAGE);
         return getElementText(driver, UserLoginPUI.UNREGISTERED_EMAIL_ERROR_MESSAGE).replace("\n", " ");
     }

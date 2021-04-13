@@ -72,5 +72,7 @@ public class Common_01_Register extends AbstractTest {
         log.info("Pre-Condition: Register - Step: Click on Register button");
         userRegisterPage.clickOnRegisterButton();
         userRegisterResultPage = PageGeneratorManager.getUserRegisterResultPage(driver);
+
+        driver.quit();
     }
 }
