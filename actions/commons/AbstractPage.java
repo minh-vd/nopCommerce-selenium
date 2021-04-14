@@ -482,13 +482,18 @@ public class AbstractPage {
         clickOnElement(driver, AbstractPageUI.DYNAMIC_RADIO_BUTTON_BY_ID, radioButtonId);
     }
 
-    public void inputIntoTextboxByID(WebDriver driver, String textboxId, String inputValue) {
-        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, textboxId);
-        sendKeysToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, inputValue, textboxId);
-    }
-
     public void clickOnButtonByValue(WebDriver driver, String buttonValue){
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
         clickOnElement(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
     }*/
+
+    public void inputIntoTextBoxByID(WebDriver driver, String textBoxID, String inputData) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, textBoxID);
+        sendKeysToElement(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, inputData, textBoxID);
+    }
+
+    public String getValueTextFromTextBoxByID(WebDriver driver, String textBoxID) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, textBoxID);
+        return getElementAttributeValue(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, "value", textBoxID);
+    }
 }

@@ -31,4 +31,11 @@ public class UserHomePO extends AbstractPage {
         waitForElementVisible(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
         return isElementDisplayed(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
     }
+
+    public MyAccountPO clickOnMyAccountLink() {
+        waitForElementClickable(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
+        clickOnElement(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getMyAccountPage(driver);
+    }
 }
