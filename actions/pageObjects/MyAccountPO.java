@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.AbstractPage;
+import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.MyAccountPUI;
 import pageUIs.UserRegisterResultPUI;
@@ -35,5 +36,21 @@ public class MyAccountPO extends AbstractPage {
     public void clickOnSaveButton() {
         waitForElementClickable(driver, MyAccountPUI.SAVE_CUSTOMER_INFO_BUTTON);
         clickOnElement(driver, MyAccountPUI.SAVE_CUSTOMER_INFO_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public String getDayOfBirth() {
+        waitForElementVisible(driver, MyAccountPUI.DAY_OF_BIRTH_DROPDOWN);
+        return getSelectedTextInDefaultDropdown(driver, MyAccountPUI.DAY_OF_BIRTH_DROPDOWN);
+    }
+
+    public String getMonthOfBirth() {
+        waitForElementVisible(driver, MyAccountPUI.MONTH_OF_BIRTH_DROPDOWN);
+        return getSelectedTextInDefaultDropdown(driver, MyAccountPUI.MONTH_OF_BIRTH_DROPDOWN);
+    }
+
+    public String getYearOfBirth() {
+        waitForElementVisible(driver, MyAccountPUI.YEAR_OF_BIRTH_DROPDOWN);
+        return getSelectedTextInDefaultDropdown(driver, MyAccountPUI.YEAR_OF_BIRTH_DROPDOWN);
     }
 }

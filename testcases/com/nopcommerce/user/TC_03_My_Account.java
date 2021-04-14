@@ -31,7 +31,7 @@ public class TC_03_My_Account extends AbstractTest {
         dayOfBirth = "1";
         monthOfBirth = "January";
         yearOfBirth = "1999";
-        email = "automationfc.vn@gmail.com";
+        email = "automationfc.vn+" + getRandomNumberByDateTime() + "@gmail.com";
         company = "Automation FC";
         password = "123456";
         confirmPassword = "123456";
@@ -86,11 +86,23 @@ public class TC_03_My_Account extends AbstractTest {
         log.info("TC 01 Edit Customer Info - Step: Click on Save button");
         myAccountPage.clickOnSaveButton();
 
+        log.info("TC 01 Edit Customer Info - Step: Refresh Page");
+        myAccountPage.refreshPage(driver);
+
         log.info("TC 01 Edit Customer Info - Step: Verify edited First Name");
         verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "FirstName"), firstName);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Last Name");
         verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "LastName"), lastName);
+
+        log.info("TC 01 Edit Customer Info - Step: Verify edited Day of Birth");
+        verifyEquals(myAccountPage.getDayOfBirth(), dayOfBirth);
+
+        log.info("TC 01 Edit Customer Info - Step: Verify edited Month of Birth");
+        verifyEquals(myAccountPage.getMonthOfBirth(), monthOfBirth);
+
+        log.info("TC 01 Edit Customer Info - Step: Verify edited Year of Birth");
+        verifyEquals(myAccountPage.getYearOfBirth(), yearOfBirth);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Email");
         verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "Email"), email);

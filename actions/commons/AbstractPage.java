@@ -47,6 +47,7 @@ public class AbstractPage {
 
     public void refreshPage(WebDriver driver) {
         driver.navigate().refresh();
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
     public void acceptAlert(WebDriver driver) {
