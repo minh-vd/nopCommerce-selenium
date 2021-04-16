@@ -19,7 +19,7 @@ public class TC_03_My_Account extends AbstractTest {
     UserLoginPO userLoginPage;
     MyAccountPO myAccountPage;
 
-    String firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth, email, company, password, confirmPassword;
+    String firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth, email, company, password, confirmPassword, city, address1, address2, zipPostalCode, phone, fax, country, state;
 
     @Parameters({"browserName", "url"})
     @BeforeClass
@@ -35,6 +35,14 @@ public class TC_03_My_Account extends AbstractTest {
         company = "Automation FC";
         password = "123456";
         confirmPassword = "123456";
+        city = "Da Nang";
+        address1 = "123/04 Le Lai";
+        address2 = "234/05 Hai Phong";
+        zipPostalCode = "550000";
+        phone = "0123456789";
+        fax = "0987654321";
+        country = "Viet Nam";
+        state = "Other";
 
         log.info("Pre-Condition - Step: Open User Home Page");
         driver.get(url);
@@ -57,7 +65,7 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage = userHomePage.clickOnMyAccountLink();
     }
 
-    @Test
+
     public void TC_01_Edit_Customer_Info() {
         log.info("TC 01 Edit Customer Info - Step: Check on Gender Female checkbox");
         myAccountPage.checkOnGenderFemaleCheckbox();
@@ -109,6 +117,81 @@ public class TC_03_My_Account extends AbstractTest {
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Company");
         verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "Company"), company);
+    }
+
+    @Test
+    public void TC_02_Add_New_Address() {
+        log.info("TC 02 - Add New Address - Step: Click on Left Menu -> Addresses");
+        myAccountPage.clickOnDynamicLeftMenuLinkByClassName("customer-addresses");
+
+        log.info("TC 02 - Add New Address - Step: Click on ADD NEW button");
+        myAccountPage.clickOnAddNewAddressButton();
+
+        log.info("TC 02 - Add New Address - Step: Input into First Name text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_FirstName", firstName);
+
+        log.info("TC 02 - Add New Address - Step: Input into Last Name text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_LastName", lastName);
+
+        log.info("TC 02 - Add New Address - Step: Input into Email text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_Email", email);
+
+        log.info("TC 02 - Add New Address - Step: Input into Company text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_Company", company);
+
+        log.info("TC 02 - Add New Address - Step: Select Country");
+        myAccountPage.selectAddressCountry(country);
+
+        log.info("TC 02 - Add New Address - Step: Select State/Province");
+        myAccountPage.selectAddressStateProvince(state);
+
+        log.info("TC 02 - Add New Address - Step: Input into City text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_City", city);
+
+        log.info("TC 02 - Add New Address - Step: Input into Address 1 text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_Address1", address1);
+
+        log.info("TC 02 - Add New Address - Step: Input into Address 2 text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_Address2", address2);
+
+        log.info("TC 02 - Add New Address - Step: Input into Zip/Postal Code text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_ZipPostalCode", zipPostalCode);
+
+        log.info("TC 02 - Add New Address - Step: Input into Phone Number text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_PhoneNumber", phone);
+
+        log.info("TC 02 - Add New Address - Step: Input into Fax Number text box");
+        myAccountPage.inputIntoTextBoxByID(driver, "Address_FaxNumber", fax);
+
+        log.info("TC 02 - Add New Address - Step: Click on Save button");
+        myAccountPage.clickOnSaveAddressButton();
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Name");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("name"), firstName + " " + lastName);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Email");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("email"), "Email: " + email);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Phone");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("phone"), "Phone number: " + phone);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Fax");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("fax"), "Fax number: " + fax);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Company");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("company"), company);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Address 1");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("address1"), address1);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Address 2");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("address2"), address2);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address City - State - Zip");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("city-state-zip"), city + ", " + zipPostalCode);
+
+        log.info("TC 02 - Add New Address - Step: Verify Address Country");
+        verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("country"), country);
     }
 
     @AfterClass(alwaysRun = true)

@@ -53,4 +53,38 @@ public class MyAccountPO extends AbstractPage {
         waitForElementVisible(driver, MyAccountPUI.YEAR_OF_BIRTH_DROPDOWN);
         return getSelectedTextInDefaultDropdown(driver, MyAccountPUI.YEAR_OF_BIRTH_DROPDOWN);
     }
+
+    public void clickOnDynamicLeftMenuLinkByClassName(String className) {
+        waitForElementClickable(driver, MyAccountPUI.DYNAMIC_LEFT_MENU_LINK_BY_CLASS_NAME, className);
+        clickOnElement(driver, MyAccountPUI.DYNAMIC_LEFT_MENU_LINK_BY_CLASS_NAME, className);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void clickOnAddNewAddressButton() {
+        waitForElementClickable(driver, MyAccountPUI.ADD_NEW_ADDRESS_BUTTON);
+        clickOnElement(driver, MyAccountPUI.ADD_NEW_ADDRESS_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void selectAddressCountry(String country) {
+        waitForElementVisible(driver, MyAccountPUI.SELECT_COUNTRY_DROPDOWN);
+        selectItemInDefaultDropdown(driver, MyAccountPUI.SELECT_COUNTRY_DROPDOWN, country);
+    }
+
+    public void selectAddressStateProvince(String state) {
+        waitForElementInvisible(driver, MyAccountPUI.STATE_LOADING_ICON);
+        waitForElementVisible(driver, MyAccountPUI.SELECT_STATE_PROVINCE_DROPDOWN);
+        selectItemInDefaultDropdown(driver, MyAccountPUI.SELECT_STATE_PROVINCE_DROPDOWN, state);
+    }
+
+    public void clickOnSaveAddressButton() {
+        waitForElementClickable(driver, MyAccountPUI.SAVE_NEW_ADDRESS_BUTTON);
+        clickOnElement(driver, MyAccountPUI.SAVE_NEW_ADDRESS_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public String getTextOfDynamicAddressInfoFieldByClass(String className) {
+        waitForElementVisible(driver, MyAccountPUI.DYNAMIC_FIELD_OF_ADDRESS_INFO_BY_CLASS_NAME, className);
+        return getElementText(driver, MyAccountPUI.DYNAMIC_FIELD_OF_ADDRESS_INFO_BY_CLASS_NAME, className);
+    }
 }
