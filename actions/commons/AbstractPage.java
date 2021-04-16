@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-//import pageObjects.*;
+import pageObjects.*;
 import pageUIs.AbstractPageUI;
 
 import java.util.List;
@@ -496,5 +496,12 @@ public class AbstractPage {
     public String getValueTextFromTextBoxByID(WebDriver driver, String textBoxID) {
         waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, textBoxID);
         return getElementAttributeValue(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, "value", textBoxID);
+    }
+
+    public UserHomePO clickOnLogoutLinkAtTopBar(WebDriver driver) {
+        waitForElementClickable(driver, AbstractPageUI.LOG_OUT_LINK_AT_TOP_BAR);
+        clickOnElement(driver, AbstractPageUI.LOG_OUT_LINK_AT_TOP_BAR);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getUserHomePage(driver);
     }
 }

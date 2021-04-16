@@ -11,6 +11,7 @@ import pageObjects.MyAccountPO;
 import pageObjects.PageGeneratorManager;
 import pageObjects.UserHomePO;
 import pageObjects.UserLoginPO;
+import pageUIs.UserHomePageUI;
 
 public class TC_03_My_Account extends AbstractTest {
     WebDriver driver;
@@ -33,8 +34,8 @@ public class TC_03_My_Account extends AbstractTest {
         yearOfBirth = "1999";
         email = "automationfc.vn+" + getRandomNumberByDateTime() + "@gmail.com";
         company = "Automation FC";
-        password = "123456";
-        confirmPassword = "123456";
+        password = "12345678";
+        confirmPassword = "12345678";
         city = "Da Nang";
         address1 = "123/04 Le Lai";
         address2 = "234/05 Hai Phong";
@@ -119,7 +120,6 @@ public class TC_03_My_Account extends AbstractTest {
         verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "Company"), company);
     }
 
-    @Test
     public void TC_02_Add_New_Address() {
         log.info("TC 02 - Add New Address - Step: Click on Left Menu -> Addresses");
         myAccountPage.clickOnDynamicLeftMenuLinkByClassName("customer-addresses");
@@ -192,6 +192,57 @@ public class TC_03_My_Account extends AbstractTest {
 
         log.info("TC 02 - Add New Address - Step: Verify Address Country");
         verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("country"), country);
+    }
+
+    @Test
+    public void TC_03_Change_Password() {
+        log.info("TC 03 - Change Password - Step: Click on Left Menu -> Change Password");
+        myAccountPage.clickOnDynamicLeftMenuLinkByClassName("change-password");
+
+        log.info("TC 03 - Change Password - Step: Input old Password");
+        myAccountPage.inputIntoTextBoxByID(driver, "OldPassword", Common_01_Register.password);
+
+        log.info("TC 03 - Change Password - Step: Input new Password");
+        myAccountPage.inputIntoTextBoxByID(driver, "NewPassword", password);
+
+        log.info("TC 03 - Change Password - Step: Input new confirm Password");
+        myAccountPage.inputIntoTextBoxByID(driver, "ConfirmNewPassword", confirmPassword);
+
+        log.info("TC 03 - Change Password - Step: Click Change Password button");
+        myAccountPage.clickOnChangePasswordButton();
+
+        log.info("TC 03 - Change Password - Step: Verify Password changed successfully Notification Banner display");
+        verifyEquals(myAccountPage.getTextOfNotificationBar(), "Password was changed");
+
+        log.info("TC 03 - Change Password - Step: Close Notification Banner");
+        myAccountPage.clickOnCloseButtonOfNotificationBanner();
+
+        log.info("TC 03 - Change Password - Step: Click on Log out link on top");
+        userHomePage = myAccountPage.clickOnLogoutLinkAtTopBar(driver);
+
+        log.info("TC 03 - Change Password - Step: Click on Log in link on top");
+        userLoginPage = userHomePage.clickOnLoginLink();
+
+        log.info("TC 03 - Change Password - Step: Input login Email");
+        userLoginPage.inputIntoTextBoxByID(driver, "Email", Common_01_Register.email);
+
+        log.info("TC 03 - Change Password - Step: Input old Password");
+        userLoginPage.inputIntoTextBoxByID(driver, "Password", Common_01_Register.password);
+
+        log.info("TC 03 - Change Password - Step: Click on Login button");
+        userLoginPage.clickOnLoginButton();
+
+        log.info("TC 03 - Change Password - Step: Verify wrong Password message");
+        verifyEquals(userLoginPage.getTextOfLoginValidationErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect");
+
+        log.info("TC 03 - Change Password - Step: Re-input new Password");
+        userLoginPage.inputIntoTextBoxByID(driver, "Password", password);
+
+        log.info("TC 03 - Change Password - Step: Click on Login button");
+        userLoginPage.clickOnLoginButton();
+
+        log.info("TC 03 - Change Password - Step: Verify showing My Account on top bar");
+        verifyTrue(userHomePage.isMyAccountLinkDisplayed());
     }
 
     @AfterClass(alwaysRun = true)

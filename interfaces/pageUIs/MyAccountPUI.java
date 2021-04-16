@@ -12,6 +12,9 @@ public class MyAccountPUI {
     public static final String STATE_LOADING_ICON = "//span[@id='states-loading-progress']";
     public static final String SELECT_STATE_PROVINCE_DROPDOWN = "//select[@id='Address_StateProvinceId']";
     public static final String SAVE_NEW_ADDRESS_BUTTON = "//button[@class='button-1 save-address-button']";
+    public static final String CHANGE_PASSWORD_BUTTON = "//button[text()='Change password']";
+    public static final String NOTIFICATION_BAR_TEXT_CONTENT = "//div[@class='bar-notification success']/p";
+    public static final String NOTIFICATION_BAR_CLOSE_BUTTON = "//div[@class='bar-notification success']/span[@class='close']";
 
     // Dynamic Locator
     public static final String DYNAMIC_LEFT_MENU_LINK_BY_CLASS_NAME = "//li[contains(@class, '%s')]/a";

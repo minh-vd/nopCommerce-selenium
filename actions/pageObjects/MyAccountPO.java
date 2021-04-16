@@ -87,4 +87,19 @@ public class MyAccountPO extends AbstractPage {
         waitForElementVisible(driver, MyAccountPUI.DYNAMIC_FIELD_OF_ADDRESS_INFO_BY_CLASS_NAME, className);
         return getElementText(driver, MyAccountPUI.DYNAMIC_FIELD_OF_ADDRESS_INFO_BY_CLASS_NAME, className);
     }
+
+    public void clickOnChangePasswordButton() {
+        waitForElementClickable(driver, MyAccountPUI.CHANGE_PASSWORD_BUTTON);
+        clickOnElement(driver, MyAccountPUI.CHANGE_PASSWORD_BUTTON);
+    }
+
+    public String getTextOfNotificationBar() {
+        waitForElementVisible(driver, MyAccountPUI.NOTIFICATION_BAR_TEXT_CONTENT);
+        return getElementText(driver, MyAccountPUI.NOTIFICATION_BAR_TEXT_CONTENT);
+    }
+
+    public void clickOnCloseButtonOfNotificationBanner() {
+        waitForElementClickable(driver, MyAccountPUI.NOTIFICATION_BAR_CLOSE_BUTTON);
+        clickOnElement(driver, MyAccountPUI.NOTIFICATION_BAR_CLOSE_BUTTON);
+    }
 }
