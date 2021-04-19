@@ -346,6 +346,12 @@ public class AbstractPage {
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
+    public void scrollToElementUsingJS(WebDriver driver, String xpathLocator, String dynamicXPathValues) {
+        jsExecutor = (JavascriptExecutor) driver;
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
     public void sendKeysToElementUsingJS(WebDriver driver, String xpathLocator, String inputData) {
         jsExecutor = (JavascriptExecutor) driver;
         element = getElementByXPath(driver, xpathLocator);
@@ -510,5 +516,12 @@ public class AbstractPage {
         clickOnElement(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getMyAccountPage(driver);
+    }
+
+    public void clickOnDynamicLinkAtFooterByText(WebDriver driver, String linkText) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_LINK_AT_FOOTER_BY_TEXT, linkText);
+        scrollToElementUsingJS(driver, AbstractPageUI.DYNAMIC_LINK_AT_FOOTER_BY_TEXT, linkText);
+        clickOnElement(driver, AbstractPageUI.DYNAMIC_LINK_AT_FOOTER_BY_TEXT, linkText);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 }

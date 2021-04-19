@@ -10,7 +10,7 @@ public class AbstractPageUI {
     public static final String LOADING_ICON = "//div[@id='ajaxBusy']";
 
     // Dynamic Locator
-    public static final String FOOTER_DYNAMIC_LINK = "//div[@class='footer']//a[text()='%s']";
+    public static final String DYNAMIC_LINK_AT_FOOTER_BY_TEXT = "//div[@class='footer']//a[text()='%s']";
     public static final String ADMIN_LEFT_MENU_DYNAMIC_LINK = "//span[text()='%s']/parent::a";
     public static final String DYNAMIC_UPLOAD_FILES_INPUT_BY_PANEL_ID = "//div[@id='%s']//input[@type='file']";
     public static final String DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID = "//div[@id='%s']//i[contains(@class, 'toggle-icon')]";

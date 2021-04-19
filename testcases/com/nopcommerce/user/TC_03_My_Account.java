@@ -65,7 +65,7 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage = userHomePage.clickOnMyAccountLinkAtTopBar(driver);
     }
 
-
+    @Test
     public void TC_01_Edit_Customer_Info() {
         log.info("TC 01 Edit Customer Info - Step: Check on Gender Female checkbox");
         myAccountPage.checkOnGenderFemaleCheckbox();
@@ -119,6 +119,7 @@ public class TC_03_My_Account extends AbstractTest {
         verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "Company"), company);
     }
 
+    @Test
     public void TC_02_Add_New_Address() {
         log.info("TC 02 - Add New Address - Step: Click on Left Menu -> Addresses");
         myAccountPage.clickOnDynamicLeftMenuLinkByClassName("customer-addresses");
@@ -193,6 +194,7 @@ public class TC_03_My_Account extends AbstractTest {
         verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("country"), country);
     }
 
+    @Test
     public void TC_03_Change_Password() {
         log.info("TC 03 - Change Password - Step: Click on Left Menu -> Change Password");
         myAccountPage.clickOnDynamicLeftMenuLinkByClassName("change-password");
