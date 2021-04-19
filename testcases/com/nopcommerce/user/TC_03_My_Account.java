@@ -2,16 +2,13 @@ package com.nopcommerce.user;
 
 import com.nopcommerce.common.Common_01_Register;
 import commons.AbstractTest;
+import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.MyAccountPO;
-import pageObjects.PageGeneratorManager;
-import pageObjects.UserHomePO;
-import pageObjects.UserLoginPO;
-import pageUIs.UserHomePageUI;
+import pageObjects.*;
 
 public class TC_03_My_Account extends AbstractTest {
     WebDriver driver;
@@ -19,6 +16,8 @@ public class TC_03_My_Account extends AbstractTest {
     UserHomePO userHomePage;
     UserLoginPO userLoginPage;
     MyAccountPO myAccountPage;
+    ProductDetailPO productDetailPage;
+    ProductReviewPO productReviewPage;
 
     String firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth, email, company, password, confirmPassword, city, address1, address2, zipPostalCode, phone, fax, country, state;
 
@@ -63,7 +62,7 @@ public class TC_03_My_Account extends AbstractTest {
         userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
         log.info("Pre-Condition - Step: Click on My Account link on top bar");
-        myAccountPage = userHomePage.clickOnMyAccountLink();
+        myAccountPage = userHomePage.clickOnMyAccountLinkAtTopBar(driver);
     }
 
 
@@ -194,7 +193,6 @@ public class TC_03_My_Account extends AbstractTest {
         verifyEquals(myAccountPage.getTextOfDynamicAddressInfoFieldByClass("country"), country);
     }
 
-    @Test
     public void TC_03_Change_Password() {
         log.info("TC 03 - Change Password - Step: Click on Left Menu -> Change Password");
         myAccountPage.clickOnDynamicLeftMenuLinkByClassName("change-password");
@@ -240,9 +238,45 @@ public class TC_03_My_Account extends AbstractTest {
 
         log.info("TC 03 - Change Password - Step: Click on Login button");
         userLoginPage.clickOnLoginButton();
+        userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
         log.info("TC 03 - Change Password - Step: Verify showing My Account on top bar");
         verifyTrue(userHomePage.isMyAccountLinkDisplayed());
+    }
+
+    @Test
+    public void TC_04_Add_New_Product_Review() {
+        log.info("TC 04 - Add New Product Review - Step: Navigate to Home page");
+        driver.get(GlobalConstants.HOME_URL);
+        userHomePage = PageGeneratorManager.getUserHomePage(driver);
+        userHomePage.sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+
+        log.info("TC 04 - Add New Product Review - Step: Click on Title of 1st product in Featured list to navigate to it's detail page");
+        productDetailPage = userHomePage.clickOnTitleOfFirstProductInFeaturedList();
+
+        log.info("TC 04 - Add New Product Review - Step: Click on Add your review link");
+        productReviewPage = productDetailPage.clickOnAddYourReviewLink();
+
+        log.info("TC 04 - Add New Product Review - Step: Input Review Title");
+        productReviewPage.inputIntoTextBoxByID(driver, "AddProductReview_Title", "This is a Review Title");
+
+        log.info("TC 04 - Add New Product Review - Step: Input Review Text");
+        productReviewPage.inputIntoReviewTextTextArea("This is a Review Content");
+
+        log.info("TC 04 - Add New Product Review - Step: Click Submit Review button");
+        productReviewPage.clickOnSubmitReviewButton();
+
+        log.info("TC 04 - Add New Product Review - Step: Click My Account link on top bar");
+        myAccountPage = productReviewPage.clickOnMyAccountLinkAtTopBar(driver);
+
+        log.info("TC 04 - Add New Product Review - Step: Click on My product reviews on Left Menu");
+        myAccountPage.clickOnDynamicLeftMenuLinkByClassName("customer-reviews");
+
+        log.info("TC 04 - Add New Product Review - Step: Verify Review Title displayed");
+        verifyEquals(myAccountPage.getTextOfReviewTitle(), "This is a Review Title");
+
+        log.info("TC 04 - Add New Product Review - Step: Verify Review Text displayed");
+        verifyEquals(myAccountPage.getTextOfReviewText(), "This is a Review Content");
     }
 
     @AfterClass(alwaysRun = true)

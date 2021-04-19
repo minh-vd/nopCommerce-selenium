@@ -3,6 +3,9 @@ package commons;
 import java.io.File;
 
 public class GlobalConstants {
+    // URL
+    public static final String HOME_URL = "https://demo.nopcommerce.com/";
+
     public static final int SHORT_TIMEOUT = 5;
     public static final int LONG_TIMEOUT = 30;
     public static final int SLEEP_TIME_WAIT_FOR_PAGE_LOAD = 2;

@@ -4,7 +4,6 @@ import commons.AbstractPage;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.MyAccountPUI;
-import pageUIs.UserRegisterResultPUI;
 
 public class MyAccountPO extends AbstractPage {
     WebDriver driver;
@@ -101,5 +100,15 @@ public class MyAccountPO extends AbstractPage {
     public void clickOnCloseButtonOfNotificationBanner() {
         waitForElementClickable(driver, MyAccountPUI.NOTIFICATION_BAR_CLOSE_BUTTON);
         clickOnElement(driver, MyAccountPUI.NOTIFICATION_BAR_CLOSE_BUTTON);
+    }
+
+    public String getTextOfReviewTitle() {
+        waitForElementVisible(driver, MyAccountPUI.REVIEW_TITLE);
+        return getElementText(driver, MyAccountPUI.REVIEW_TITLE);
+    }
+
+    public String getTextOfReviewText() {
+        waitForElementVisible(driver, MyAccountPUI.REVIEW_CONTENT);
+        return getElementText(driver, MyAccountPUI.REVIEW_CONTENT);
     }
 }

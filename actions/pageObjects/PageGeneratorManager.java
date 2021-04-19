@@ -20,4 +20,12 @@ public class PageGeneratorManager {
     public static MyAccountPO getMyAccountPage(WebDriver driver) {
         return new MyAccountPO(driver);
     }
+
+    public static ProductDetailPO getProductDetailPage(WebDriver driver) {
+        return new ProductDetailPO(driver);
+    }
+
+    public static ProductReviewPO getProductReviewPage(WebDriver driver) {
+        return new ProductReviewPO(driver);
+    }
 }

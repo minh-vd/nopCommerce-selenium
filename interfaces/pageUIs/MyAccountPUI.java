@@ -16,6 +16,10 @@ public class MyAccountPUI {
     public static final String NOTIFICATION_BAR_TEXT_CONTENT = "//div[@class='bar-notification success']/p";
     public static final String NOTIFICATION_BAR_CLOSE_BUTTON = "//div[@class='bar-notification success']/span[@class='close']";
 
+    // Review
+    public static final String REVIEW_TITLE = "//div[@class='review-title']/strong";
+    public static final String REVIEW_CONTENT = "//div[@class='review-text']";
+
     // Dynamic Locator
     public static final String DYNAMIC_LEFT_MENU_LINK_BY_CLASS_NAME = "//li[contains(@class, '%s')]/a";
     public static final String DYNAMIC_FIELD_OF_ADDRESS_INFO_BY_CLASS_NAME = "//li[@class='%s']";

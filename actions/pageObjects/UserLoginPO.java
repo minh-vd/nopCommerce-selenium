@@ -1,9 +1,7 @@
 package pageObjects;
 
 import commons.AbstractPage;
-import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
-import pageUIs.UserHomePageUI;
 import pageUIs.UserLoginPUI;
 
 public class UserLoginPO extends AbstractPage {

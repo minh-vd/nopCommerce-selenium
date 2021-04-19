@@ -504,4 +504,11 @@ public class AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getUserHomePage(driver);
     }
+
+    public MyAccountPO clickOnMyAccountLinkAtTopBar(WebDriver driver) {
+        waitForElementClickable(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
+        clickOnElement(driver, AbstractPageUI.MY_ACCOUNT_LINK_AT_TOP_BAR);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getMyAccountPage(driver);
+    }
 }
