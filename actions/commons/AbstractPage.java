@@ -1,5 +1,7 @@
 package commons;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -20,6 +22,12 @@ public class AbstractPage {
     private List<WebElement> elements;
     private Actions action;
     private Select select;
+
+    protected final Log log;
+
+    protected AbstractPage() {
+        log = LogFactory.getLog(getClass());
+    }
 
     public void openUrl(WebDriver driver, String url) {
         driver.get(url);
@@ -202,6 +210,10 @@ public class AbstractPage {
 
     public String getElementText(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
         element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
+        return element.getText();
+    }
+
+    public String getElementTextByElement(WebDriver driver, WebElement element) {
         return element.getText();
     }
 
@@ -410,6 +422,11 @@ public class AbstractPage {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXPath(getDynamicXPathLocator(xpathLocator, dynamicXPathValues))));
     }
 
+    public void waitForAllElementsVisible(WebDriver driver, String xpathLocator) {
+        explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+        explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByXPath(xpathLocator)));
+    }
+
     public void overrideImplicitWaitTimeout(WebDriver driver, long timeInSecond) {
         driver.manage().timeouts().implicitlyWait(timeInSecond, TimeUnit.SECONDS);
     }
@@ -443,17 +460,6 @@ public class AbstractPage {
             e.printStackTrace();
         }
     }
-
-    /*public UserSearchPO openSearchPage(WebDriver driver) {
-        waitForElementVisible(driver, AbstractPageUI.SEARCH_LINK);
-        clickOnElement(driver, AbstractPageUI.SEARCH_LINK);
-        return PageGeneratorManager.getUserSearchPage(driver);
-    }*/
-
-    /*public void openFooterLinkByPageName(WebDriver driver, String pageName) {
-        waitForElementClickable(driver, AbstractPageUI.FOOTER_DYNAMIC_LINK, pageName);
-        clickOnElement(driver, AbstractPageUI.FOOTER_DYNAMIC_LINK, pageName);
-    }*/
 
     /*public void waitForAnyAdminPageFinishedLoading(WebDriver driver) {
         waitForElementInvisible(driver, AbstractPageUI.LOADING_ICON);

@@ -87,8 +87,16 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
     }
 
-    public void TC_03() {
+    @Test
+    public void TC_03_Relative_Search_With_Product_Name() {
+        log.info("TC 03 Relative Search With Product Name - Step: Input into Search Keyword with related keyword");
+        searchPage.inputIntoTextBoxByID(driver, "q", "Lenovo");
 
+        log.info("TC 03 Relative Search With Product Name - Step: Click on Search button");
+        searchPage.clickOnSearchButton();
+
+        log.info("TC 03 Relative Search With Product Name - Step: Verify related Products displayed");
+        verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo"));
     }
 
     @AfterClass(alwaysRun = true)
