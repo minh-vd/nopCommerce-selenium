@@ -33,7 +33,7 @@ public class SearchPO extends AbstractPage {
         return getElementText(driver, SearchPUI.SEARCH_NO_RESULT_MESSAGE);
     }
 
-    public boolean isRelatedProductsDisplayedByKeyword(String keyword) {
+    public boolean isRelatedProductsDisplayedByAbsoluteKeyword(String keyword) {
         waitForAllElementsVisible(driver, SearchPUI.PRODUCT_TITLE_IN_SEARCH_RESULT);
         boolean isDisplayed = true;
         List<WebElement> allProductsTitle = getElementsByXPath(driver, SearchPUI.PRODUCT_TITLE_IN_SEARCH_RESULT);

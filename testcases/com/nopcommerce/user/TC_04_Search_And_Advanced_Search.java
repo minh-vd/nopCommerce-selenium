@@ -96,7 +96,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         searchPage.clickOnSearchButton();
 
         log.info("TC 03 Relative Search With Product Name - Step: Verify related Products displayed");
-        verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo"));
+        verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Lenovo"));
     }
 
     //@Test
@@ -108,7 +108,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         searchPage.clickOnSearchButton();
 
         log.info("TC 04 Absolute Search With Product Name - Step: Verify related Products displayed");
-        verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo Thinkpad X1 Carbon Laptop"));
+        verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Lenovo Thinkpad X1 Carbon Laptop"));
     }
 
     //@Test
@@ -150,10 +150,10 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         searchPage.clickOnSearchButton();
 
         log.info("TC 06 Advanced Search With Sub Categories - Step: Verify 1 Product is displayed in Search Result");
-        verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Apple MacBook Pro 13-inch"));
+        verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Apple MacBook Pro 13-inch"));
     }
 
-    @Test
+    //@Test
     public void TC_07_Advanced_Search_With_Incorrect_Manufacturer() {
         log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
@@ -175,6 +175,30 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
 
         log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Verify No Product message");
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
+    }
+
+    @Test
+    public void TC_08_Advanced_Search_With_Correct_Manufacturer() {
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Input into Search Keyword text box");
+        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Check on Advanced search checkbox");
+        searchPage.checkOnAdvancedSearchCheckbox();
+
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Select Computers category");
+        searchPage.selectCategory("Computers");
+
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Check on Automatically search sub categories checkbox");
+        searchPage.checkOnAutomaticallySearchSubCategoriesCheckbox();
+
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Select Apple manufacturer");
+        searchPage.selectManufacturer("Apple");
+
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Click on Search button");
+        searchPage.clickOnSearchButton();
+
+        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Verify 1 Product is displayed in Search Result");
+        verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Apple MacBook Pro 13-inch"));
     }
 
     @AfterClass(alwaysRun = true)
