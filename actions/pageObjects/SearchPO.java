@@ -29,6 +29,7 @@ public class SearchPO extends AbstractPage {
 
     public String getTextOfSearchNoResultMessage() {
         waitForElementVisible(driver, SearchPUI.SEARCH_NO_RESULT_MESSAGE);
+        scrollToElementUsingJS(driver, SearchPUI.SEARCH_NO_RESULT_MESSAGE);
         return getElementText(driver, SearchPUI.SEARCH_NO_RESULT_MESSAGE);
     }
 
@@ -44,5 +45,21 @@ public class SearchPO extends AbstractPage {
             }
         }
         return isDisplayed;
+    }
+
+    public void checkOnAdvancedSearchCheckbox() {
+        waitForElementVisible(driver, SearchPUI.ADVANCED_SEARCH_CHECKBOX);
+        checkOnCheckbox(driver, SearchPUI.ADVANCED_SEARCH_CHECKBOX);
+    }
+
+    public void selectCategory(String selectCategory) {
+        waitForElementVisible(driver, SearchPUI.SELECT_CATEGORY_DROPDOWN);
+        selectItemInDefaultDropdown(driver, SearchPUI.SELECT_CATEGORY_DROPDOWN, selectCategory);
+    }
+
+
+    public void uncheckAutomaticallySearchSubCategoriesCheckbox() {
+        waitForElementVisible(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
+        uncheckCheckbox(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
     }
 }

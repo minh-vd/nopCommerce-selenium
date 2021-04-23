@@ -111,6 +111,27 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo Thinkpad X1 Carbon Laptop"));
     }
 
+    @Test
+    public void TC_05_Advanced_Search_With_Parent_Categories() {
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Input into Search Keyword text box");
+        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Check on Advanced search checkbox");
+        searchPage.checkOnAdvancedSearchCheckbox();
+
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Select Computer category");
+        searchPage.selectCategory("Computers");
+
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Uncheck Automatically search sub categories checkbox");
+        searchPage.uncheckAutomaticallySearchSubCategoriesCheckbox();
+
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Click on Search button");
+        searchPage.clickOnSearchButton();
+
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Verify No Product message");
+        verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
+    }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         //closeBrowserAndDriver(driver);
