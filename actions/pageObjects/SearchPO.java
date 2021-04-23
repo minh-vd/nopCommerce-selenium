@@ -62,4 +62,9 @@ public class SearchPO extends AbstractPage {
         waitForElementVisible(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
         uncheckCheckbox(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
     }
+
+    public void checkOnAutomaticallySearchSubCategoriesCheckbox() {
+        waitForElementVisible(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
+        checkOnCheckbox(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
+    }
 }

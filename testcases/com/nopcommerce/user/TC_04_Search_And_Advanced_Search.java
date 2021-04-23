@@ -111,7 +111,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo Thinkpad X1 Carbon Laptop"));
     }
 
-    @Test
+    //@Test
     public void TC_05_Advanced_Search_With_Parent_Categories() {
         log.info("TC 05 Advanced Search With Parent Categories - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
@@ -130,6 +130,27 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
 
         log.info("TC 05 Advanced Search With Parent Categories - Step: Verify No Product message");
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
+    }
+
+    @Test
+    public void TC_06_Advanced_Search_With_Sub_Categories() {
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Input into Search Keyword text box");
+        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Advanced search checkbox");
+        searchPage.checkOnAdvancedSearchCheckbox();
+
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Select Computer category");
+        searchPage.selectCategory("Computers");
+
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Automatically search sub categories checkbox");
+        searchPage.checkOnAutomaticallySearchSubCategoriesCheckbox();
+
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Click on Search button");
+        searchPage.clickOnSearchButton();
+
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Verify 1 Product is displayed in Search Result");
+        verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Apple MacBook Pro 13-inch"));
     }
 
     @AfterClass(alwaysRun = true)
