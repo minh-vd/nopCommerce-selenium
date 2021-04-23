@@ -8,4 +8,5 @@ public class SearchPUI {
     public static final String ADVANCED_SEARCH_CHECKBOX = "//input[@id='advs']";
     public static final String SELECT_CATEGORY_DROPDOWN = "//label[text()='Category:']/parent::div/select";
     public static final String AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX = "//label[text()='Automatically search sub categories']/preceding-sibling::input";
+    public static final String SELECT_MANUFACTURER_DROPDOWN = "//label[text()='Manufacturer:']/parent::div/select";
 }

@@ -119,7 +119,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         log.info("TC 05 Advanced Search With Parent Categories - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
 
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Select Computer category");
+        log.info("TC 05 Advanced Search With Parent Categories - Step: Select Computers category");
         searchPage.selectCategory("Computers");
 
         log.info("TC 05 Advanced Search With Parent Categories - Step: Uncheck Automatically search sub categories checkbox");
@@ -132,7 +132,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
     }
 
-    @Test
+    //@Test
     public void TC_06_Advanced_Search_With_Sub_Categories() {
         log.info("TC 06 Advanced Search With Sub Categories - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
@@ -140,7 +140,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
 
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Select Computer category");
+        log.info("TC 06 Advanced Search With Sub Categories - Step: Select Computers category");
         searchPage.selectCategory("Computers");
 
         log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Automatically search sub categories checkbox");
@@ -151,6 +151,30 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
 
         log.info("TC 06 Advanced Search With Sub Categories - Step: Verify 1 Product is displayed in Search Result");
         verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Apple MacBook Pro 13-inch"));
+    }
+
+    @Test
+    public void TC_07_Advanced_Search_With_Incorrect_Manufacturer() {
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Input into Search Keyword text box");
+        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Check on Advanced search checkbox");
+        searchPage.checkOnAdvancedSearchCheckbox();
+
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Select Computers category");
+        searchPage.selectCategory("Computers");
+
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Check on Automatically search sub categories checkbox");
+        searchPage.checkOnAutomaticallySearchSubCategoriesCheckbox();
+
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Select HP manufacturer");
+        searchPage.selectManufacturer("HP");
+
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Click on Search button");
+        searchPage.clickOnSearchButton();
+
+        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Verify No Product message");
+        verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
     }
 
     @AfterClass(alwaysRun = true)

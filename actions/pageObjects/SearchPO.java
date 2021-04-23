@@ -67,4 +67,9 @@ public class SearchPO extends AbstractPage {
         waitForElementVisible(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
         checkOnCheckbox(driver, SearchPUI.AUTOMATICALLY_SEARCH_SUB_CATEGORIES_CHECKBOX);
     }
+
+    public void selectManufacturer(String selectManufacturer) {
+        waitForElementVisible(driver, SearchPUI.SELECT_MANUFACTURER_DROPDOWN);
+        selectItemInDefaultDropdown(driver, SearchPUI.SELECT_MANUFACTURER_DROPDOWN, selectManufacturer);
+    }
 }
