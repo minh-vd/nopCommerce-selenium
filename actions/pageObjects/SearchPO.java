@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.AbstractPage;
+import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageUIs.SearchPUI;
@@ -18,6 +19,7 @@ public class SearchPO extends AbstractPage {
     public void clickOnSearchButton() {
         waitForElementClickable(driver, SearchPUI.SEARCH_BUTTON);
         clickOnElement(driver, SearchPUI.SEARCH_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
     public String getTextOfSearchWarningMessage() {

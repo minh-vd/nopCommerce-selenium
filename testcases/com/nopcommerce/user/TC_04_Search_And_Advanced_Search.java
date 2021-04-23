@@ -87,7 +87,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
     }
 
-    @Test
+    //@Test
     public void TC_03_Relative_Search_With_Product_Name() {
         log.info("TC 03 Relative Search With Product Name - Step: Input into Search Keyword with related keyword");
         searchPage.inputIntoTextBoxByID(driver, "q", "Lenovo");
@@ -97,6 +97,18 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
 
         log.info("TC 03 Relative Search With Product Name - Step: Verify related Products displayed");
         verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo"));
+    }
+
+    //@Test
+    public void TC_04_Absolute_Search_With_Product_Name() {
+        log.info("TC 04 Absolute Search With Product Name - Step: Input into Search Keyword with absolute keyword");
+        searchPage.inputIntoTextBoxByID(driver, "q", "Thinkpad X1 Carbon");
+
+        log.info("TC 04 Absolute Search With Product Name - Step: Click on Search button");
+        searchPage.clickOnSearchButton();
+
+        log.info("TC 04 Absolute Search With Product Name - Step: Verify related Products displayed");
+        verifyTrue(searchPage.isRelatedProductsDisplayedByKeyword("Lenovo Thinkpad X1 Carbon Laptop"));
     }
 
     @AfterClass(alwaysRun = true)
