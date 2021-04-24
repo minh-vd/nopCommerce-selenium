@@ -24,4 +24,8 @@ public class AbstractPageUI {
     public static final String LOGIN_LINK_AT_TOP_BAR = "//a[@class='ico-login']";
     public static final String MY_ACCOUNT_LINK_AT_TOP_BAR = "//a[@class='ico-account']";
     public static final String LOG_OUT_LINK_AT_TOP_BAR = "//a[@class='ico-logout']";
+
+    // Header Menu
+    public static final String DYNAMIC_HEADER_MENU_BY_TEXT = "//div[@class='header-menu']/ul[@class='top-menu notmobile']//a[text()='%s ']";
+    public static final String DYNAMIC_HEADER_SUBMENU_BY_TEXT = "//div[@class='header-menu']/ul[@class='top-menu notmobile']//ul[@class='sublist first-level']//a[text()='%s ']";
 }

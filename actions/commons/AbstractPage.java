@@ -296,6 +296,11 @@ public class AbstractPage {
         action.moveToElement(getElementByXPath(driver, xpathLocator)).perform();
     }
 
+    public void hoverMouseOnElement(WebDriver driver, String xpathLocator, String dynamicXPathValues) {
+        action = new Actions(driver);
+        action.moveToElement(getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues))).perform();
+    }
+
     public void rightClickOnElement(WebDriver driver, String xpathLocator) {
         action = new Actions(driver);
         action.contextClick(getElementByXPath(driver, xpathLocator)).perform();
@@ -529,5 +534,17 @@ public class AbstractPage {
         scrollToElementUsingJS(driver, AbstractPageUI.DYNAMIC_LINK_AT_FOOTER_BY_TEXT, linkText);
         clickOnElement(driver, AbstractPageUI.DYNAMIC_LINK_AT_FOOTER_BY_TEXT, linkText);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void hoverMouseOnDynamicHeaderMenuByText(WebDriver driver, String headerMenuText) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_BY_TEXT, headerMenuText);
+        hoverMouseOnElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_BY_TEXT, headerMenuText);
+    }
+
+    public ProductListPO clickOnDynamicHeaderSubmenuByText(WebDriver driver, String headerSubmenuText) {
+        waitForElementClickable(driver, AbstractPageUI.DYNAMIC_HEADER_SUBMENU_BY_TEXT, headerSubmenuText);
+        clickOnElement(driver, AbstractPageUI.DYNAMIC_HEADER_SUBMENU_BY_TEXT, headerSubmenuText);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getProductListPage(driver);
     }
 }

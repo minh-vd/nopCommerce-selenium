@@ -32,4 +32,8 @@ public class PageGeneratorManager {
     public static SearchPO getSearchPage(WebDriver driver) {
         return new SearchPO(driver);
     }
+
+    public static ProductListPO getProductListPage(WebDriver driver) {
+        return new ProductListPO(driver);
+    }
 }
