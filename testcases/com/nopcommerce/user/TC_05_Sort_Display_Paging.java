@@ -49,13 +49,22 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isProductListSortedByName("DESC"));
     }
 
-    @Test
-    public void TC_03_Sort_By_Price_Low_To_High() {
-        log.info("TC 03 - Sort By Price Low To High - Step: Select Sort by Price: Low to High");
+    //@Test
+    public void TC_03_Sort_By_Product_Price_Low_To_High() {
+        log.info("TC 03 - Sort By Product Price Low To High - Step: Select Sort by Price: Low to High");
         productListPage.selectSortBy("Price: Low to High");
 
-        log.info("TC 03 - Sort By Price Low To High - Step: Verify Product List is sorted");
+        log.info("TC 03 - Sort By Product Price Low To High - Step: Verify Product List is sorted");
         verifyTrue(productListPage.isProductListSortedByPrice("ASC"));
+    }
+
+    @Test
+    public void TC_04_Sort_By_Product_Price_High_To_Low() {
+        log.info("TC 04 - Sort By Product Price High To Low - Step: Select Sort by Price: High to Low");
+        productListPage.selectSortBy("Price: High to Low");
+
+        log.info("TC 04 - Sort By Product Price High To Low - Step: Verify Product List is sorted");
+        verifyTrue(productListPage.isProductListSortedByPrice("DESC"));
     }
 
     @AfterClass(alwaysRun = true)
