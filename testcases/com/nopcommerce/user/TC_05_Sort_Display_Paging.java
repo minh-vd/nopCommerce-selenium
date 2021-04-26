@@ -31,13 +31,22 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         productListPage = userHomePage.clickOnDynamicHeaderSubmenuByText(driver, "Notebooks");
     }
 
-    @Test
+    //@Test
     public void TC_01_Sort_By_Product_Name_A_To_Z() {
         log.info("TC 01 Sort By Product Name A To Z - Step: Select Sort By Name: A to Z");
         productListPage.selectSortBy("Name: A to Z");
 
         log.info("TC 01 Sort By Product Name A To Z - Step: Verify Product List is sorted");
         verifyTrue(productListPage.isProductListSortedBy("ASC"));
+    }
+
+    @Test
+    public void TC_02_Sort_By_Product_Name_Z_To_A() {
+        log.info("TC 02 Sort By Product Name Z To A - Step: Select Sort By Name: Z to A");
+        productListPage.selectSortBy("Name: Z to A");
+
+        log.info("TC 02 Sort By Product Name Z To A - Step: Verify Product List is sorted");
+        verifyTrue(productListPage.isProductListSortedBy("DESC"));
     }
 
     @AfterClass(alwaysRun = true)

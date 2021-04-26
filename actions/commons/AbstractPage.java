@@ -493,6 +493,7 @@ public class AbstractPage {
         if (sortType.equals("ASC")) {
             Collections.sort(sortedList);
         } else if (sortType.equals("DESC")) {
+            Collections.sort(sortedList);
             Collections.reverse(sortedList);
         }
 
