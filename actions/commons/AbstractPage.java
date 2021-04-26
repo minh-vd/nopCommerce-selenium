@@ -500,6 +500,30 @@ public class AbstractPage {
         return actualList.equals(sortedList);
     }
 
+    public boolean isFloatDataSortedBy(WebDriver driver, String xpathLocator, String sortType) {
+        ArrayList<Float> actualList = new ArrayList<>();
+
+        List<WebElement> elementList = getElementsByXPath(driver, xpathLocator);
+
+        for (WebElement eachElement : elementList) {
+            actualList.add(Float.parseFloat(getElementTextByElement(driver, eachElement).replace("$", "").replace(",", "").trim()));
+        }
+
+        ArrayList<Float> sortedList = new ArrayList<>();
+        for (Float eachItem : actualList) {
+            sortedList.add(eachItem);
+        }
+
+        if (sortType.equals("ASC")) {
+            Collections.sort(sortedList);
+        } else if (sortType.equals("DESC")) {
+            Collections.sort(sortedList);
+            Collections.reverse(sortedList);
+        }
+
+        return actualList.equals(sortedList);
+    }
+
     public void uploadFileByPanelId(WebDriver driver, String panelId, String... fileNames) {
         String uploadFolderPath = GlobalConstants.UPLOAD_FOLDER;
         String fullFilePath = "";

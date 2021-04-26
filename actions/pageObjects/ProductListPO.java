@@ -18,8 +18,13 @@ public class ProductListPO extends AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
-    public boolean isProductListSortedBy(String sortType) {
+    public boolean isProductListSortedByName(String sortType) {
         waitForAllElementsVisible(driver, ProductListPUI.PRODUCT_TITLE_IN_LIST);
         return isStringDataSortedBy(driver, ProductListPUI.PRODUCT_TITLE_IN_LIST, sortType);
+    }
+
+    public boolean isProductListSortedByPrice(String sortType) {
+        waitForAllElementsVisible(driver, ProductListPUI.PRODUCT_PRICE_IN_LIST);
+        return isFloatDataSortedBy(driver, ProductListPUI.PRODUCT_PRICE_IN_LIST, sortType);
     }
 }
