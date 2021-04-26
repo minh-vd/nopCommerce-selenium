@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 import pageUIs.AbstractPageUI;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -474,6 +476,29 @@ public class AbstractPage {
         return getElementsByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues)).size();
     }
 
+    public boolean isStringDataSortedBy(WebDriver driver, String xpathLocator, String sortType) {
+        ArrayList<String> actualList = new ArrayList<>();
+
+        List<WebElement> elementList = getElementsByXPath(driver, xpathLocator);
+
+        for (WebElement eachElement : elementList) {
+            actualList.add(getElementTextByElement(driver, eachElement));
+        }
+
+        ArrayList<String> sortedList = new ArrayList<>();
+        for (String eachItem : actualList) {
+            sortedList.add(eachItem);
+        }
+
+        if (sortType.equals("ASC")) {
+            Collections.sort(sortedList);
+        } else if (sortType.equals("DESC")) {
+            Collections.reverse(sortedList);
+        }
+
+        return actualList.equals(sortedList);
+    }
+
     public void uploadFileByPanelId(WebDriver driver, String panelId, String... fileNames) {
         String uploadFolderPath = GlobalConstants.UPLOAD_FOLDER;
         String fullFilePath = "";
@@ -547,4 +572,6 @@ public class AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductListPage(driver);
     }
+
+
 }

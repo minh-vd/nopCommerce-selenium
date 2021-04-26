@@ -32,8 +32,12 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
     }
 
     @Test
-    public void TC_01_Search_With_Empty_Data() {
+    public void TC_01_Sort_By_Product_Name_A_To_Z() {
+        log.info("TC 01 Sort By Product Name A To Z - Step: Select Sort By Name: A to Z");
+        productListPage.selectSortBy("Name: A to Z");
 
+        log.info("TC 01 Sort By Product Name A To Z - Step: Verify Product List is sorted");
+        verifyTrue(productListPage.isProductListSortedBy("ASC"));
     }
 
     @AfterClass(alwaysRun = true)
