@@ -16,6 +16,7 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
     UserLoginPO userLoginPage;
     ProductDetailPO productDetailPage;
     WishlistPO wishlistPage;
+    CartPO cartPage;
 
     String productName;
 
@@ -68,6 +69,32 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
 
         log.info("TC 01 Add Product To Wishlist - Step: Verify Wishlist of {User} is displayed correctly");
         verifyEquals(wishlistPage.getWishlistTitle(), "Wishlist of " + Common_01_Register.firstName + " " + Common_01_Register.lastName);
+    }
+
+    @Test
+    public void TC_02_Add_Product_From_Wishlist_To_Cart() {
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Click on Logo to navigate to HomePage");
+        userHomePage = wishlistPage.clickOnLogo(driver);
+
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Click on Wishlist link in Footer");
+        userHomePage.clickOnDynamicLinkAtFooterByText(driver, "Wishlist");
+        wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Click on Checkbox Add to cart");
+        wishlistPage.checkOnCheckboxAddToCartByProductName(productName);
+
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Click on <ADD TO CART> button");
+        cartPage = wishlistPage.clickOnAddToCartButton();
+
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Verify Product is added to Cart");
+        verifyTrue(cartPage.isAddedProductDisplayed(productName));
+
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Click on Wishlist link in Footer");
+        cartPage.clickOnDynamicLinkAtFooterByText(driver, "Wishlist");
+        wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+
+        log.info("TC 02 Add Product From Wishlist To Cart - Step: Verify Product is removed from Wishlist");
+        verifyTrue(wishlistPage.isProductNotDisplayed(productName));
     }
 
     @AfterClass(alwaysRun = true)

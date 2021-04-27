@@ -28,4 +28,21 @@ public class WishlistPO extends AbstractPage {
         waitForElementVisible(driver, WishlistPUI.WISH_LIST_TITLE);
         return getElementText(driver, WishlistPUI.WISH_LIST_TITLE);
     }
+
+    public void checkOnCheckboxAddToCartByProductName(String productName) {
+        waitForElementVisible(driver, WishlistPUI.DYNAMIC_CHECKBOX_ADD_TO_CART_BY_PRODUCT_NAME, productName);
+        checkOnCheckbox(driver, WishlistPUI.DYNAMIC_CHECKBOX_ADD_TO_CART_BY_PRODUCT_NAME, productName);
+    }
+
+    public CartPO clickOnAddToCartButton() {
+        waitForElementClickable(driver, WishlistPUI.ADD_TO_CART_BUTTON);
+        clickOnElement(driver, WishlistPUI.ADD_TO_CART_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getCartPage(driver);
+    }
+
+    public boolean isProductNotDisplayed(String productName) {
+        waitForElementInvisible(driver, WishlistPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
+        return isElementNotDisplayed(driver, WishlistPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
+    }
 }

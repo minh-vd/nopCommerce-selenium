@@ -40,4 +40,8 @@ public class PageGeneratorManager {
     public static WishlistPO getWishlistPage(WebDriver driver) {
         return new WishlistPO(driver);
     }
+
+    public static CartPO getCartPage(WebDriver driver){
+        return new CartPO(driver);
+    }
 }

@@ -274,6 +274,20 @@ public class AbstractPage {
         }
     }
 
+    public boolean isElementNotDisplayed(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        overrideImplicitWaitTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+        elements = getElementsByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
+        overrideImplicitWaitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+
+        if (elements.size() == 0) {
+            return true;
+        } else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean isElementEnabled(WebDriver driver, String xpathLocator) {
         element = getElementByXPath(driver, xpathLocator);
         return element.isEnabled();
@@ -455,8 +469,10 @@ public class AbstractPage {
     }
 
     public void waitForElementInvisible(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
-        explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+        explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+        overrideImplicitWaitTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
         explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXPath(getDynamicXPathLocator(xpathLocator, dynamicXPathValues))));
+        overrideImplicitWaitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
     }
 
     public void waitForElementClickable(WebDriver driver, String xpathLocator) {
@@ -616,5 +632,12 @@ public class AbstractPage {
     public String getNotificationBarMessage(WebDriver driver) {
         waitForElementVisible(driver, AbstractPageUI.NOTIFICATION_BAR_CONTENT_TEXT);
         return getElementText(driver, AbstractPageUI.NOTIFICATION_BAR_CONTENT_TEXT);
+    }
+
+    public UserHomePO clickOnLogo(WebDriver driver) {
+        waitForElementVisible(driver, AbstractPageUI.LOGO);
+        clickOnElement(driver, AbstractPageUI.LOGO);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getUserHomePage(driver);
     }
 }
