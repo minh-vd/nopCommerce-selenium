@@ -56,4 +56,9 @@ public class ProductListPO extends AbstractPage {
         waitForElementVisible(driver, ProductListPUI.PREVIOUS_PAGE_ICON);
         return isElementDisplayed(driver, ProductListPUI.PREVIOUS_PAGE_ICON);
     }
+
+    public boolean isPagingSectionNotDisplayed() {
+        waitForElementInvisible(driver, ProductListPUI.PAGING_SECTION);
+        return isElementNotDisplayed(driver, ProductListPUI.PAGING_SECTION);
+    }
 }

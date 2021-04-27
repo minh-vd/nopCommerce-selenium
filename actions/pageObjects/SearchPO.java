@@ -39,7 +39,7 @@ public class SearchPO extends AbstractPage {
         List<WebElement> allProductsTitle = getElementsByXPath(driver, SearchPUI.PRODUCT_TITLE_IN_SEARCH_RESULT);
         scrollToElementUsingJS(driver, SearchPUI.PRODUCT_TITLE_IN_SEARCH_RESULT);
         for (WebElement eachProductTitle : allProductsTitle) {
-            if (!getElementTextByElement(driver, eachProductTitle).contains(keyword)) {
+            if (!getElementTextByElement(eachProductTitle).contains(keyword)) {
                 isDisplayed = false;
                 break;
             }
