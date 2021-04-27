@@ -85,7 +85,7 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isPreviousPageIconDisplayed());
     }
 
-    @Test
+    //@Test
     public void TC_06_Check_Display_With_Only_Six_Products_Per_Page() {
         log.info("TC 06 Check Display With Only Six Products Per Page - Step: Select Display 6 Products per page");
         productListPage.selectNumberOfProductsToDisplay("6");
@@ -94,6 +94,18 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isNumberOfProductsDisplayedFewerThan(6));
 
         log.info("TC 06 Check Display With Only Six Products Per Page - Step: Verify Paging section is NOT shown");
+        verifyTrue(productListPage.isPagingSectionNotDisplayed());
+    }
+
+    @Test
+    public void TC_07_Check_Display_With_Only_Nine_Products_Per_Page() {
+        log.info("TC 07 Check Display With Only Nine Products Per Page - Step: Select Display 9 Products per page");
+        productListPage.selectNumberOfProductsToDisplay("9");
+
+        log.info("TC 07 Check Display With Only Nine Products Per Page - Step: Verify only 9 or fewer products are displayed");
+        verifyTrue(productListPage.isNumberOfProductsDisplayedFewerThan(9));
+
+        log.info("TC 07 Check Display With Only Nine Products Per Page - Step: Verify Paging section is NOT shown");
         verifyTrue(productListPage.isPagingSectionNotDisplayed());
     }
 
