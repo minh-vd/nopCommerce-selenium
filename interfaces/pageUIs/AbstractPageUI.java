@@ -28,4 +28,7 @@ public class AbstractPageUI {
     // Header Menu
     public static final String DYNAMIC_HEADER_MENU_BY_TEXT = "//div[@class='header-menu']/ul[@class='top-menu notmobile']//a[text()='%s ']";
     public static final String DYNAMIC_HEADER_SUBMENU_BY_TEXT = "//div[@class='header-menu']/ul[@class='top-menu notmobile']//ul[@class='sublist first-level']//a[text()='%s ']";
+
+    // Notification Bar
+    public static final String NOTIFICATION_BAR_CONTENT_TEXT = "//div[@id='bar-notification']//p";
 }

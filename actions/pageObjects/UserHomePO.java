@@ -4,6 +4,7 @@ import commons.AbstractPage;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.AbstractPageUI;
+import pageUIs.ProductListPUI;
 import pageUIs.UserHomePUI;
 
 public class UserHomePO extends AbstractPage {
@@ -34,9 +35,20 @@ public class UserHomePO extends AbstractPage {
 
 
     public ProductDetailPO clickOnTitleOfFirstProductInFeaturedList() {
+        waitForElementVisible(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
         scrollToElementUsingJS(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
         waitForElementClickable(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
         clickOnElement(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getProductDetailPage(driver);
+    }
+
+    public ProductDetailPO clickOnRandomProductTitleInFeaturedList() {
+        String randomIndex = Integer.toString(getRandomIntegerNumber(4));
+        waitForElementVisible(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
+        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
+        waitForElementClickable(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
+        clickOnElement(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
     }

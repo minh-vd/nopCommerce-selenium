@@ -13,12 +13,13 @@
         <parameter name="browserName" value="chrome_ui" />
         <parameter name="url" value="https://demo.nopcommerce.com/" />
         <classes>
-            <!--<class name="com.nopcommerce.common.Common_01_Register" />-->
+            <class name="com.nopcommerce.common.Common_01_Register" />
             <!--<class name="com.nopcommerce.user.TC_01_Register"/>-->
             <!--<class name="com.nopcommerce.user.TC_02_Login" />-->
             <!--<class name="com.nopcommerce.user.TC_03_My_Account" />-->
             <!--<class name="com.nopcommerce.user.TC_04_Search_And_Advanced_Search" />-->
-            <class name="com.nopcommerce.user.TC_05_Sort_Display_Paging" />
+            <!--<class name="com.nopcommerce.user.TC_05_Sort_Display_Paging" />-->
+            <class name="com.nopcommerce.user.TC_06_Wishlist_Compare_Recent_View" />
         </classes>
     </test>
 

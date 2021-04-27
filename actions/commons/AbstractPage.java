@@ -11,10 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 import pageUIs.AbstractPageUI;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class AbstractPage {
@@ -549,6 +546,11 @@ public class AbstractPage {
         getElementByXPath(driver, getDynamicXPathLocator(AbstractPageUI.DYNAMIC_UPLOAD_FILES_INPUT_BY_PANEL_ID, panelId)).sendKeys(fullFilePath);
     }
 
+    public int getRandomIntegerNumber(int upperbound) {
+        Random rand = new Random();
+        return rand.nextInt(upperbound) + 1;
+    }
+
     /*public void clickToExpandPanelByPanelId(WebDriver driver, String panelId) {
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID, panelId);
         String iconClassValue = getElementAttributeValue(driver, AbstractPageUI.DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID, "class", panelId);
@@ -567,6 +569,7 @@ public class AbstractPage {
         clickOnElement(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
     }*/
 
+    /* ---------- FOR THIS PROJECT ONLY ---------- */
     public void inputIntoTextBoxByID(WebDriver driver, String textBoxID, String inputData) {
         waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, textBoxID);
         sendKeysToElement(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, inputData, textBoxID);
@@ -610,5 +613,8 @@ public class AbstractPage {
         return PageGeneratorManager.getProductListPage(driver);
     }
 
-
+    public String getNotificationBarMessage(WebDriver driver) {
+        waitForElementVisible(driver, AbstractPageUI.NOTIFICATION_BAR_CONTENT_TEXT);
+        return getElementText(driver, AbstractPageUI.NOTIFICATION_BAR_CONTENT_TEXT);
+    }
 }

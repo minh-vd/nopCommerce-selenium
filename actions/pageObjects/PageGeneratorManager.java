@@ -36,4 +36,8 @@ public class PageGeneratorManager {
     public static ProductListPO getProductListPage(WebDriver driver) {
         return new ProductListPO(driver);
     }
+
+    public static WishlistPO getWishlistPage(WebDriver driver) {
+        return new WishlistPO(driver);
+    }
 }

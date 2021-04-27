@@ -19,4 +19,14 @@ public class ProductDetailPO extends AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductReviewPage(driver);
     }
+
+    public void clickOnAddToWishlistButton() {
+        waitForElementClickable(driver, ProductDetailPUI.ADD_TO_WISHLIST_BUTTON_IN_PRODUCT_DETAIL);
+        clickOnElement(driver, ProductDetailPUI.ADD_TO_WISHLIST_BUTTON_IN_PRODUCT_DETAIL);
+    }
+
+    public String getProductName() {
+        waitForElementVisible(driver, ProductDetailPUI.PRODUCT_NAME_TEXT);
+        return getElementText(driver, ProductDetailPUI.PRODUCT_NAME_TEXT);
+    }
 }
