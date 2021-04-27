@@ -215,7 +215,7 @@ public class AbstractPage {
         return element.getText();
     }
 
-    public String getElementTextByElement(WebDriver driver, WebElement element) {
+    public String getElementTextByElement(WebElement element) {
         return element.getText();
     }
 
@@ -246,8 +246,16 @@ public class AbstractPage {
     }
 
     public boolean isElementDisplayed(WebDriver driver, String xpathLocator) {
-        element = getElementByXPath(driver, xpathLocator);
-        return element.isDisplayed();
+        boolean isDisplayedFlag = true;
+        try {
+            element = getElementByXPath(driver, xpathLocator);
+            if (element.isDisplayed()) {
+                return isDisplayedFlag;
+            }
+        } catch (Exception e) {
+            isDisplayedFlag = false;
+        }
+        return isDisplayedFlag;
     }
 
     public boolean isElementDisplayed(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
@@ -421,7 +429,11 @@ public class AbstractPage {
 
     public void waitForElementVisible(WebDriver driver, String xpathLocator) {
         explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXPath(xpathLocator)));
+        try {
+            explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXPath(xpathLocator)));
+        } catch (Exception e) {
+            log.debug("Element NOT exist");
+        }
     }
 
     public void waitForElementVisible(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
@@ -482,7 +494,7 @@ public class AbstractPage {
         List<WebElement> elementList = getElementsByXPath(driver, xpathLocator);
 
         for (WebElement eachElement : elementList) {
-            actualList.add(getElementTextByElement(driver, eachElement));
+            actualList.add(getElementTextByElement(eachElement));
         }
 
         ArrayList<String> sortedList = new ArrayList<>();
@@ -506,7 +518,7 @@ public class AbstractPage {
         List<WebElement> elementList = getElementsByXPath(driver, xpathLocator);
 
         for (WebElement eachElement : elementList) {
-            actualList.add(Float.parseFloat(getElementTextByElement(driver, eachElement).replace("$", "").replace(",", "").trim()));
+            actualList.add(Float.parseFloat(getElementTextByElement(eachElement).replace("$", "").replace(",", "").trim()));
         }
 
         ArrayList<Float> sortedList = new ArrayList<>();
