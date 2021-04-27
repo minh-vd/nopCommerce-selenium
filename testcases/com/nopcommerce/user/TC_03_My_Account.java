@@ -253,8 +253,8 @@ public class TC_03_My_Account extends AbstractTest {
         userHomePage = PageGeneratorManager.getUserHomePage(driver);
         userHomePage.sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
 
-        log.info("TC 04 - Add New Product Review - Step: Click on Title of 1st product in Featured list to navigate to it's detail page");
-        productDetailPage = userHomePage.clickOnTitleOfFirstProductInFeaturedList();
+        log.info("TC 04 - Add New Product Review - Step: Click on Title of 2nd product in Featured list to navigate to it's detail page");
+        productDetailPage = userHomePage.clickOnTitleOfDynamicProductInFeaturedListByIndex("2");
 
         log.info("TC 04 - Add New Product Review - Step: Click on Add your review link");
         productReviewPage = productDetailPage.clickOnAddYourReviewLink();

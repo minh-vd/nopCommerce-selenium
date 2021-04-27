@@ -34,11 +34,11 @@ public class UserHomePO extends AbstractPage {
     }
 
 
-    public ProductDetailPO clickOnTitleOfFirstProductInFeaturedList() {
-        waitForElementVisible(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
-        scrollToElementUsingJS(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
-        waitForElementClickable(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
-        clickOnElement(driver, UserHomePUI.TITLE_OF_FIRST_PRODUCT_IN_FEATURED_LIST);
+    public ProductDetailPO clickOnTitleOfDynamicProductInFeaturedListByIndex(String indexNumber) {
+        waitForElementVisible(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
+        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
+        waitForElementClickable(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
+        clickOnElement(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
     }

@@ -41,8 +41,19 @@ public class WishlistPO extends AbstractPage {
         return PageGeneratorManager.getCartPage(driver);
     }
 
-    public boolean isProductNotDisplayed(String productName) {
+    public boolean isAddedProductNotDisplayed(String productName) {
         waitForElementInvisible(driver, WishlistPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
         return isElementNotDisplayed(driver, WishlistPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
+    }
+
+    public void clickOnRemoveIconByProductName(String productName) {
+        waitForElementClickable(driver, WishlistPUI.DYNAMIC_REMOVE_ICON_BY_PRODUCT_NAME, productName);
+        clickOnElement(driver, WishlistPUI.DYNAMIC_REMOVE_ICON_BY_PRODUCT_NAME, productName);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public String getTextOfNoDataMessage() {
+        waitForElementVisible(driver, WishlistPUI.NO_DATA_MESSAGE);
+        return getElementText(driver, WishlistPUI.NO_DATA_MESSAGE);
     }
 }

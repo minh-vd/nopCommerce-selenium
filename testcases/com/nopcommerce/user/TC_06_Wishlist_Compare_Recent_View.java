@@ -42,8 +42,8 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
         userLoginPage.clickOnLoginButton();
         userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
-        log.info("Pre-Condition - Step: Click on random Product Title in Featured List");
-        productDetailPage = userHomePage.clickOnRandomProductTitleInFeaturedList();
+        log.info("Pre-Condition - Step: Click on Product Title of 2nd Product in Featured List");
+        productDetailPage = userHomePage.clickOnTitleOfDynamicProductInFeaturedListByIndex("2");
     }
 
     @Test
@@ -94,7 +94,35 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
         wishlistPage = PageGeneratorManager.getWishlistPage(driver);
 
         log.info("TC 02 Add Product From Wishlist To Cart - Step: Verify Product is removed from Wishlist");
-        verifyTrue(wishlistPage.isProductNotDisplayed(productName));
+        verifyTrue(wishlistPage.isAddedProductNotDisplayed(productName));
+    }
+
+    @Test
+    public void TC_03_Remove_Product_From_Wishlist() {
+        log.info("TC 03 Remove Product From Wishlist - Step: Click on Logo to navigate to HomePage");
+        userHomePage = wishlistPage.clickOnLogo(driver);
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Click on Product Title of 2nd Product in Featured List");
+        productDetailPage = userHomePage.clickOnTitleOfDynamicProductInFeaturedListByIndex("2");
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Get current Product Name");
+        productName = productDetailPage.getProductName();
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Add Product to Wishlist");
+        productDetailPage.clickOnAddToWishlistButton();
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Click on Wishlist link in Footer");
+        productDetailPage.clickOnDynamicLinkAtFooterByText(driver, "Wishlist");
+        wishlistPage = PageGeneratorManager.getWishlistPage(driver);
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Click on Remove Icon");
+        wishlistPage.clickOnRemoveIconByProductName(productName);
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Verify Wishlist empty message");
+        verifyEquals(wishlistPage.getTextOfNoDataMessage(), "The wishlist is empty!");
+
+        log.info("TC 03 Remove Product From Wishlist - Step: Verify Product is removed from Wishlist");
+        verifyTrue(wishlistPage.isAddedProductNotDisplayed(productName));
     }
 
     @AfterClass(alwaysRun = true)
