@@ -8,4 +8,7 @@ public class ProductListPUI {
     public static final String NEXT_PAGE_ICON = "//li[@class='next-page']";
     public static final String PREVIOUS_PAGE_ICON = "//li[@class='previous-page']";
     public static final String PAGING_SECTION = "//div[@class='pager']";
+
+    // Dynamic Locator
+    public static final String DYNAMIC_PRODUCT_TITLE_BY_INDEX = "(//h2[@class='product-title']/a)[%s]";
 }

@@ -46,6 +46,7 @@ public class AbstractPage {
 
     public void backToPreviousPage(WebDriver driver) {
         driver.navigate().back();
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
     public void forwardToNextPage(WebDriver driver) {

@@ -4,6 +4,7 @@ import commons.AbstractPage;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.ProductListPUI;
+import pageUIs.RecentlyViewedProductsPUI;
 
 public class ProductListPO extends AbstractPage {
     WebDriver driver;
@@ -60,5 +61,12 @@ public class ProductListPO extends AbstractPage {
     public boolean isPagingSectionNotDisplayed() {
         waitForElementInvisible(driver, ProductListPUI.PAGING_SECTION);
         return isElementNotDisplayed(driver, ProductListPUI.PAGING_SECTION);
+    }
+
+    public ProductDetailPO clickOnDynamicProductTitleByProductIndex(String productIndex) {
+        waitForElementVisible(driver, ProductListPUI.DYNAMIC_PRODUCT_TITLE_BY_INDEX, productIndex);
+        clickOnElement(driver, ProductListPUI.DYNAMIC_PRODUCT_TITLE_BY_INDEX, productIndex);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getProductDetailPage(driver);
     }
 }

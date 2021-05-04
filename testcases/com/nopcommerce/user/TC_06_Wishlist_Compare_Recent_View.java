@@ -18,6 +18,8 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
     WishlistPO wishlistPage;
     CartPO cartPage;
     CompareProductsPO compareProductsPage;
+    ProductListPO productListPage;
+    RecentlyViewedProductsPO recentlyViewedProductsPage;
 
     String productName;
 
@@ -179,6 +181,78 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
 
         log.info("TC 04 Add Product To Compare - Step: Verify Product 2 NOT displayed");
         verifyTrue(compareProductsPage.isProductNotDisplayedByNameAndPrice(product2Name, product2Price));
+    }
+
+    @Test
+    public void TC_05_Recently_Viewed_Products() {
+        log.info("TC 05 Recently Viewed Products - Step: Click on Logo to navigate to HomePage");
+        userHomePage = compareProductsPage.clickOnLogo(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Hover on Computers tab");
+        userHomePage.hoverMouseOnDynamicHeaderMenuByText(driver, "Computers");
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Notebooks submenu");
+        productListPage = userHomePage.clickOnDynamicHeaderSubmenuByText(driver, "Notebooks");
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Product Title of 1st Product in list");
+        productDetailPage = productListPage.clickOnDynamicProductTitleByProductIndex("1");
+
+        log.info("TC 05 Recently Viewed Products - Step: Click Browser Back button to back to Product List page");
+        productDetailPage.backToPreviousPage(driver);
+        productListPage = PageGeneratorManager.getProductListPage(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Product Title of 2nd Product in list");
+        productDetailPage = productListPage.clickOnDynamicProductTitleByProductIndex("2");
+
+        log.info("TC 05 Recently Viewed Products - Step: Click Browser Back button to back to Product List page");
+        productDetailPage.backToPreviousPage(driver);
+        productListPage = PageGeneratorManager.getProductListPage(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Product Title of 3rd Product in list");
+        productDetailPage = productListPage.clickOnDynamicProductTitleByProductIndex("3");
+
+        log.info("TC 05 Recently Viewed Products - Step: Get 3rd Product Name");
+        String product3Name= productDetailPage.getProductName();
+
+        log.info("TC 05 Recently Viewed Products - Step: Click Browser Back button to back to Product List page");
+        productDetailPage.backToPreviousPage(driver);
+        productListPage = PageGeneratorManager.getProductListPage(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Product Title of 4th Product in list");
+        productDetailPage = productListPage.clickOnDynamicProductTitleByProductIndex("4");
+
+        log.info("TC 05 Recently Viewed Products - Step: Get 4th Product Name");
+        String product4Name= productDetailPage.getProductName();
+
+        log.info("TC 05 Recently Viewed Products - Step: Click Browser Back button to back to Product List page");
+        productDetailPage.backToPreviousPage(driver);
+        productListPage = PageGeneratorManager.getProductListPage(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Product Title of 5th Product in list");
+        productDetailPage = productListPage.clickOnDynamicProductTitleByProductIndex("5");
+
+        log.info("TC 05 Recently Viewed Products - Step: Get 5th Product Name");
+        String product5Name= productDetailPage.getProductName();
+
+        log.info("TC 05 Recently Viewed Products - Step: Click Browser Back button to back to Product List page");
+        productDetailPage.backToPreviousPage(driver);
+        productListPage = PageGeneratorManager.getProductListPage(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Click on Recently viewed products link on Footer to navigate to that page");
+        productListPage.clickOnDynamicLinkAtFooterByText(driver, "Recently viewed products");
+        recentlyViewedProductsPage = PageGeneratorManager.getRecentlyViewedProductsPage(driver);
+
+        log.info("TC 05 Recently Viewed Products - Step: Verify only 3 Products are displayed");
+        verifyTrue(recentlyViewedProductsPage.areOnlyThreeProductsDisplayed());
+
+        log.info("TC 05 Recently Viewed Products - Step: Verify 3rd Product from above step is displayed");
+        verifyTrue(recentlyViewedProductsPage.isDynamicProductDisplayedByProductName(product3Name));
+
+        log.info("TC 05 Recently Viewed Products - Step: Verify 4th Product from above step is displayed");
+        verifyTrue(recentlyViewedProductsPage.isDynamicProductDisplayedByProductName(product4Name));
+
+        log.info("TC 05 Recently Viewed Products - Step: Verify 5th Product from above step is displayed");
+        verifyTrue(recentlyViewedProductsPage.isDynamicProductDisplayedByProductName(product5Name));
     }
 
     @AfterClass(alwaysRun = true)
