@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.AbstractPage;
+import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.UserLoginPUI;
 
@@ -11,9 +12,11 @@ public class UserLoginPO extends AbstractPage {
         this.driver = driver;
     }
 
-    public void clickOnLoginButton() {
+    public UserHomePO clickOnLoginButton() {
         waitForElementClickable(driver, UserLoginPUI.LOGIN_BUTTON);
         clickOnElement(driver, UserLoginPUI.LOGIN_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getUserHomePage(driver);
     }
 
     public String getTextOfEmailErrorMessage() {
