@@ -20,10 +20,10 @@ public class PageGeneratorManager {
     }
 
     public static UserHomePO getUserHomePage(WebDriver driver) {
-        if (userHomePage == null) {
+        /*if (userHomePage == null) {
             userHomePage = new UserHomePO(driver);
-        }
-        return userHomePage;
+        }*/
+        return new UserHomePO(driver);
     }
 
     public static UserRegisterPO getUserRegisterPage(WebDriver driver) {

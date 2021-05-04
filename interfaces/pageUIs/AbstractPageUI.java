@@ -32,4 +32,5 @@ public class AbstractPageUI {
 
     // Notification Bar
     public static final String NOTIFICATION_BAR_CONTENT_TEXT = "//div[@id='bar-notification']//p";
+    public static final String NOTIFICATION_BAR_CLOSE_BUTTON = "//div[@id='bar-notification']//span[@class='close']";
 }

@@ -23,6 +23,7 @@ public class ProductDetailPO extends AbstractPage {
     public void clickOnAddToWishlistButton() {
         waitForElementClickable(driver, ProductDetailPUI.ADD_TO_WISHLIST_BUTTON_IN_PRODUCT_DETAIL);
         clickOnElement(driver, ProductDetailPUI.ADD_TO_WISHLIST_BUTTON_IN_PRODUCT_DETAIL);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
     public String getProductName() {

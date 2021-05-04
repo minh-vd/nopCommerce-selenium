@@ -17,6 +17,7 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
     ProductDetailPO productDetailPage;
     WishlistPO wishlistPage;
     CartPO cartPage;
+    CompareProductsPO compareProductsPage;
 
     String productName;
 
@@ -123,6 +124,61 @@ public class TC_06_Wishlist_Compare_Recent_View extends AbstractTest {
 
         log.info("TC 03 Remove Product From Wishlist - Step: Verify Product is removed from Wishlist");
         verifyTrue(wishlistPage.isAddedProductNotDisplayed(productName));
+    }
+
+    @Test
+    public void TC_04_Add_Product_To_Compare() {
+        log.info("TC 04 Add Product To Compare - Step: Click on Logo to navigate to HomePage");
+        userHomePage = wishlistPage.clickOnLogo(driver);
+
+        log.info("TC 04 Add Product To Compare - Step: Add 1st Product in Featured List to Compare List");
+        userHomePage.clickOnDynamicAddToCompareListByProductIndex("1");
+
+        log.info("TC 04 Add Product To Compare - Step: Get Product Name of 1st Product in Featured List");
+        String product1Name = userHomePage.getDynamicTitleOfProductInFeaturedListByProductIndex("1");
+
+        log.info("TC 04 Add Product To Compare - Step: Get Price of 1st Product in Featured List");
+        String product1Price = userHomePage.getDynamicPriceOfProductInFeaturedListByProductIndex("1");
+
+        log.info("TC 04 Add Product To Compare - Step: Close Add Successfully Notification Bar");
+        userHomePage.clickOnCloseNotificationBarIcon(driver);
+
+        log.info("TC 04 Add Product To Compare - Step: Add 2nd Product in Featured List to Compare List");
+        userHomePage.clickOnDynamicAddToCompareListByProductIndex("2");
+
+        log.info("TC 04 Add Product To Compare - Step: Get Product Name of 2nd Product in Featured List");
+        String product2Name = userHomePage.getDynamicTitleOfProductInFeaturedListByProductIndex("2");
+
+        log.info("TC 04 Add Product To Compare - Step: Get Price of 2nd Product in Featured List");
+        String product2Price = userHomePage.getDynamicPriceOfProductInFeaturedListByProductIndex("2");
+
+        log.info("TC 04 Add Product To Compare - Step: Verify Message Add Successfully on Notification Bar");
+        verifyEquals(userHomePage.getNotificationBarMessage(driver), "The product has been added to your product comparison");
+
+        log.info("TC 04 Add Product To Compare - Step: Click on Compare products list link in Footer");
+        userLoginPage.clickOnDynamicLinkAtFooterByText(driver, "Compare products list");
+        compareProductsPage = PageGeneratorManager.getCompareProductsPage(driver);
+
+        log.info("TC 04 Add Product To Compare - Step: Verify Product 1 displayed");
+        verifyTrue(compareProductsPage.isRemoveProductIconDisplayedByNameAndPrice(product1Name, product1Price));
+
+        log.info("TC 04 Add Product To Compare - Step: Verify Product 2 displayed");
+        verifyTrue(compareProductsPage.isRemoveProductIconDisplayedByNameAndPrice(product2Name, product2Price));
+
+        log.info("TC 04 Add Product To Compare - Step: Verify <Clear List> button displayed");
+        verifyTrue(compareProductsPage.isClearListButtonDisplayed());
+
+        log.info("TC 04 Add Product To Compare - Step: Click <Clear List> button");
+        compareProductsPage.clickOnClearListButton();
+
+        log.info("TC 04 Add Product To Compare - Step: Verify No Data message");
+        verifyEquals(compareProductsPage.getTextOfNoDataMessage(), "You have no items to compare.");
+
+        log.info("TC 04 Add Product To Compare - Step: Verify Product 1 NOT displayed");
+        verifyTrue(compareProductsPage.isProductNotDisplayedByNameAndPrice(product1Name, product1Price));
+
+        log.info("TC 04 Add Product To Compare - Step: Verify Product 2 NOT displayed");
+        verifyTrue(compareProductsPage.isProductNotDisplayedByNameAndPrice(product2Name, product2Price));
     }
 
     @AfterClass(alwaysRun = true)

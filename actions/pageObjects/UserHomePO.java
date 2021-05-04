@@ -4,7 +4,6 @@ import commons.AbstractPage;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.AbstractPageUI;
-import pageUIs.ProductListPUI;
 import pageUIs.UserHomePUI;
 
 public class UserHomePO extends AbstractPage {
@@ -35,21 +34,37 @@ public class UserHomePO extends AbstractPage {
 
 
     public ProductDetailPO clickOnTitleOfDynamicProductInFeaturedListByIndex(String indexNumber) {
-        waitForElementVisible(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
-        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
-        waitForElementClickable(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
-        clickOnElement(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, indexNumber);
+        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, indexNumber);
+        waitForElementClickable(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, indexNumber);
+        clickOnElement(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, indexNumber);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
     }
 
     public ProductDetailPO clickOnRandomProductTitleInFeaturedList() {
         String randomIndex = Integer.toString(getRandomIntegerNumber(4));
-        waitForElementVisible(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
-        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
-        waitForElementClickable(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
-        clickOnElement(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST, randomIndex);
+        waitForElementVisible(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, randomIndex);
+        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, randomIndex);
+        waitForElementClickable(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, randomIndex);
+        clickOnElement(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, randomIndex);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
+    }
+
+    public void clickOnDynamicAddToCompareListByProductIndex(String productIndexNumber) {
+        waitForElementClickable(driver, UserHomePUI.DYNAMIC_ADD_TO_COMPARE_LIST_BUTTON_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
+        scrollToElementUsingJS(driver, UserHomePUI.DYNAMIC_ADD_TO_COMPARE_LIST_BUTTON_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
+        clickOnElement(driver, UserHomePUI.DYNAMIC_ADD_TO_COMPARE_LIST_BUTTON_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public String getDynamicTitleOfProductInFeaturedListByProductIndex(String productIndexNumber) {
+        waitForElementVisible(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
+        return getElementText(driver, UserHomePUI.DYNAMIC_TITLE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
+    }
+
+    public String getDynamicPriceOfProductInFeaturedListByProductIndex(String productIndexNumber) {
+        waitForElementVisible(driver, UserHomePUI.DYNAMIC_PRICE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
+        return getElementText(driver, UserHomePUI.DYNAMIC_PRICE_OF_PRODUCT_IN_FEATURED_LIST_BY_PRODUCT_INDEX, productIndexNumber);
     }
 }

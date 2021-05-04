@@ -221,6 +221,11 @@ public class AbstractPage {
         return elements.size();
     }
 
+    public int getElementSize(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        List<WebElement> elements = getElementsByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
+        return elements.size();
+    }
+
     public void checkOnCheckbox(WebDriver driver, String xpathLocator) {
         element = getElementByXPath(driver, xpathLocator);
         if (!element.isSelected()) {
@@ -639,5 +644,10 @@ public class AbstractPage {
         clickOnElement(driver, AbstractPageUI.LOGO);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getUserHomePage(driver);
+    }
+
+    public void clickOnCloseNotificationBarIcon(WebDriver driver) {
+        waitForElementClickable(driver, AbstractPageUI.NOTIFICATION_BAR_CLOSE_BUTTON);
+        clickOnElement(driver, AbstractPageUI.NOTIFICATION_BAR_CLOSE_BUTTON);
     }
 }
