@@ -33,4 +33,14 @@ public class AbstractPageUI {
     // Notification Bar
     public static final String NOTIFICATION_BAR_CONTENT_TEXT = "//div[@id='bar-notification']//p";
     public static final String NOTIFICATION_BAR_CLOSE_BUTTON = "//div[@id='bar-notification']//span[@class='close']";
+
+    // Header Link
+    public static final String DYNAMIC_HEADER_LINK_BY_TEXT = "//div[@class='header-links']//span[text()='%s']";
+
+    // Mini Shopping Cart
+    public static final String MINI_SHOPPING_CART_COUNT_NUMBER_OF_PRODUCT_TEXT = "//div[@class='mini-shopping-cart']/div[@class='count']/a";
+    public static final String MINI_SHOPPING_CART_DYNAMIC_PRODUCT_ATTRIBUTE_BY_PRODUCT_NAME = "//div[@class='mini-shopping-cart']//div[@class='product']/div[@class='name']/a[text()='%s']/parent::div/following-sibling::div[@class='attributes']";
+    public static final String MINI_SHOPPING_CART_DYNAMIC_PRODUCT_PRICE_BY_PRODUCT_NAME = "//div[@class='mini-shopping-cart']//div[@class='product']/div[@class='name']/a[text()='%s']/parent::div/following-sibling::div[@class='price']/span";
+    public static final String MINI_SHOPPING_CART_DYNAMIC_PRODUCT_QUANTITY_BY_PRODUCT_NAME = "//div[@class='mini-shopping-cart']//div[@class='product']/div[@class='name']/a[text()='%s']/parent::div/following-sibling::div[@class='quantity']/span";
+    public static final String MINI_SHOPPING_CART_SUB_TOTAL_PRICE_TEXT = "//div[@class='totals']/strong";
 }

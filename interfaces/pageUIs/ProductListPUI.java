@@ -11,4 +11,5 @@ public class ProductListPUI {
 
     // Dynamic Locator
     public static final String DYNAMIC_PRODUCT_TITLE_BY_INDEX = "(//h2[@class='product-title']/a)[%s]";
+    public static final String DYNAMIC_PRODUCT_TITLE_BY_PRODUCT_NAME = "//h2[@class='product-title']/a[text()='%s']";
 }

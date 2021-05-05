@@ -650,5 +650,45 @@ public class AbstractPage {
     public void clickOnCloseNotificationBarIcon(WebDriver driver) {
         waitForElementClickable(driver, AbstractPageUI.NOTIFICATION_BAR_CLOSE_BUTTON);
         clickOnElement(driver, AbstractPageUI.NOTIFICATION_BAR_CLOSE_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void hoverOnDynamicHeaderLinkByText(WebDriver driver, String headerLinkText) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_TEXT, headerLinkText);
+        hoverMouseOnElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_TEXT, headerLinkText);
+    }
+
+    public String getMiniShoppingCartCountProductText(WebDriver driver) {
+        waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_COUNT_NUMBER_OF_PRODUCT_TEXT);
+        return getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_COUNT_NUMBER_OF_PRODUCT_TEXT);
+    }
+
+    public boolean isMiniShoppingCartProductDisplayed(WebDriver driver, String productName, String productPrice, String productQuantity, String... productAttributes) {
+        boolean isDisplayedFlag = true;
+
+        waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_ATTRIBUTE_BY_PRODUCT_NAME, productName);
+        for (String eachProductAttribute : productAttributes) {
+            if (!getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_ATTRIBUTE_BY_PRODUCT_NAME, productName).contains(eachProductAttribute)) {
+                isDisplayedFlag = false;
+                break;
+            }
+        }
+
+        waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_PRICE_BY_PRODUCT_NAME, productName);
+        if (!getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_PRICE_BY_PRODUCT_NAME, productName).equals(productPrice)) {
+            isDisplayedFlag = false;
+        }
+
+        waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_QUANTITY_BY_PRODUCT_NAME, productName);
+        if (!getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_QUANTITY_BY_PRODUCT_NAME, productName).equals(productQuantity)) {
+            isDisplayedFlag = false;
+        }
+
+        return isDisplayedFlag;
+    }
+
+    public String getMiniShoppingCartSubTotalPrice(WebDriver driver) {
+        waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_SUB_TOTAL_PRICE_TEXT);
+        return getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_SUB_TOTAL_PRICE_TEXT);
     }
 }

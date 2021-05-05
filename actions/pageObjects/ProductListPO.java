@@ -69,4 +69,11 @@ public class ProductListPO extends AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
     }
+
+    public ProductDetailPO clickOnDynamicProductTitleByProductName(String productName) {
+        waitForElementClickable(driver, ProductListPUI.DYNAMIC_PRODUCT_TITLE_BY_PRODUCT_NAME, productName);
+        clickOnElement(driver, ProductListPUI.DYNAMIC_PRODUCT_TITLE_BY_PRODUCT_NAME, productName);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getProductDetailPage(driver);
+    }
 }
