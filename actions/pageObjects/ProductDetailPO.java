@@ -40,7 +40,7 @@ public class ProductDetailPO extends AbstractPage {
         selectItemInDefaultDropdown(driver, ProductDetailPUI.SELECT_RAM_DROPDOWN, option);
     }
 
-    public void selectDynamicCheckboxByGroupLabelAndText(String groupLabel, String option) {
+    public void checkOnDynamicCheckboxByGroupLabelAndText(String groupLabel, String option) {
         waitForElementVisible(driver, ProductDetailPUI.DYNAMIC_CHECKBOX_BY_GROUP_LABEL_AND_TEXT, groupLabel, option);
         checkOnCheckbox(driver, ProductDetailPUI.DYNAMIC_CHECKBOX_BY_GROUP_LABEL_AND_TEXT, groupLabel, option);
     }
@@ -48,5 +48,27 @@ public class ProductDetailPO extends AbstractPage {
     public void clickOnAddToCartButton() {
         waitForElementClickable(driver, ProductDetailPUI.ADD_TO_CART_BUTTON);
         clickOnElement(driver, ProductDetailPUI.ADD_TO_CART_BUTTON);
+    }
+
+    public void uncheckOnDynamicCheckboxByGroupLabelAndText(String groupLabel, String option) {
+        waitForElementVisible(driver, ProductDetailPUI.DYNAMIC_CHECKBOX_BY_GROUP_LABEL_AND_TEXT, groupLabel, option);
+        uncheckCheckbox(driver, ProductDetailPUI.DYNAMIC_CHECKBOX_BY_GROUP_LABEL_AND_TEXT, groupLabel, option);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void inputIntoQuantityTextBox(String inputData) {
+        waitForElementVisible(driver, ProductDetailPUI.INPUT_QUANTITY_TEXT_BOX);
+        sendKeysToElement(driver, ProductDetailPUI.INPUT_QUANTITY_TEXT_BOX, inputData);
+    }
+
+    public String getProductPrice() {
+        waitForElementVisible(driver, ProductDetailPUI.PRODUCT_PRICE_TEXT);
+        return getElementText(driver, ProductDetailPUI.PRODUCT_PRICE_TEXT);
+    }
+
+    public void clickOnUpdateButton() {
+        waitForElementClickable(driver, ProductDetailPUI.UPDATE_TO_CART_BUTTON);
+        clickOnElement(driver, ProductDetailPUI.UPDATE_TO_CART_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 }

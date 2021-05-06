@@ -16,6 +16,7 @@ public class User_07_Order extends AbstractTest {
     UserLoginPO userLoginPage;
     ProductListPO productListPage;
     ProductDetailPO productDetailPage;
+    CartPO cartPage;
 
     @Parameters({"browserName", "url"})
     @BeforeClass
@@ -53,23 +54,23 @@ public class User_07_Order extends AbstractTest {
         log.info("Order 01 - Add Product To Cart - Step: Select \"2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]\" Processor option");
         productDetailPage.selectProcessor("2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]");
 
-        log.info("Order 01 - Add Product To Cart - Step: Select \"8GB [+$60.00]\" Ram option");
+        log.info("Order 01 - Add Product To Cart - Step: Select \"8GB [+$60.00]\" RAM option");
         productDetailPage.selectRam("8GB [+$60.00]");
 
         log.info("Order 01 - Add Product To Cart - Step: Select \"400 GB [+$100.00]\" HDD option");
-        productDetailPage.selectDynamicCheckboxByGroupLabelAndText("HDD","400 GB [+$100.00]");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("HDD","400 GB [+$100.00]");
 
         log.info("Order 01 - Add Product To Cart - Step: Select \"Vista Premium [+$60.00]\" OS option");
-        productDetailPage.selectDynamicCheckboxByGroupLabelAndText("OS", "Vista Premium [+$60.00]");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("OS", "Vista Premium [+$60.00]");
 
         log.info("Order 01 - Add Product To Cart - Step: Select \"Microsoft Office [+$50.00]\" Software option");
-        productDetailPage.selectDynamicCheckboxByGroupLabelAndText("Software", "Microsoft Office [+$50.00]");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("Software", "Microsoft Office [+$50.00]");
 
         log.info("Order 01 - Add Product To Cart - Step: Select \"Acrobat Reader [+$10.00]\" Software option");
-        productDetailPage.selectDynamicCheckboxByGroupLabelAndText("Software", "Acrobat Reader [+$10.00]");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("Software", "Acrobat Reader [+$10.00]");
 
         log.info("Order 01 - Add Product To Cart - Step: Select \"Total Commander [+$5.00]\" Software option");
-        productDetailPage.selectDynamicCheckboxByGroupLabelAndText("Software", "Total Commander [+$5.00]");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("Software", "Total Commander [+$5.00]");
 
         log.info("Order 01 - Add Product To Cart - Step: Click on <ADD TO CART> button");
         productDetailPage.clickOnAddToCartButton();
@@ -83,14 +84,66 @@ public class User_07_Order extends AbstractTest {
         log.info("Order 01 - Add Product To Cart - Step: Hover on Shopping Cart on Header link");
         productDetailPage.hoverOnDynamicHeaderLinkByText(driver, "Shopping cart");
 
-        log.info("Order 01 - Add Product To Cart - Step: Verify Shopping Cart - Count Product text \"There are 1 item(s) in your cart.\"");
+        log.info("Order 01 - Add Product To Cart - Step: Verify Mini Shopping Cart - Count Product text \"There are 1 item(s) in your cart.\"");
         verifyEquals(productDetailPage.getMiniShoppingCartCountProductText(driver), "1 item(s)");
 
-        log.info("Order 01 - Add Product To Cart - Step: Verify Shopping Cart - Product Info");
-        verifyTrue(productDetailPage.isMiniShoppingCartProductDisplayed(driver, "Build your own computer", "$1,500.00", "1", "2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]", "8GB [+$60.00]", "400 GB [+$100.00]", "Vista Premium [+$60.00]", "Microsoft Office [+$50.00]", "Acrobat Reader [+$10.00]", "Total Commander [+$5.00]"));
+        log.info("Order 01 - Add Product To Cart - Step: Verify Mini Shopping Cart - Product Info");
+        verifyTrue(productDetailPage.isMiniShoppingCartProductDisplayed(driver, "Build your own computer", "$1,500.00", "1", "Processor: 2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]", "RAM: 8GB [+$60.00]", "HDD: 400 GB [+$100.00]", "OS: Vista Premium [+$60.00]", "Software: Microsoft Office [+$50.00]", "Software: Acrobat Reader [+$10.00]", "Software: Total Commander [+$5.00]"));
 
-        log.info("Order 01 - Add Product To Cart - Step: Verify Shopping Cart - Sub-Total Price");
+        log.info("Order 01 - Add Product To Cart - Step: Verify Mini Shopping Cart - Sub-Total Price");
         verifyEquals(productDetailPage.getMiniShoppingCartSubTotalPrice(driver), "$1,500.00");
+    }
+
+    @Test
+    public void Order_02_Edit_Product_In_Cart() {
+        log.info("Order 02 - Edit Product In Cart - Step: Click on Shopping Cart on Header link");
+        productDetailPage.clickOnDynamicHeaderLinkByText(driver, "Shopping cart");
+        cartPage = PageGeneratorManager.getCartPage(driver);
+
+        log.info("Order 02 - Edit Product In Cart - Step: Click on Edit link");
+        productDetailPage = cartPage.clickOnDynamicEditLinkByProductName("Build your own computer");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Select \"2.2 GHz Intel Pentium Dual-Core E2200\" Processor option");
+        productDetailPage.selectProcessor("2.2 GHz Intel Pentium Dual-Core E2200");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Select \"4GB [+$20.00]\" RAM option");
+        productDetailPage.selectRam("4GB [+$20.00]");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Select \"320 GB\" HDD option");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("HDD", "320 GB");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Select \"Vista Home [+$50.00]\" OS option");
+        productDetailPage.checkOnDynamicCheckboxByGroupLabelAndText("OS", "Vista Home [+$50.00]");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Uncheck \"Acrobat Reader [+$10.00]\" Software option");
+        productDetailPage.uncheckOnDynamicCheckboxByGroupLabelAndText("Software", "Acrobat Reader [+$10.00]");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Uncheck \"Total Commander [+$5.00]\" Software option");
+        productDetailPage.uncheckOnDynamicCheckboxByGroupLabelAndText("Software", "Total Commander [+$5.00]");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Input 2 into Quantity text box");
+        productDetailPage.inputIntoQuantityTextBox("2");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Verify Product Price = \"$1,320.00\"");
+        verifyEquals(productDetailPage.getProductPrice(), "$1,320.00");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Click on <Update> button");
+        productDetailPage.clickOnUpdateButton();
+
+        log.info("Order 02 - Edit Product In Cart - Step: Verify Add to Cart success message on Notification Bar");
+        verifyEquals(productDetailPage.getNotificationBarMessage(driver), "The product has been added to your shopping cart");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Close Notification Bar");
+        productDetailPage.clickOnCloseNotificationBarIcon(driver);
+
+        log.info("Order 02 - Edit Product In Cart - Step: Hover on Shopping Cart on Header link");
+        productDetailPage.hoverOnDynamicHeaderLinkByText(driver, "Shopping cart");
+
+        log.info("Order 02 - Edit Product In Cart - Step: Verify Mini Shopping Cart - Product Info");
+        verifyTrue(productDetailPage.isMiniShoppingCartProductDisplayed(driver, "Build your own computer", "$1,320.00", "2", "Processor: 2.2 GHz Intel Pentium Dual-Core E2200", "RAM: 4GB [+$20.00]", "HDD: 320 GB", "OS: Vista Home [+$50.00]", "Software: Microsoft Office [+$50.00]"));
+
+        log.info("Order 02 - Edit Product In Cart - Step: Verify Mini Shopping Cart - Sub-Total Price");
+        verifyEquals(productDetailPage.getMiniShoppingCartSubTotalPrice(driver), "$2,640.00");
     }
 
     @AfterClass(alwaysRun = true)

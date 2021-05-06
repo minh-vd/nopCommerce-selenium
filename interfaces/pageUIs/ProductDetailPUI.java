@@ -7,6 +7,9 @@ public class ProductDetailPUI {
     public static final String SELECT_PROCESSOR_DROPDOWN = "(//label[text()=' Processor ']/parent::dt/following-sibling::dd)[1]/select";
     public static final String SELECT_RAM_DROPDOWN = "(//label[text()=' RAM ']/parent::dt/following-sibling::dd)[1]/select";
     public static final String ADD_TO_CART_BUTTON = "//button[text()='Add to cart']";
+    public static final String INPUT_QUANTITY_TEXT_BOX = "//input[@class='qty-input']";
+    public static final String PRODUCT_PRICE_TEXT = "//div[@class='product-price']/span";
+    public static final String UPDATE_TO_CART_BUTTON = "//button[text()='Update']";
 
     // Dynamic Locator
     public static final String DYNAMIC_CHECKBOX_BY_GROUP_LABEL_AND_TEXT = "(//label[text()=' %s ']/parent::dt/following-sibling::dd)[1]//label[text()='%s']/preceding-sibling::input";

@@ -248,6 +248,13 @@ public class AbstractPage {
         }
     }
 
+    public void uncheckCheckbox(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
+        if (element.isSelected()) {
+            element.click();
+        }
+    }
+
     public boolean isElementDisplayed(WebDriver driver, String xpathLocator) {
         boolean isDisplayedFlag = true;
         try {
@@ -667,11 +674,15 @@ public class AbstractPage {
         boolean isDisplayedFlag = true;
 
         waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_ATTRIBUTE_BY_PRODUCT_NAME, productName);
+        String actualProductAttribute = getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_ATTRIBUTE_BY_PRODUCT_NAME, productName).trim().replace("\n", " ");
+        log.info(actualProductAttribute);
+        String expectedProductAttribute = "";
         for (String eachProductAttribute : productAttributes) {
-            if (!getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_ATTRIBUTE_BY_PRODUCT_NAME, productName).contains(eachProductAttribute)) {
-                isDisplayedFlag = false;
-                break;
-            }
+            expectedProductAttribute += eachProductAttribute + " ";
+        }
+        log.info(expectedProductAttribute);
+        if (!actualProductAttribute.equals(expectedProductAttribute.trim())) {
+            isDisplayedFlag = false;
         }
 
         waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_DYNAMIC_PRODUCT_PRICE_BY_PRODUCT_NAME, productName);
@@ -690,5 +701,11 @@ public class AbstractPage {
     public String getMiniShoppingCartSubTotalPrice(WebDriver driver) {
         waitForElementVisible(driver, AbstractPageUI.MINI_SHOPPING_CART_SUB_TOTAL_PRICE_TEXT);
         return getElementText(driver, AbstractPageUI.MINI_SHOPPING_CART_SUB_TOTAL_PRICE_TEXT);
+    }
+
+    public void clickOnDynamicHeaderLinkByText(WebDriver driver, String headerLinkText) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_TEXT, headerLinkText);
+        clickOnElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_TEXT, headerLinkText);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 }

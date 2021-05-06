@@ -17,4 +17,11 @@ public class CartPO extends AbstractPage {
         waitForElementVisible(driver, CartPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
         return isElementDisplayed(driver, CartPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
     }
+
+    public ProductDetailPO clickOnDynamicEditLinkByProductName(String productName) {
+        waitForElementClickable(driver, CartPUI.DYNAMIC_EDIT_LINK_BY_PRODUCT_NAME, productName);
+        clickOnElement(driver, CartPUI.DYNAMIC_EDIT_LINK_BY_PRODUCT_NAME, productName);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getProductDetailPage(driver);
+    }
 }
