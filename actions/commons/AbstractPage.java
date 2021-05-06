@@ -708,4 +708,17 @@ public class AbstractPage {
         clickOnElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_TEXT, headerLinkText);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
+
+    public void inputIntoHeaderSearchTextBox(WebDriver driver, String inputData) {
+        waitForElementVisible(driver, AbstractPageUI.SEARCH_TEXT_BOX);
+        sendKeysToElement(driver, AbstractPageUI.SEARCH_TEXT_BOX, inputData);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public ProductDetailPO clickOnProductFromSearchSuggestionByName(WebDriver driver, String productName) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_PRODUCT_FROM_SEARCH_SUGGESTION_BY_NAME, productName);
+        clickOnElement(driver, AbstractPageUI.DYNAMIC_PRODUCT_FROM_SEARCH_SUGGESTION_BY_NAME, productName);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getProductDetailPage(driver);
+    }
 }

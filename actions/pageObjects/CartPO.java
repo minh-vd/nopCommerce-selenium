@@ -4,7 +4,6 @@ import commons.AbstractPage;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.CartPUI;
-import pageUIs.WishlistPUI;
 
 public class CartPO extends AbstractPage {
     WebDriver driver;
@@ -39,5 +38,21 @@ public class CartPO extends AbstractPage {
     public boolean isAddedProductNotDisplayed(String productName) {
         waitForElementInvisible(driver, CartPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
         return isElementNotDisplayed(driver, CartPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
+    }
+
+    public void inputIntoDynamicQuantityTextBoxByProductName(String productName, String inputData) {
+        waitForElementVisible(driver, CartPUI.DYNAMIC_INPUT_QUANTITY_TEXT_BOX_BY_PRODUCT_NAME, productName);
+        sendKeysToElement(driver, CartPUI.DYNAMIC_INPUT_QUANTITY_TEXT_BOX_BY_PRODUCT_NAME, inputData, productName);
+    }
+
+    public void clickOnUpdateShoppingCartButton() {
+        waitForElementClickable(driver, CartPUI.UPDATE_SHOPPING_CART_BUTTON);
+        clickOnElement(driver, CartPUI.UPDATE_SHOPPING_CART_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public String getProductSubtotalPriceByName(String productName) {
+        waitForElementVisible(driver, CartPUI.DYNAMIC_PRODUCT_SUBTOTAL_PRICE_BY_NAME, productName);
+        return getElementText(driver, CartPUI.DYNAMIC_PRODUCT_SUBTOTAL_PRICE_BY_NAME, productName);
     }
 }

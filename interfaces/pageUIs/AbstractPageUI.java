@@ -43,4 +43,8 @@ public class AbstractPageUI {
     public static final String MINI_SHOPPING_CART_DYNAMIC_PRODUCT_PRICE_BY_PRODUCT_NAME = "//div[@class='mini-shopping-cart']//div[@class='product']/div[@class='name']/a[text()='%s']/parent::div/following-sibling::div[@class='price']/span";
     public static final String MINI_SHOPPING_CART_DYNAMIC_PRODUCT_QUANTITY_BY_PRODUCT_NAME = "//div[@class='mini-shopping-cart']//div[@class='product']/div[@class='name']/a[text()='%s']/parent::div/following-sibling::div[@class='quantity']/span";
     public static final String MINI_SHOPPING_CART_SUB_TOTAL_PRICE_TEXT = "//div[@class='totals']/strong";
+
+    // Header Search
+    public static final String SEARCH_TEXT_BOX = "//input[@placeholder='Search store']";
+    public static final String DYNAMIC_PRODUCT_FROM_SEARCH_SUGGESTION_BY_NAME = "//ul[contains(@class, 'ui-autocomplete')]//span[text()='%s']/parent::a";
 }
