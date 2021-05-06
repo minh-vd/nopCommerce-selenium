@@ -24,4 +24,20 @@ public class CartPO extends AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
     }
+
+    public void clickOnDynamicRemoveIconByProductName(String productName) {
+        waitForElementClickable(driver, CartPUI.DYNAMIC_REMOVE_ICON_BY_PRODUCT_NAME, productName);
+        clickOnElement(driver, CartPUI.DYNAMIC_REMOVE_ICON_BY_PRODUCT_NAME, productName);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public String getNoDataMessage() {
+        waitForElementVisible(driver, CartPUI.NO_PRODUCT_IN_CART_MESSAGE);
+        return getElementText(driver, CartPUI.NO_PRODUCT_IN_CART_MESSAGE).trim();
+    }
+
+    public boolean isAddedProductNotDisplayed(String productName) {
+        waitForElementInvisible(driver, CartPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
+        return isElementNotDisplayed(driver, CartPUI.DYNAMIC_PRODUCT_NAME_IN_LIST, productName);
+    }
 }

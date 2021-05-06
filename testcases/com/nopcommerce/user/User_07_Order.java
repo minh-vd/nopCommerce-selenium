@@ -18,6 +18,8 @@ public class User_07_Order extends AbstractTest {
     ProductDetailPO productDetailPage;
     CartPO cartPage;
 
+    String productName = "Build your own computer";
+
     @Parameters({"browserName", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
@@ -96,7 +98,7 @@ public class User_07_Order extends AbstractTest {
 
     @Test
     public void Order_02_Edit_Product_In_Cart() {
-        log.info("Order 02 - Edit Product In Cart - Step: Click on Shopping Cart on Header link");
+        log.info("Order 02 - Edit Product In Cart - Step: Click on Shopping Cart on Header Link");
         productDetailPage.clickOnDynamicHeaderLinkByText(driver, "Shopping cart");
         cartPage = PageGeneratorManager.getCartPage(driver);
 
@@ -144,6 +146,22 @@ public class User_07_Order extends AbstractTest {
 
         log.info("Order 02 - Edit Product In Cart - Step: Verify Mini Shopping Cart - Sub-Total Price");
         verifyEquals(productDetailPage.getMiniShoppingCartSubTotalPrice(driver), "$2,640.00");
+    }
+
+    @Test
+    public void Order_03_Remove_Product_From_Cart() {
+        log.info("Order 03 - Remove Product From Cart - Step: Click on Shopping Cart on Header Link");
+        productDetailPage.clickOnDynamicHeaderLinkByText(driver, "Shopping cart");
+        cartPage = PageGeneratorManager.getCartPage(driver);
+
+        log.info("Order 03 - Remove Product From Cart - Step: Click on Remove Icon of Product \"" + productName + "\"");
+        cartPage.clickOnDynamicRemoveIconByProductName(productName);
+
+        log.info("Order 03 - Remove Product From Cart - Step: Verify No Data message");
+        verifyEquals(cartPage.getNoDataMessage(), "Your Shopping Cart is empty!");
+
+        log.info("Order 03 - Remove Product From Cart - Step: Verify Product \"" + productName + "\" is NOT displayed");
+        verifyTrue(cartPage.isAddedProductNotDisplayed(productName));
     }
 
     @AfterClass(alwaysRun = true)
