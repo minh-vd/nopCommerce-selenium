@@ -18,6 +18,8 @@ public class User_07_Order extends AbstractTest {
     ProductDetailPO productDetailPage;
     CartPO cartPage;
     CheckoutPO checkoutPage;
+    MyAccountPO myAccountPage;
+    OrderDetailPO orderDetailPage;
 
     String productName = "Build your own computer";
 
@@ -317,35 +319,165 @@ public class User_07_Order extends AbstractTest {
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Payment Method Step: Click <CONTINUE> button");
         checkoutPage.clickOnPaymentMethodStepContinueButton();
 
-        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Payment Information Step: Verify Payment Info");
-
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Payment Information Step: Click <CONTINUE> button");
         checkoutPage.clickOnPaymentInformationStepContinueButton();
 
-        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address");
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address Name");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("name"), billingFirstName + " " + billingLastName);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address Email");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("email"), "Email: " + billingEmail);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address Phone");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("phone"), "Phone: " + billingPhone);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address Address1");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("address1"), billingAddress1);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address City and Zip Postal Code");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("city-state-zip"), billingCity + "," + billingZipCode);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Billing Address Country");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("country"), billingCountry);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Payment Method");
+        verifyEquals(checkoutPage.getConfirmOrderStepPaymentMethod(), "Check / Money Order");
 
-        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address");
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address Name");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("name"), shippingFirstName + " " + shippingLastName);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address Email");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("email"), "Email: " + shippingEmail);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address Phone");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("phone"), "Phone: " + shippingPhone);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address Address1");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("address1"), shippingAddress1);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address City and Zip Postal Code");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("city-state-zip"), shippingCity + "," + shippingZipCode);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Address Country");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("country"), shippingCountry);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Method");
+        verifyEquals(checkoutPage.getConfirmOrderStepShippingMethod(), "Ground");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Product Info in Shopping Cart");
+        verifyTrue(checkoutPage.isProductDisplayed("AP_MBP_13", "Apple MacBook Pro 13-inch", "$1,800.00", "2", "$3,600.00"));
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Gift wrapping option");
+        verifyEquals(checkoutPage.getConfirmOrderStepGiftWrappingOption(), "Gift wrapping: No");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Sub-total Price");
+        verifyEquals(checkoutPage.getConfirmOrderStepSubTotalPrice(), "$3,600.00");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Shipping Fee");
+        verifyEquals(checkoutPage.getConfirmOrderStepShippingFee(), "$0.00");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Tax Price");
+        verifyEquals(checkoutPage.getConfirmOrderStepTaxPrice(), "$0.00");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Verify Total Price");
+        verifyEquals(checkoutPage.getConfirmOrderStepTotalPrice(), "$3,600.00");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Confirm Order Step: Click <CONTINUE> button");
         checkoutPage.clickOnConfirmOrderStepContinueButton();
 
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Thank You page: Verify Success message");
+        verifyEquals(checkoutPage.getThankYouPageSuccessMessage(), "Your order has been successfully processed!");
 
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Thank You page: Verify Order Number is displayed");
+        verifyTrue(checkoutPage.isOrderNumberDisplayed());
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Thank You page: Get Order Number");
+        String orderNumber = checkoutPage.getOrderNumber();
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Thank You page: Click on \"My account\" link on Header link");
+        checkoutPage.clickOnDynamicHeaderLinkByClassName(driver, "ico-account");
+        myAccountPage = PageGeneratorManager.getMyAccountPage(driver);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: My Account page: Click on \"Order\" menu");
+        myAccountPage.clickOnDynamicLeftMenuLinkByClassName("customer-orders");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: My Account page: Verify Order Number");
+        verifyEquals(myAccountPage.getFirstOrderNumber(), orderNumber);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: My Account page: Click on Order Detail");
+        orderDetailPage = myAccountPage.clickOnDynamicOrderDetailByOrderNumber(orderNumber);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Order Number");
+        verifyEquals(orderDetailPage.getOrderNumber(), orderNumber);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Order Date");
+        verifyEquals(orderDetailPage.getOrderDate(), "Friday, May 07, 2021");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Order Status");
+        verifyEquals(orderDetailPage.getOrderStatus(), "Pending");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Order Total");
+        verifyEquals(orderDetailPage.getOrderTotal(), "$3,600.00");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Billing Address Name");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("name"), billingFirstName + " " + billingLastName);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Billing Address Email");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("email"), "Email: " + billingEmail);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Billing Address Phone");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("phone"), "Phone: " + billingPhone);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Billing Address Address1");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("address1"), billingAddress1);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Billing Address City and Zip Postal Code");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("city-state-zip"), billingCity + "," + billingZipCode);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Billing Address Country");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("country"), billingCountry);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Payment Method");
+        verifyEquals(orderDetailPage.getPaymentMethod(), "Check / Money Order");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Address Name");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("name"), shippingFirstName + " " + shippingLastName);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Address Email");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("email"), "Email: " + shippingEmail);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Address Phone");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("phone"), "Phone: " + shippingPhone);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Address Address1");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("address1"), shippingAddress1);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Address City and Zip Postal Code");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("city-state-zip"), shippingCity + "," + shippingZipCode);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Address Country");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("country"), shippingCountry);
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Method");
+        verifyEquals(orderDetailPage.getShippingMethod(), "Ground");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Product Info in Shopping Cart");
+        verifyTrue(orderDetailPage.isProductDisplayed("AP_MBP_13", "Apple MacBook Pro 13-inch", "$1,800.00", "2", "$3,600.00"));
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Gift wrapping option");
+        verifyEquals(orderDetailPage.getGiftWrappingOption(), "No");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Sub-total Price");
+        verifyEquals(orderDetailPage.getSubTotalPrice(), "$3,600.00");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Shipping Fee");
+        verifyEquals(orderDetailPage.getShippingFee(), "$0.00");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Tax Price");
+        verifyEquals(orderDetailPage.getTaxPrice(), "$0.00");
+
+        log.info("Order 05 - Checkout With Cheque Payment Method - Step: Order Detail page: Verify Total Price");
+        verifyEquals(orderDetailPage.getTotalPrice(), "$3,600.00");
     }
 
     @AfterClass(alwaysRun = true)

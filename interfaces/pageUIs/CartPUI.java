@@ -9,4 +9,7 @@ public class CartPUI {
 
     public static final String NO_PRODUCT_IN_CART_MESSAGE = "//div[@class='order-summary-content']/div[@class='no-data']";
     public static final String UPDATE_SHOPPING_CART_BUTTON = "//button[text()='Update shopping cart']";
+    public static final String SELECT_GIFT_WRAPPING_DROPDOWN = "//label[text()=' Gift wrapping ']/parent::dt/following-sibling::dd/select";
+    public static final String AGREE_WITH_TERM_OF_SERVICE_CHECKBOX = "//input[@id='termsofservice']";
+    public static final String CHECKOUT_BUTTON = "//button[@id='checkout']";
 }

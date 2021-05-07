@@ -17,6 +17,7 @@ public class PageGeneratorManager {
     private static CompareProductsPO compareProductsPage;
     private static RecentlyViewedProductsPO recentlyViewedProductsPage;
     private static CheckoutPO checkoutPage;
+    private static OrderDetailPO orderDetailPage;
 
     private PageGeneratorManager() {
     }
@@ -117,5 +118,12 @@ public class PageGeneratorManager {
             checkoutPage = new CheckoutPO(driver);
         }
         return checkoutPage;
+    }
+
+    public static OrderDetailPO getOrderDetailPage(WebDriver driver) {
+        if (orderDetailPage == null) {
+            orderDetailPage = new OrderDetailPO(driver);
+        }
+        return orderDetailPage;
     }
 }

@@ -36,6 +36,7 @@ public class AbstractPageUI {
 
     // Header Link
     public static final String DYNAMIC_HEADER_LINK_BY_TEXT = "//div[@class='header-links']//span[text()='%s']";
+    public static final String DYNAMIC_HEADER_LINK_BY_CLASS_NAME = "//div[@class='header-links']//a[@class='%s']";
 
     // Mini Shopping Cart
     public static final String MINI_SHOPPING_CART_COUNT_NUMBER_OF_PRODUCT_TEXT = "//div[@class='mini-shopping-cart']/div[@class='count']/a";

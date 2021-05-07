@@ -709,6 +709,12 @@ public class AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
+    public void clickOnDynamicHeaderLinkByClassName(WebDriver driver, String className) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS_NAME, className);
+        clickOnElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS_NAME, className);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
     public void inputIntoHeaderSearchTextBox(WebDriver driver, String inputData) {
         waitForElementVisible(driver, AbstractPageUI.SEARCH_TEXT_BOX);
         sendKeysToElement(driver, AbstractPageUI.SEARCH_TEXT_BOX, inputData);

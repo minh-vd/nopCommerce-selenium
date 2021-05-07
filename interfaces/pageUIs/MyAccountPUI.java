@@ -23,4 +23,9 @@ public class MyAccountPUI {
     // Dynamic Locator
     public static final String DYNAMIC_LEFT_MENU_LINK_BY_CLASS_NAME = "//li[contains(@class, '%s')]/a";
     public static final String DYNAMIC_FIELD_OF_ADDRESS_INFO_BY_CLASS_NAME = "//li[@class='%s']";
+
+    // Order
+    public static final String ORDER_PAGE_FIRST_ORDER_NUMBER = "(//div[@class='section order-item'])[1]/div[@class='title']/strong";
+    public static final String ORDER_PAGE_DYNAMIC_DETAILS_ICON_BY_ORDER_NUMBER = "//strong[text()='Order Number: %s']/ancestor::div[@class='section order-item']/div[@class='buttons']/button[text()='Details']";
+
 }

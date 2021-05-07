@@ -55,4 +55,21 @@ public class CartPO extends AbstractPage {
         waitForElementVisible(driver, CartPUI.DYNAMIC_PRODUCT_SUBTOTAL_PRICE_BY_NAME, productName);
         return getElementText(driver, CartPUI.DYNAMIC_PRODUCT_SUBTOTAL_PRICE_BY_NAME, productName);
     }
+
+    public void selectGiftWrapping(String option) {
+        waitForElementVisible(driver, CartPUI.SELECT_GIFT_WRAPPING_DROPDOWN);
+        selectItemInDefaultDropdown(driver, CartPUI.SELECT_GIFT_WRAPPING_DROPDOWN, option);
+    }
+
+    public void checkOnAgreeToTermOfServiceCheckbox() {
+        waitForElementVisible(driver, CartPUI.AGREE_WITH_TERM_OF_SERVICE_CHECKBOX);
+        checkOnCheckbox(driver, CartPUI.AGREE_WITH_TERM_OF_SERVICE_CHECKBOX);
+    }
+
+    public CheckoutPO clickOnCheckoutButton() {
+        waitForElementClickable(driver, CartPUI.CHECKOUT_BUTTON);
+        clickOnElement(driver, CartPUI.CHECKOUT_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getCheckoutPage(driver);
+    }
 }

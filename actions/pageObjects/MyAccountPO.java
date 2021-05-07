@@ -111,4 +111,16 @@ public class MyAccountPO extends AbstractPage {
         waitForElementVisible(driver, MyAccountPUI.REVIEW_CONTENT);
         return getElementText(driver, MyAccountPUI.REVIEW_CONTENT);
     }
+
+    public String getFirstOrderNumber() {
+        waitForElementVisible(driver, MyAccountPUI.ORDER_PAGE_FIRST_ORDER_NUMBER);
+        return getElementText(driver, MyAccountPUI.ORDER_PAGE_FIRST_ORDER_NUMBER).replace("Order Number: ", "");
+    }
+
+    public OrderDetailPO clickOnDynamicOrderDetailByOrderNumber(String orderNumber) {
+        waitForElementVisible(driver, MyAccountPUI.ORDER_PAGE_DYNAMIC_DETAILS_ICON_BY_ORDER_NUMBER, orderNumber);
+        clickOnElement(driver, MyAccountPUI.ORDER_PAGE_DYNAMIC_DETAILS_ICON_BY_ORDER_NUMBER, orderNumber);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getOrderDetailPage(driver);
+    }
 }
