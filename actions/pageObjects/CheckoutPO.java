@@ -162,4 +162,9 @@ public class CheckoutPO extends AbstractPage {
         waitForElementVisible(driver, CheckoutPUI.SELECT_BILLING_ADDRESS_DROPDOWN);
         selectItemInDefaultDropdown(driver, CheckoutPUI.SELECT_BILLING_ADDRESS_DROPDOWN, option);
     }
+
+    public void checkOnDynamicShippingMethodCheckboxByLabel(String shippingMethodLabel) {
+        waitForElementVisible(driver, CheckoutPUI.DYNAMIC_SHIPPING_METHOD_CHECKBOX_BY_LABEL, shippingMethodLabel);
+        checkOnCheckbox(driver, CheckoutPUI.DYNAMIC_SHIPPING_METHOD_CHECKBOX_BY_LABEL, shippingMethodLabel);
+    }
 }

@@ -17,4 +17,5 @@ public class OrderDetailPUI {
     public static final String CART_SHIPPING_FEE = "//label[text()='Shipping:']/parent::td/following-sibling::td/span";
     public static final String CART_TAX_PRICE = "//label[text()='Tax:']/parent::td/following-sibling::td/span";
     public static final String CART_TOTAL_PRICE = "//label[text()='Order Total:']/parent::td/following-sibling::td/span/strong";
+    public static final String REORDER_BUTTON = "//button[text()='Re-order']";
 }

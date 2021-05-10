@@ -47,6 +47,26 @@ public class User_07_Order extends AbstractTest {
     String shippingZipCode = "00002";
     String shippingPhone = "0987654321";
 
+    String reorderBillingFirstName = "Auto B Reorder";
+    String reorderBillingLastName = "Test B Reorder";
+    String reorderBillingEmail = "breorder+" + getRandomNumberByDateTime() + "@mail.com";
+    String reorderBillingCountry = "Viet Nam";
+    String reorderBillingState = "Other";
+    String reorderBillingCity = "HN Reorder";
+    String reorderBillingAddress1 = "1B Hao Nam Reoder";
+    String reorderBillingZipCode = "00003";
+    String reorderBillingPhone = "01234567890";
+
+    String reorderShippingFirstName = "Auto S Reorder";
+    String reorderShippingLastName = "Test S Reorder";
+    String reorderShippingEmail = "sreorder+" + getRandomNumberByDateTime() + "@mail.com";
+    String reorderShippingCountry = "Viet Nam";
+    String reorderShippingState = "Other";
+    String reorderShippingCity = "HN";
+    String reorderShippingAddress1 = "1S Hao Nam Reorder";
+    String reorderShippingZipCode = "00004";
+    String reorderShippingPhone = "09876543210";
+
     LocalDate currentCentralTimeDate = LocalDate.now(ZoneId.of("America/Chicago"));
     String expectedDate = currentCentralTimeDate.format(DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy"));
 
@@ -767,6 +787,281 @@ public class User_07_Order extends AbstractTest {
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Order Detail page: Verify Total Price");
         verifyEquals(orderDetailPage.getTotalPrice(), "$3,600.00");
+    }
+
+    @Test
+    public void Order_07_Reorder() {
+        productName = "Apple MacBook Pro 13-inch";
+        log.info("Order 07 - Reorder - Step: Order Detail page: Click on <Re-order> button");
+        cartPage = orderDetailPage.clickOnReorderButton();
+
+        log.info("Order 07 - Reorder - Step: Cart Page: Update Product Quantity = \"10\"");
+        cartPage.inputIntoDynamicQuantityTextBoxByProductName(productName, "10");
+
+        log.info("Order 07 - Reorder - Step: Cart Page: Click on <Update shopping cart> button");
+        cartPage.clickOnUpdateShoppingCartButton();
+
+        log.info("Order 07 - Reorder - Step: Check on Agree to ToS checkbox");
+        cartPage.checkOnAgreeToTermOfServiceCheckbox();
+
+        log.info("Order 07 - Reorder - Step: Click on <CHECKOUT> button");
+        checkoutPage = cartPage.clickOnCheckoutButton();
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Uncheck on \"Ship to the same address\" option");
+        checkoutPage.uncheckOnShipToSameAddressOption();
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Select \"New Address\" option");
+        checkoutPage.selectBillingAddressOption("New Address");
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingFirstName + "\" into First Name text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_FirstName", reorderBillingFirstName);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingLastName + "\" into Last Name text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_LastName", reorderBillingLastName);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingEmail + "\" into Email text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Email", reorderBillingEmail);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Select \"" + reorderBillingCountry + "\" Country");
+        checkoutPage.selectBillingCountry(reorderBillingCountry);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Select \"" + reorderBillingState + "\" State");
+        checkoutPage.selectBillingState(reorderBillingState);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingCity + "\" into City text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_City", reorderBillingCity);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingAddress1 + "\" into Address 1 text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Address1", reorderBillingAddress1);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingZipCode + "\" into Zip/postal code text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_ZipPostalCode", reorderBillingZipCode);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingPhone + "\" into Phone number text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_PhoneNumber", reorderBillingPhone);
+
+        log.info("Order 07 - Reorder - Step: Billing Address Step: Click <CONTINUE> button");
+        checkoutPage.clickOnBillingAddressStepContinueButton();
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Select \"New Address\" option");
+        checkoutPage.selectShippingAddressOption("New Address");
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingFirstName + "\" into First Name text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_FirstName", reorderShippingFirstName);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingLastName + "\" into Last Name text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_LastName", reorderShippingLastName);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingEmail + "\" into Email text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Email", reorderShippingEmail);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Select \"" + reorderShippingCountry + "\" Country");
+        checkoutPage.selectShippingCountry(reorderShippingCountry);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Select \"" + reorderShippingState + "\" State");
+        checkoutPage.selectShippingState(reorderShippingState);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingCity + "\" into City text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_City", reorderShippingCity);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingAddress1 + "\" into Address 1 text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Address1", reorderShippingAddress1);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingZipCode + "\" into Zip/postal code text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_ZipPostalCode", reorderShippingZipCode);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingPhone + "\" into Phone number text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_PhoneNumber", reorderShippingPhone);
+
+        log.info("Order 07 - Reorder - Step: Shipping Address Step: Click <CONTINUE> button");
+        checkoutPage.clickOnShippingAddressStepContinueButton();
+
+        log.info("Order 07 - Reorder - Step: Shipping Method Step: Check on Shipping Method - \"Next Day Air ($0.00)\" checkbox");
+        checkoutPage.checkOnDynamicShippingMethodCheckboxByLabel("Next Day Air ($0.00)");
+
+        log.info("Order 07 - Reorder - Step: Shipping Method Step: Click <CONTINUE> button");
+        checkoutPage.clickOnShippingMethodStepContinueButton();
+
+        log.info("Order 07 - Reorder - Step: Payment Method Step: Select \"Credit Card\" option");
+        checkoutPage.checkOnDynamicPaymentMethodCheckboxByLabel("Credit Card");
+
+        log.info("Order 07 - Reorder - Step: Payment Method Step: Click <CONTINUE> button");
+        checkoutPage.clickOnPaymentMethodStepContinueButton();
+
+        log.info("Order 07 - Reorder - Step: Payment Information Step: Select Credit Card type = \"Visa\"");
+        checkoutPage.selectCreditCardType("Visa");
+
+        log.info("Order 07 - Reorder - Step: Payment Information Step: Input into \"Cardholder name\" text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "CardholderName", "MINH");
+
+        log.info("Order 07 - Reorder - Step: Payment Information Step: Input into \"Card number\" text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "CardNumber", "4111111111111111");
+
+        log.info("Order 07 - Reorder - Step: Payment Information Step: Select \"Expiration date\" - Select Year");
+        checkoutPage.selectExpirationYear("2030");
+
+        log.info("Order 07 - Reorder - Step: Payment Information Step: Input into \"Card code\" text box");
+        checkoutPage.inputIntoTextBoxByID(driver, "CardCode", "123");
+
+        log.info("Order 07 - Reorder - Step: Payment Information Step: Click <CONTINUE> button");
+        checkoutPage.clickOnPaymentInformationStepContinueButton();
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Billing Address Name");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("name"), reorderBillingFirstName + " " + reorderBillingLastName);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Billing Address Email");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("email"), "Email: " + reorderBillingEmail);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Billing Address Phone");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("phone"), "Phone: " + reorderBillingPhone);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Billing Address Address1");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("address1"), reorderBillingAddress1);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Billing Address City and Zip Postal Code");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("city-state-zip"), reorderBillingCity + "," + reorderBillingZipCode);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Billing Address Country");
+        verifyEquals(checkoutPage.getTextOfDynamicBillingAddressInfoFieldByClass("country"), reorderBillingCountry);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Payment Method");
+        verifyEquals(checkoutPage.getConfirmOrderStepPaymentMethod(), "Credit Card");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Address Name");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("name"), reorderShippingFirstName + " " + reorderShippingLastName);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Address Email");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("email"), "Email: " + reorderShippingEmail);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Address Phone");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("phone"), "Phone: " + reorderShippingPhone);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Address Address1");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("address1"), reorderShippingAddress1);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Address City and Zip Postal Code");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("city-state-zip"), reorderShippingCity + "," + reorderShippingZipCode);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Address Country");
+        verifyEquals(checkoutPage.getTextOfDynamicShippingAddressInfoFieldByClass("country"), reorderShippingCountry);
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Method");
+        verifyEquals(checkoutPage.getConfirmOrderStepShippingMethod(), "Next Day Air");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Product Info in Shopping Cart");
+        verifyTrue(checkoutPage.isProductDisplayed("AP_MBP_13", "Apple MacBook Pro 13-inch", "$1,800.00", "10", "$18,000.00"));
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Gift wrapping option");
+        verifyEquals(checkoutPage.getConfirmOrderStepGiftWrappingOption(), "Gift wrapping: No");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Sub-total Price");
+        verifyEquals(checkoutPage.getConfirmOrderStepSubTotalPrice(), "$18,000.00");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Shipping Fee");
+        verifyEquals(checkoutPage.getConfirmOrderStepShippingFee(), "$0.00");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Tax Price");
+        verifyEquals(checkoutPage.getConfirmOrderStepTaxPrice(), "$0.00");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Verify Total Price");
+        verifyEquals(checkoutPage.getConfirmOrderStepTotalPrice(), "$18,000.00");
+
+        log.info("Order 07 - Reorder - Step: Confirm Order Step: Click <CONTINUE> button");
+        checkoutPage.clickOnConfirmOrderStepContinueButton();
+
+        log.info("Order 07 - Reorder - Step: Thank You page: Verify Success message");
+        verifyEquals(checkoutPage.getThankYouPageSuccessMessage(), "Your order has been successfully processed!");
+
+        log.info("Order 07 - Reorder - Step: Thank You page: Verify Order Number is displayed");
+        verifyTrue(checkoutPage.isOrderNumberDisplayed());
+
+        log.info("Order 07 - Reorder - Step: Thank You page: Get Order Number");
+        String orderNumber = checkoutPage.getOrderNumber();
+
+        log.info("Order 07 - Reorder - Step: Thank You page: Click on \"My account\" link on Header link");
+        checkoutPage.clickOnDynamicHeaderLinkByClassName(driver, "ico-account");
+        myAccountPage = PageGeneratorManager.getMyAccountPage(driver);
+
+        log.info("Order 07 - Reorder - Step: My Account page: Click on \"Order\" menu");
+        myAccountPage.clickOnDynamicLeftMenuLinkByClassName("customer-orders");
+
+        log.info("Order 07 - Reorder - Step: My Account page: Verify Order Number");
+        verifyEquals(myAccountPage.getFirstOrderNumber(), orderNumber);
+
+        log.info("Order 07 - Reorder - Step: My Account page: Click on Order Detail");
+        orderDetailPage = myAccountPage.clickOnDynamicOrderDetailByOrderNumber(orderNumber);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Order Number");
+        verifyEquals(orderDetailPage.getOrderNumber(), orderNumber);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Order Date");
+        verifyEquals(orderDetailPage.getOrderDate(), expectedDate);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Order Status");
+        verifyEquals(orderDetailPage.getOrderStatus(), "Pending");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Order Total");
+        verifyEquals(orderDetailPage.getOrderTotal(), "$18,000.00");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Billing Address Name");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("name"), reorderBillingFirstName + " " + reorderBillingLastName);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Billing Address Email");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("email"), "Email: " + reorderBillingEmail);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Billing Address Phone");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("phone"), "Phone: " + reorderBillingPhone);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Billing Address Address1");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("address1"), reorderBillingAddress1);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Billing Address City and Zip Postal Code");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("city-state-zip"), reorderBillingCity + "," + reorderBillingZipCode);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Billing Address Country");
+        verifyEquals(orderDetailPage.getTextOfDynamicBillingAddressInfoFieldByClass("country"), reorderBillingCountry);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Payment Method");
+        verifyEquals(orderDetailPage.getPaymentMethod(), "Credit Card");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Address Name");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("name"), reorderShippingFirstName + " " + reorderShippingLastName);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Address Email");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("email"), "Email: " + reorderShippingEmail);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Address Phone");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("phone"), "Phone: " + reorderShippingPhone);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Address Address1");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("address1"), reorderShippingAddress1);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Address City and Zip Postal Code");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("city-state-zip"), reorderShippingCity + "," + reorderShippingZipCode);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Address Country");
+        verifyEquals(orderDetailPage.getTextOfDynamicShippingAddressInfoFieldByClass("country"), reorderShippingCountry);
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Method");
+        verifyEquals(orderDetailPage.getShippingMethod(), "Next Day Air");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Product Info in Shopping Cart");
+        verifyTrue(orderDetailPage.isProductDisplayed("AP_MBP_13", "Apple MacBook Pro 13-inch", "$1,800.00", "10", "$18,000.00"));
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Gift wrapping option");
+        verifyEquals(orderDetailPage.getGiftWrappingOption(), "No");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Sub-total Price");
+        verifyEquals(orderDetailPage.getSubTotalPrice(), "$18,000.00");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Shipping Fee");
+        verifyEquals(orderDetailPage.getShippingFee(), "$0.00");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Tax Price");
+        verifyEquals(orderDetailPage.getTaxPrice(), "$0.00");
+
+        log.info("Order 07 - Reorder - Step: Order Detail page: Verify Total Price");
+        verifyEquals(orderDetailPage.getTotalPrice(), "$18,000.00");
     }
 
     @AfterClass(alwaysRun = true)

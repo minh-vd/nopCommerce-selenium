@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.AbstractPage;
+import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import pageUIs.CheckoutPUI;
 import pageUIs.OrderDetailPUI;
@@ -80,5 +81,12 @@ public class OrderDetailPO extends AbstractPage {
     public String getTotalPrice() {
         waitForElementVisible(driver, OrderDetailPUI.CART_TOTAL_PRICE);
         return getElementText(driver, OrderDetailPUI.CART_TOTAL_PRICE);
+    }
+
+    public CartPO clickOnReorderButton() {
+        waitForElementClickable(driver, OrderDetailPUI.REORDER_BUTTON);
+        clickOnElement(driver, OrderDetailPUI.REORDER_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getCartPage(driver);
     }
 }

@@ -18,6 +18,7 @@ public class CheckoutPUI {
 
     // Shipping Method Step
     public static final String SHIPPING_METHOD_STEP_CONTINUE_BUTTON = "//div[@id='shipping-method-buttons-container']/button[text()='Continue']";
+    public static final String DYNAMIC_SHIPPING_METHOD_CHECKBOX_BY_LABEL = "//label[text()='%s']/preceding-sibling::input";
 
     // Payment Method Step
     public static final String PAYMENT_METHOD_STEP_CONTINUE_BUTTON = "//div[@id='payment-method-buttons-container']/button[text()='Continue']";
