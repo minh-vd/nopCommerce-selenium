@@ -142,4 +142,24 @@ public class CheckoutPO extends AbstractPage {
         waitForElementVisible(driver, CheckoutPUI.THANK_YOU_PAGE_ORDER_NUMBER);
         return getElementText(driver, CheckoutPUI.THANK_YOU_PAGE_ORDER_NUMBER).replace("ORDER NUMBER: ", "");
     }
+
+    public void checkOnDynamicPaymentMethodCheckboxByLabel(String paymentMethodLabel) {
+        waitForElementVisible(driver, CheckoutPUI.PAYMENT_METHOD_STEP_DYNAMIC_PAYMENT_METHOD_CHECKBOX_BY_LABEL, paymentMethodLabel);
+        checkOnCheckbox(driver, CheckoutPUI.PAYMENT_METHOD_STEP_DYNAMIC_PAYMENT_METHOD_CHECKBOX_BY_LABEL, paymentMethodLabel);
+    }
+
+    public void selectCreditCardType(String creditCardType) {
+        waitForElementVisible(driver, CheckoutPUI.PAYMENT_INFO_STEP_SELECT_CREDIT_CARD_DROPDOWN);
+        selectItemInDefaultDropdown(driver, CheckoutPUI.PAYMENT_INFO_STEP_SELECT_CREDIT_CARD_DROPDOWN, creditCardType);
+    }
+
+    public void selectExpirationYear(String year) {
+        waitForElementVisible(driver, CheckoutPUI.PAYMENT_INFO_STEP_SELECT_EXPIRE_YEAR_DROPDOWN);
+        selectItemInDefaultDropdown(driver, CheckoutPUI.PAYMENT_INFO_STEP_SELECT_EXPIRE_YEAR_DROPDOWN, year);
+    }
+
+    public void selectBillingAddressOption(String option) {
+        waitForElementVisible(driver, CheckoutPUI.SELECT_BILLING_ADDRESS_DROPDOWN);
+        selectItemInDefaultDropdown(driver, CheckoutPUI.SELECT_BILLING_ADDRESS_DROPDOWN, option);
+    }
 }

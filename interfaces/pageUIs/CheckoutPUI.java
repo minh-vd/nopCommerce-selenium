@@ -5,6 +5,7 @@ public class CheckoutPUI {
 
     // Billing Address Step
     public static final String SHIP_TO_SAME_ADDRESS_CHECKBOX = "//input[@id='ShipToSameAddress']";
+    public static final String SELECT_BILLING_ADDRESS_DROPDOWN = "//select[@id='billing-address-select']";
     public static final String NEW_BILLING_ADDRESS_STEP_SELECT_COUNTRY_DROPDOWN = "//select[@id='BillingNewAddress_CountryId']";
     public static final String NEW_BILLING_ADDRESS_STEP_SELECT_STATE_DROPDOWN = "//select[@id='BillingNewAddress_StateProvinceId']";
     public static final String BILLING_ADDRESS_STEP_CONTINUE_BUTTON = "//div[@id='billing-buttons-container']/button[text()='Continue']";
@@ -20,9 +21,12 @@ public class CheckoutPUI {
 
     // Payment Method Step
     public static final String PAYMENT_METHOD_STEP_CONTINUE_BUTTON = "//div[@id='payment-method-buttons-container']/button[text()='Continue']";
+    public static final String PAYMENT_METHOD_STEP_DYNAMIC_PAYMENT_METHOD_CHECKBOX_BY_LABEL = "//label[text()='%s']/preceding-sibling::input";
 
     // Payment Info Step
     public static final String PAYMENT_INFO_STEP_CONTINUE_BUTTON = "//div[@id='payment-info-buttons-container']/button[text()='Continue']";
+    public static final String PAYMENT_INFO_STEP_SELECT_CREDIT_CARD_DROPDOWN = "//select[@id='CreditCardType']";
+    public static final String PAYMENT_INFO_STEP_SELECT_EXPIRE_YEAR_DROPDOWN = "//select[@id='ExpireYear']";
 
     // Confirm Order Step
     public static final String CONFIRM_ORDER_STEP_DYNAMIC_BILLING_ADDRESS_INFO_FIELD_BY_CLASS_NAME = "//div[@class='billing-info']/ul[@class='info-list']/li[@class='%s']";
