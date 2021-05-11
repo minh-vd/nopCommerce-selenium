@@ -11,7 +11,6 @@ public class AbstractPageUI {
 
     // Dynamic Locator
     public static final String DYNAMIC_LINK_AT_FOOTER_BY_TEXT = "//div[@class='footer']//a[text()='%s']";
-    public static final String ADMIN_LEFT_MENU_DYNAMIC_LINK = "//span[text()='%s']/parent::a";
     public static final String DYNAMIC_UPLOAD_FILES_INPUT_BY_PANEL_ID = "//div[@id='%s']//input[@type='file']";
     public static final String DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID = "//div[@id='%s']//i[contains(@class, 'toggle-icon')]";
 
@@ -48,4 +47,9 @@ public class AbstractPageUI {
     // Header Search
     public static final String SEARCH_TEXT_BOX = "//input[@placeholder='Search store']";
     public static final String DYNAMIC_PRODUCT_FROM_SEARCH_SUGGESTION_BY_NAME = "//ul[contains(@class, 'ui-autocomplete')]//span[text()='%s']/parent::a";
+
+    // Admin Left Menu
+    public static final String ADMIN_DYNAMIC_LEFT_MENU_BY_LABEL = "(//ul[@data-widget='treeview']/li//p[contains(text(), '%s')])[1]";
+    public static final String ADMIN_DYNAMIC_LEFT_SUB_MENU_BY_LABEL = "//li[@class='nav-item']//p[text()=' %s']";
+
 }

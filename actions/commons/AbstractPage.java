@@ -727,4 +727,15 @@ public class AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
         return PageGeneratorManager.getProductDetailPage(driver);
     }
+
+    public void clickOnAdminDynamicLeftMenuByLabel(WebDriver driver, String label) {
+        waitForElementClickable(driver, AbstractPageUI.ADMIN_DYNAMIC_LEFT_MENU_BY_LABEL, label);
+        clickOnElement(driver, AbstractPageUI.ADMIN_DYNAMIC_LEFT_MENU_BY_LABEL, label);
+    }
+
+    public void clickOnAdminDynamicLeftSubMenuByLabel(WebDriver driver, String label) {
+        waitForElementClickable(driver, AbstractPageUI.ADMIN_DYNAMIC_LEFT_SUB_MENU_BY_LABEL, label);
+        clickOnElement(driver, AbstractPageUI.ADMIN_DYNAMIC_LEFT_SUB_MENU_BY_LABEL, label);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
 }

@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import pageObjects.admin.AdminHomePO;
 import pageObjects.admin.AdminLoginPO;
+import pageObjects.admin.AdminProductListPO;
 
 public class PageGeneratorManager {
     private static UserHomePO userHomePage;
@@ -22,6 +23,7 @@ public class PageGeneratorManager {
     private static OrderDetailPO orderDetailPage;
     private static AdminLoginPO adminLoginPage;
     private static AdminHomePO adminHomePage;
+    private static AdminProductListPO adminProductListPage;
 
     private PageGeneratorManager() {
     }
@@ -143,5 +145,12 @@ public class PageGeneratorManager {
             adminHomePage = new AdminHomePO(driver);
         }
         return adminHomePage;
+    }
+
+    public static AdminProductListPO getAdminProductListPage(WebDriver driver) {
+        if (adminProductListPage == null) {
+            adminProductListPage = new AdminProductListPO(driver);
+        }
+        return adminProductListPage;
     }
 }

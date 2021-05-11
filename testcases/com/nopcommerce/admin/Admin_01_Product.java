@@ -1,6 +1,5 @@
 package com.nopcommerce.admin;
 
-import com.nopcommerce.common.Common_01_Register;
 import commons.AbstractTest;
 import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
@@ -11,16 +10,14 @@ import org.testng.annotations.Test;
 import pageObjects.*;
 import pageObjects.admin.AdminHomePO;
 import pageObjects.admin.AdminLoginPO;
+import pageObjects.admin.AdminProductListPO;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-
-public class Admin_01 extends AbstractTest {
+public class Admin_01_Product extends AbstractTest {
     WebDriver driver;
 
     AdminLoginPO adminLoginPage;
     AdminHomePO adminHomePage;
+    AdminProductListPO adminProductListPage;
 
     @Parameters({"browserName", "url"})
     @BeforeClass
@@ -39,10 +36,17 @@ public class Admin_01 extends AbstractTest {
 
         log.info("Pre-Condition - Step: Click on <LOG IN> button");
         adminHomePage = adminLoginPage.clickOnLoginButton();
+
+        log.info("Pre-Condition - Step: Click on \"Catalog\" left menu");
+        adminHomePage.clickOnAdminDynamicLeftMenuByLabel(driver, "Catalog");
+
+        log.info("Pre-Condition - Step: Click on \"Product\" left sub menu");
+        adminHomePage.clickOnAdminDynamicLeftSubMenuByLabel(driver, "Products");
+        adminProductListPage = PageGeneratorManager.getAdminProductListPage(driver);
     }
 
     @Test
-    public void Order_01_Add_Product_To_Cart() {
+    public void Product_01_Search_With_Product_Name() {
 
     }
 
