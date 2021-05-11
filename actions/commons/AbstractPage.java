@@ -738,4 +738,8 @@ public class AbstractPage {
         clickOnElement(driver, AbstractPageUI.ADMIN_DYNAMIC_LEFT_SUB_MENU_BY_LABEL, label);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
+
+    public void waitForPageOfAdminPortalFinishedLoading(WebDriver driver) {
+        waitForElementInvisible(driver, AbstractPageUI.ADMIN_PORTAL_LOADING_ICON);
+    }
 }

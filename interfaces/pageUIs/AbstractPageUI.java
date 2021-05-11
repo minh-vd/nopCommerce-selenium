@@ -7,7 +7,7 @@ public class AbstractPageUI {
     public static final String FOOTER_MY_ACCOUNT_LINK = "//div[@class='footer']//a[text()='My account']";
     public static final String HEADER_LOGO_HOMEPAGE_LINK = "//div[@class='header-lower']/div[@class='header-logo']/a";
     public static final String HEADER_WISHLIST_LINK = "//div[@class='header-upper']//a[@class='ico-wishlist']";
-    public static final String LOADING_ICON = "//div[@id='ajaxBusy']";
+    public static final String ADMIN_PORTAL_LOADING_ICON = "//div[@id='ajaxBusy']/span";
 
     // Dynamic Locator
     public static final String DYNAMIC_LINK_AT_FOOTER_BY_TEXT = "//div[@class='footer']//a[text()='%s']";

@@ -47,7 +47,16 @@ public class Admin_01_Product extends AbstractTest {
 
     @Test
     public void Product_01_Search_With_Product_Name() {
+        String productName = "Lenovo IdeaCentre 600 All-in-One PC";
 
+        log.info("Product 01 - Search With Product Name - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
+        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+
+        log.info("Product 01 - Search With Product Name - Step: Click on <Search> button");
+        adminProductListPage.clickOnSearchButton();
+
+        log.info("Product 01 - Search With Product Name - Step: Verify only 1 Product is displayed in Search Result");
+        verifyTrue(adminProductListPage.isSearchedProductDisplayed(productName, "LE_IC_600", "500", "10000", "true"));
     }
 
     @AfterClass(alwaysRun = true)
