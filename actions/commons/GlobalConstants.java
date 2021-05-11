@@ -6,6 +6,10 @@ public class GlobalConstants {
     // URL
     public static final String HOME_URL = "https://demo.nopcommerce.com/";
 
+    // Account
+    public static final String ADMIN_EMAIL = "admin@yourstore.com";
+    public static final String ADMIN_PASSWORD = "admin";
+
     public static final int SHORT_TIMEOUT = 5;
     public static final int LONG_TIMEOUT = 30;
     public static final int SLEEP_TIME_WAIT_FOR_PAGE_LOAD = 2;
