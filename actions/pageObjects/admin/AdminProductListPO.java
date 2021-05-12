@@ -41,4 +41,9 @@ public class AdminProductListPO extends AbstractPage {
         waitForElementVisible(driver, AdminProductListPUI.SEARCH_INCLUDE_SUB_CATEGORIES_CHECKBOX);
         checkOnCheckbox(driver, AdminProductListPUI.SEARCH_INCLUDE_SUB_CATEGORIES_CHECKBOX);
     }
+
+    public void selectManufacturer(String manufacturer) {
+        waitForElementVisible(driver, AdminProductListPUI.SELECT_MANUFACTURER_DROPDOWN);
+        selectItemInDefaultDropdown(driver, AdminProductListPUI.SELECT_MANUFACTURER_DROPDOWN, manufacturer);
+    }
 }

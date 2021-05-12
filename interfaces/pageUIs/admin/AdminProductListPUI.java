@@ -3,6 +3,7 @@ package pageUIs.admin;
 public class AdminProductListPUI {
     public static final String SEARCH_PRODUCT_BUTTON = "//button[@id='search-products']";
     public static final String SELECT_CATEGORY_DROPDOWN = "//select[@id='SearchCategoryId']";
+    public static final String SELECT_MANUFACTURER_DROPDOWN = "//select[@id='SearchManufacturerId']";
     public static final String SEARCH_INCLUDE_SUB_CATEGORIES_CHECKBOX = "//input[@id='SearchIncludeSubCategories']";
     public static final String TABLE_NO_DATA_MESSAGE = "//td[@class='dataTables_empty']";
 
