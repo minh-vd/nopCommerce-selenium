@@ -45,7 +45,7 @@ public class Admin_01_Product extends AbstractTest {
         adminProductListPage = PageGeneratorManager.getAdminProductListPage(driver);
     }
 
-    @Test
+    //@Test
     public void Product_01_Search_With_Product_Name() {
         String productName = "Lenovo IdeaCentre 600 All-in-One PC";
 
@@ -57,6 +57,26 @@ public class Admin_01_Product extends AbstractTest {
 
         log.info("Product 01 - Search With Product Name - Step: Verify only 1 Product is displayed in Search Result");
         verifyTrue(adminProductListPage.isSearchedProductDisplayed(productName, "LE_IC_600", "500", "10000", "true"));
+    }
+
+    @Test
+    public void Product_02_Search_With_Product_Name_And_Parent_Category_But_Unchecked() {
+        String productName = "Lenovo IdeaCentre 600 All-in-One PC";
+
+        log.info("Product 02 Search With Product Name And Parent Category But Unchecked - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
+        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+
+        log.info("Product 02 Search With Product Name And Parent Category But Unchecked - Step: Select Category = \"Computers\"");
+        adminProductListPage.selectCategory("Computers");
+
+        log.info("Product 02 Search With Product Name And Parent Category But Unchecked - Step: Uncheck Search subcategories checkbox");
+        adminProductListPage.uncheckSearchSubcategoriesCheckbox();
+
+        log.info("Product 02 Search With Product Name And Parent Category But Unchecked - Step: Click on <Search> button");
+        adminProductListPage.clickOnSearchButton();
+
+        log.info("Product 02 Search With Product Name And Parent Category But Unchecked - Step: Verify No Data message is displayed");
+        verifyEquals(adminProductListPage.getNoDataMessage(), "No data available in table");
     }
 
     @AfterClass(alwaysRun = true)
