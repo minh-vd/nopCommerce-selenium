@@ -79,23 +79,43 @@ public class Admin_01_Product extends AbstractTest {
         verifyEquals(adminProductListPage.getNoDataMessage(), "No data available in table");
     }
 
-    @Test
+    //@Test
     public void Product_03_Search_With_Product_Name_And_Parent_Category() {
         String productName = "Lenovo IdeaCentre 600 All-in-One PC";
 
-        log.info(" Product 03 Search With Product Name And Parent Category - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
+        log.info("Product 03 Search With Product Name And Parent Category - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
         adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
 
-        log.info(" Product 03 Search With Product Name And Parent Category - Step: Select Category = \"Computers\"");
+        log.info("Product 03 Search With Product Name And Parent Category - Step: Select Category = \"Computers\"");
         adminProductListPage.selectCategory("Computers");
 
-        log.info(" Product 03 Search With Product Name And Parent Category - Step: Check on Search subcategories checkbox");
+        log.info("Product 03 Search With Product Name And Parent Category - Step: Check on Search subcategories checkbox");
         adminProductListPage.checkOnSearchSubcategoriesCheckbox();
 
-        log.info(" Product 03 Search With Product Name And Parent Category - Step: Click on <Search> button");
+        log.info("Product 03 Search With Product Name And Parent Category - Step: Click on <Search> button");
         adminProductListPage.clickOnSearchButton();
 
-        log.info(" Product 03 Search With Product Name And Parent Category - Step: Verify only 1 Product is displayed in Search Result");
+        log.info("Product 03 Search With Product Name And Parent Category - Step: Verify only 1 Product is displayed in Search Result");
+        verifyTrue(adminProductListPage.isSearchedProductDisplayed(productName, "LE_IC_600", "500", "10000", "true"));
+    }
+
+    @Test
+    public void Product_04_Search_With_Product_Name_And_Child_Category() {
+        String productName = "Lenovo IdeaCentre 600 All-in-One PC";
+
+        log.info("Product 04 Search With Product Name And Child Category - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
+        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+
+        log.info("Product 04 Search With Product Name And Child Category - Step: Select Category = \"Computers\"");
+        adminProductListPage.selectCategory("Computers >> Desktops");
+
+        log.info("Product 04 Search With Product Name And Child Category - Step: Check on Search subcategories checkbox");
+        adminProductListPage.uncheckSearchSubcategoriesCheckbox();
+
+        log.info("Product 04 Search With Product Name And Child Category - Step: Click on <Search> button");
+        adminProductListPage.clickOnSearchButton();
+
+        log.info("Product 04 Search With Product Name And Child Category - Step: Verify only 1 Product is displayed in Search Result");
         verifyTrue(adminProductListPage.isSearchedProductDisplayed(productName, "LE_IC_600", "500", "10000", "true"));
     }
 
