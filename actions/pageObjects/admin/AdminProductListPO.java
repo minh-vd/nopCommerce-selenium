@@ -36,4 +36,9 @@ public class AdminProductListPO extends AbstractPage {
         waitForElementVisible(driver, AdminProductListPUI.TABLE_NO_DATA_MESSAGE);
         return getElementText(driver, AdminProductListPUI.TABLE_NO_DATA_MESSAGE);
     }
+
+    public void checkOnSearchSubcategoriesCheckbox() {
+        waitForElementVisible(driver, AdminProductListPUI.SEARCH_INCLUDE_SUB_CATEGORIES_CHECKBOX);
+        checkOnCheckbox(driver, AdminProductListPUI.SEARCH_INCLUDE_SUB_CATEGORIES_CHECKBOX);
+    }
 }
