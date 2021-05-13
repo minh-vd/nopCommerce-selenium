@@ -57,7 +57,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_02_Search_With_Non_Existing_Data() {
         log.info("TC 02 - Search With Non Existing Data - Step: Input into Search Keyword with non existing data");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Macbook Pro 2050");
+        searchPage.inputIntoTextBoxById(driver, "q", "Macbook Pro 2050");
 
         log.info("TC 02 - Search With Non Existing Data - Step: Click on Search button");
         searchPage.clickOnSearchButton();
@@ -69,7 +69,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_03_Relative_Search_With_Product_Name() {
         log.info("TC 03 Relative Search With Product Name - Step: Input into Search Keyword with related keyword");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Lenovo");
+        searchPage.inputIntoTextBoxById(driver, "q", "Lenovo");
 
         log.info("TC 03 Relative Search With Product Name - Step: Click on Search button");
         searchPage.clickOnSearchButton();
@@ -81,7 +81,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_04_Absolute_Search_With_Product_Name() {
         log.info("TC 04 Absolute Search With Product Name - Step: Input into Search Keyword with absolute keyword");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Thinkpad X1 Carbon");
+        searchPage.inputIntoTextBoxById(driver, "q", "Thinkpad X1 Carbon");
 
         log.info("TC 04 Absolute Search With Product Name - Step: Click on Search button");
         searchPage.clickOnSearchButton();
@@ -93,7 +93,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_05_Advanced_Search_With_Parent_Categories() {
         log.info("TC 05 Advanced Search With Parent Categories - Step: Input into Search Keyword text box");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+        searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
         log.info("TC 05 Advanced Search With Parent Categories - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
@@ -114,7 +114,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_06_Advanced_Search_With_Sub_Categories() {
         log.info("TC 06 Advanced Search With Sub Categories - Step: Input into Search Keyword text box");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+        searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
         log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
@@ -135,7 +135,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_07_Advanced_Search_With_Incorrect_Manufacturer() {
         log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Input into Search Keyword text box");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+        searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
         log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
@@ -159,7 +159,7 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
     @Test
     public void TC_08_Advanced_Search_With_Correct_Manufacturer() {
         log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Input into Search Keyword text box");
-        searchPage.inputIntoTextBoxByID(driver, "q", "Apple MacBook Pro");
+        searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
         log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();

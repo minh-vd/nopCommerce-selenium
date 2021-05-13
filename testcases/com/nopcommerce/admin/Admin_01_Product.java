@@ -34,10 +34,10 @@ public class Admin_01_Product extends AbstractTest {
         adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 
         log.info("Pre-Condition - Step: Input Admin Email into \"Email\" text box");
-        adminLoginPage.inputIntoTextBoxByID(driver, "Email", GlobalConstants.ADMIN_EMAIL);
+        adminLoginPage.inputIntoTextBoxById(driver, "Email", GlobalConstants.ADMIN_EMAIL);
 
         log.info("Pre-Condition - Step: Input Admin Password into \"Password\" text box");
-        adminLoginPage.inputIntoTextBoxByID(driver, "Password", GlobalConstants.ADMIN_PASSWORD);
+        adminLoginPage.inputIntoTextBoxById(driver, "Password", GlobalConstants.ADMIN_PASSWORD);
 
         log.info("Pre-Condition - Step: Click on <LOG IN> button");
         adminHomePage = adminLoginPage.clickOnLoginButton();
@@ -53,7 +53,7 @@ public class Admin_01_Product extends AbstractTest {
     @Test
     public void Product_01_Search_With_Product_Name() {
         log.info("Product 01 - Search With Product Name - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
-        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+        adminProductListPage.inputIntoTextBoxById(driver, "SearchProductName", productName);
 
         log.info("Product 01 - Search With Product Name - Step: Click on <Search> button");
         adminProductListPage.clickOnSearchButton();
@@ -65,7 +65,7 @@ public class Admin_01_Product extends AbstractTest {
     @Test
     public void Product_02_Search_With_Product_Name_And_Parent_Category_But_Unchecked() {
         log.info("Product 02 - Search With Product Name And Parent Category But Unchecked - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
-        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+        adminProductListPage.inputIntoTextBoxById(driver, "SearchProductName", productName);
 
         log.info("Product 02 - Search With Product Name And Parent Category But Unchecked - Step: Select Category = \"Computers\"");
         adminProductListPage.selectCategory("Computers");
@@ -83,7 +83,7 @@ public class Admin_01_Product extends AbstractTest {
     @Test
     public void Product_03_Search_With_Product_Name_And_Parent_Category() {
         log.info("Product 03 - Search With Product Name And Parent Category - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
-        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+        adminProductListPage.inputIntoTextBoxById(driver, "SearchProductName", productName);
 
         log.info("Product 03 - Search With Product Name And Parent Category - Step: Select Category = \"Computers\"");
         adminProductListPage.selectCategory("Computers");
@@ -101,7 +101,7 @@ public class Admin_01_Product extends AbstractTest {
     @Test
     public void Product_04_Search_With_Product_Name_And_Child_Category() {
         log.info("Product 04 - Search With Product Name And Child Category - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
-        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+        adminProductListPage.inputIntoTextBoxById(driver, "SearchProductName", productName);
 
         log.info("Product 04 - Search With Product Name And Child Category - Step: Select Category = \"Computers >> Desktops\"");
         adminProductListPage.selectCategory("Computers >> Desktops");
@@ -119,7 +119,7 @@ public class Admin_01_Product extends AbstractTest {
     @Test
     public void Product_05_Search_With_Product_Name_And_Manufacturer() {
         log.info("Product 05 - Search With Product Name And Manufacturer - Step: Input keyword \"" + productName + "\" into Search Product Name text box");
-        adminProductListPage.inputIntoTextBoxByID(driver, "SearchProductName", productName);
+        adminProductListPage.inputIntoTextBoxById(driver, "SearchProductName", productName);
 
         log.info("Product 05 - Search With Product Name And Manufacturer - Step: Uncheck Search subcategories checkbox");
         adminProductListPage.uncheckSearchSubcategoriesCheckbox();
@@ -137,7 +137,7 @@ public class Admin_01_Product extends AbstractTest {
     @Test
     public void Product_06_Go_Directly_To_Product_Sku() {
         log.info("Product 06 - Go Directly To Product Sku - Step: Input Product SKU = \"" + productSku + "\" into Go directly to product SKU text box");
-        adminProductListPage.inputIntoTextBoxByID(driver, "GoDirectlyToSku", productSku);
+        adminProductListPage.inputIntoTextBoxById(driver, "GoDirectlyToSku", productSku);
 
         log.info("Product 06 - Go Directly To Product Sku - Step: Click on <Go> button");
         adminProductDetailPage = adminProductListPage.clickOnGoButton();

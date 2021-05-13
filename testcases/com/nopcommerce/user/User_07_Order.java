@@ -278,13 +278,13 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.uncheckOnShipToSameAddressOption();
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingFirstName + "\" into First Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_FirstName", billingFirstName);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_FirstName", billingFirstName);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingLastName + "\" into Last Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_LastName", billingLastName);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_LastName", billingLastName);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingEmail + "\" into Email text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Email", billingEmail);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_Email", billingEmail);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Select \"" + billingCountry + "\" Country");
         checkoutPage.selectBillingCountry(billingCountry);
@@ -293,16 +293,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectBillingState(billingState);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingCity + "\" into City text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_City", billingCity);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_City", billingCity);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingAddress1 + "\" into Address 1 text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Address1", billingAddress1);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_Address1", billingAddress1);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingZipCode + "\" into Zip/postal code text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_ZipPostalCode", billingZipCode);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_ZipPostalCode", billingZipCode);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Input \"" + billingPhone + "\" into Phone number text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_PhoneNumber", billingPhone);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_PhoneNumber", billingPhone);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Billing Address Step: Click <CONTINUE> button");
         checkoutPage.clickOnBillingAddressStepContinueButton();
@@ -311,13 +311,13 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectShippingAddressOption("New Address");
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingFirstName + "\" into First Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_FirstName", shippingFirstName);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_FirstName", shippingFirstName);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingLastName + "\" into Last Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_LastName", shippingLastName);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_LastName", shippingLastName);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingEmail + "\" into Email text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Email", shippingEmail);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_Email", shippingEmail);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Select \"" + shippingCountry + "\" Country");
         checkoutPage.selectShippingCountry(shippingCountry);
@@ -326,16 +326,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectShippingState(shippingState);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingCity + "\" into City text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_City", shippingCity);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_City", shippingCity);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingAddress1 + "\" into Address 1 text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Address1", shippingAddress1);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_Address1", shippingAddress1);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingZipCode + "\" into Zip/postal code text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_ZipPostalCode", shippingZipCode);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_ZipPostalCode", shippingZipCode);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Input \"" + shippingPhone + "\" into Phone number text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_PhoneNumber", shippingPhone);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_PhoneNumber", shippingPhone);
 
         log.info("Order 05 - Checkout With Cheque Payment Method - Step: Shipping Address Step: Click <CONTINUE> button");
         checkoutPage.clickOnShippingAddressStepContinueButton();
@@ -542,13 +542,13 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectBillingAddressOption("New Address");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingFirstName + "\" into First Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_FirstName", billingFirstName);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_FirstName", billingFirstName);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingLastName + "\" into Last Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_LastName", billingLastName);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_LastName", billingLastName);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingEmail + "\" into Email text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Email", billingEmail);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_Email", billingEmail);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Select \"" + billingCountry + "\" Country");
         checkoutPage.selectBillingCountry(billingCountry);
@@ -557,16 +557,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectBillingState(billingState);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingCity + "\" into City text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_City", billingCity);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_City", billingCity);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingAddress1 + "\" into Address 1 text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Address1", billingAddress1);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_Address1", billingAddress1);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingZipCode + "\" into Zip/postal code text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_ZipPostalCode", billingZipCode);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_ZipPostalCode", billingZipCode);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Input \"" + billingPhone + "\" into Phone number text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_PhoneNumber", billingPhone);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_PhoneNumber", billingPhone);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Billing Address Step: Click <CONTINUE> button");
         checkoutPage.clickOnBillingAddressStepContinueButton();
@@ -575,13 +575,13 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectShippingAddressOption("New Address");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingFirstName + "\" into First Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_FirstName", shippingFirstName);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_FirstName", shippingFirstName);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingLastName + "\" into Last Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_LastName", shippingLastName);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_LastName", shippingLastName);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingEmail + "\" into Email text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Email", shippingEmail);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_Email", shippingEmail);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Select \"" + shippingCountry + "\" Country");
         checkoutPage.selectShippingCountry(shippingCountry);
@@ -590,16 +590,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectShippingState(shippingState);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingCity + "\" into City text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_City", shippingCity);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_City", shippingCity);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingAddress1 + "\" into Address 1 text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Address1", shippingAddress1);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_Address1", shippingAddress1);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingZipCode + "\" into Zip/postal code text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_ZipPostalCode", shippingZipCode);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_ZipPostalCode", shippingZipCode);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Input \"" + shippingPhone + "\" into Phone number text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_PhoneNumber", shippingPhone);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_PhoneNumber", shippingPhone);
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Shipping Address Step: Click <CONTINUE> button");
         checkoutPage.clickOnShippingAddressStepContinueButton();
@@ -617,16 +617,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectCreditCardType("Visa");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Payment Information Step: Input into \"Cardholder name\" text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "CardholderName", "MINH");
+        checkoutPage.inputIntoTextBoxById(driver, "CardholderName", "MINH");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Payment Information Step: Input into \"Card number\" text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "CardNumber", "4111111111111111");
+        checkoutPage.inputIntoTextBoxById(driver, "CardNumber", "4111111111111111");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Payment Information Step: Select \"Expiration date\" - Select Year");
         checkoutPage.selectExpirationYear("2030");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Payment Information Step: Input into \"Card code\" text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "CardCode", "123");
+        checkoutPage.inputIntoTextBoxById(driver, "CardCode", "123");
 
         log.info("Order 06 - Checkout With Credit Card Payment Method - Step: Payment Information Step: Click <CONTINUE> button");
         checkoutPage.clickOnPaymentInformationStepContinueButton();
@@ -814,13 +814,13 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectBillingAddressOption("New Address");
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingFirstName + "\" into First Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_FirstName", reorderBillingFirstName);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_FirstName", reorderBillingFirstName);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingLastName + "\" into Last Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_LastName", reorderBillingLastName);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_LastName", reorderBillingLastName);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingEmail + "\" into Email text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Email", reorderBillingEmail);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_Email", reorderBillingEmail);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Select \"" + reorderBillingCountry + "\" Country");
         checkoutPage.selectBillingCountry(reorderBillingCountry);
@@ -829,16 +829,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectBillingState(reorderBillingState);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingCity + "\" into City text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_City", reorderBillingCity);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_City", reorderBillingCity);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingAddress1 + "\" into Address 1 text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_Address1", reorderBillingAddress1);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_Address1", reorderBillingAddress1);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingZipCode + "\" into Zip/postal code text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_ZipPostalCode", reorderBillingZipCode);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_ZipPostalCode", reorderBillingZipCode);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Input \"" + reorderBillingPhone + "\" into Phone number text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "BillingNewAddress_PhoneNumber", reorderBillingPhone);
+        checkoutPage.inputIntoTextBoxById(driver, "BillingNewAddress_PhoneNumber", reorderBillingPhone);
 
         log.info("Order 07 - Reorder - Step: Billing Address Step: Click <CONTINUE> button");
         checkoutPage.clickOnBillingAddressStepContinueButton();
@@ -847,13 +847,13 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectShippingAddressOption("New Address");
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingFirstName + "\" into First Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_FirstName", reorderShippingFirstName);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_FirstName", reorderShippingFirstName);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingLastName + "\" into Last Name text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_LastName", reorderShippingLastName);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_LastName", reorderShippingLastName);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingEmail + "\" into Email text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Email", reorderShippingEmail);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_Email", reorderShippingEmail);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Select \"" + reorderShippingCountry + "\" Country");
         checkoutPage.selectShippingCountry(reorderShippingCountry);
@@ -862,16 +862,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectShippingState(reorderShippingState);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingCity + "\" into City text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_City", reorderShippingCity);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_City", reorderShippingCity);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingAddress1 + "\" into Address 1 text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_Address1", reorderShippingAddress1);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_Address1", reorderShippingAddress1);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingZipCode + "\" into Zip/postal code text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_ZipPostalCode", reorderShippingZipCode);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_ZipPostalCode", reorderShippingZipCode);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Input \"" + reorderShippingPhone + "\" into Phone number text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "ShippingNewAddress_PhoneNumber", reorderShippingPhone);
+        checkoutPage.inputIntoTextBoxById(driver, "ShippingNewAddress_PhoneNumber", reorderShippingPhone);
 
         log.info("Order 07 - Reorder - Step: Shipping Address Step: Click <CONTINUE> button");
         checkoutPage.clickOnShippingAddressStepContinueButton();
@@ -892,16 +892,16 @@ public class User_07_Order extends AbstractTest {
         checkoutPage.selectCreditCardType("Visa");
 
         log.info("Order 07 - Reorder - Step: Payment Information Step: Input into \"Cardholder name\" text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "CardholderName", "MINH");
+        checkoutPage.inputIntoTextBoxById(driver, "CardholderName", "MINH");
 
         log.info("Order 07 - Reorder - Step: Payment Information Step: Input into \"Card number\" text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "CardNumber", "4111111111111111");
+        checkoutPage.inputIntoTextBoxById(driver, "CardNumber", "4111111111111111");
 
         log.info("Order 07 - Reorder - Step: Payment Information Step: Select \"Expiration date\" - Select Year");
         checkoutPage.selectExpirationYear("2030");
 
         log.info("Order 07 - Reorder - Step: Payment Information Step: Input into \"Card code\" text box");
-        checkoutPage.inputIntoTextBoxByID(driver, "CardCode", "123");
+        checkoutPage.inputIntoTextBoxById(driver, "CardCode", "123");
 
         log.info("Order 07 - Reorder - Step: Payment Information Step: Click <CONTINUE> button");
         checkoutPage.clickOnPaymentInformationStepContinueButton();

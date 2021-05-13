@@ -13,8 +13,8 @@
         <parameter name="browserName" value="chrome_ui" />
         <parameter name="url" value="https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/" />
         <classes>
-            <class name="com.nopcommerce.admin.Admin_01_Product" />
-
+            <!--<class name="com.nopcommerce.admin.Admin_01_Product" />-->
+            <class name="com.nopcommerce.admin.Admin_02_Customer" />
         </classes>
     </test>
 

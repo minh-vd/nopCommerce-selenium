@@ -151,6 +151,11 @@ public class AbstractPage {
         element.sendKeys(inputData);
     }
 
+    public void clearElementText(WebDriver driver, String xpathLocator) {
+        element = getElementByXPath(driver, xpathLocator);
+        element.clear();
+    }
+
     // Default Dropdown
     public void selectItemInDefaultDropdown(WebDriver driver, String selectXPathLocator, String itemValue) {
         WebElement selectElement = getElementByXPath(driver, selectXPathLocator);
@@ -186,6 +191,24 @@ public class AbstractPage {
                 jsExecutor.executeScript("arguments[0].scrollIntoView(true);", item);
                 sleepInSecond(1);
 
+                item.click();
+                sleepInSecond(1);
+                break;
+            }
+        }
+    }
+
+    public void selectItemInCustomDropdownWithoutScrollIntoView(WebDriver driver, String dropdownLocator, String allChildItemsLocator, String expectedItem) {
+        getElementByXPath(driver, dropdownLocator).click();
+        sleepInSecond(1);
+
+        explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+        explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXPath(allChildItemsLocator)));
+
+        List<WebElement> allChildItems = getElementsByXPath(driver, allChildItemsLocator);
+
+        for (WebElement item : allChildItems) {
+            if (item.getText().equals(expectedItem)) {
                 item.click();
                 sleepInSecond(1);
                 break;
@@ -269,8 +292,16 @@ public class AbstractPage {
     }
 
     public boolean isElementDisplayed(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
-        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
-        return element.isDisplayed();
+        boolean isDisplayedFlag = true;
+        try {
+            element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
+            if (element.isDisplayed()) {
+                return isDisplayedFlag;
+            }
+        } catch (Exception e) {
+            isDisplayedFlag = false;
+        }
+        return isDisplayedFlag;
     }
 
     public boolean isElementNotDisplayed(WebDriver driver, String xpathLocator) {
@@ -308,6 +339,11 @@ public class AbstractPage {
 
     public boolean isElementSelected(WebDriver driver, String xpathLocator) {
         element = getElementByXPath(driver, xpathLocator);
+        return element.isSelected();
+    }
+
+    public boolean isElementSelected(WebDriver driver, String xpathLocator, String... dynamicXPathValues) {
+        element = getElementByXPath(driver, getDynamicXPathLocator(xpathLocator, dynamicXPathValues));
         return element.isSelected();
     }
 
@@ -599,12 +635,12 @@ public class AbstractPage {
     }*/
 
     /* ---------- FOR THIS PROJECT ONLY ---------- */
-    public void inputIntoTextBoxByID(WebDriver driver, String textBoxID, String inputData) {
+    public void inputIntoTextBoxById(WebDriver driver, String textBoxID, String inputData) {
         waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, textBoxID);
         sendKeysToElement(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, inputData, textBoxID);
     }
 
-    public String getValueTextFromTextBoxByID(WebDriver driver, String textBoxID) {
+    public String getValueTextFromTextBoxById(WebDriver driver, String textBoxID) {
         waitForElementVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, textBoxID);
         return getElementAttributeValue(driver, AbstractPageUI.DYNAMIC_TEXT_BOX_BY_ID, "value", textBoxID);
     }

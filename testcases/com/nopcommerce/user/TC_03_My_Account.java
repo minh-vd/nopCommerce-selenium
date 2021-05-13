@@ -71,10 +71,10 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage.checkOnGenderFemaleCheckbox();
 
         log.info("TC 01 Edit Customer Info - Step: Input into First Name text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "FirstName", firstName);
+        myAccountPage.inputIntoTextBoxById(driver, "FirstName", firstName);
 
         log.info("TC 01 Edit Customer Info - Step: Input into Last Name text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "LastName", lastName);
+        myAccountPage.inputIntoTextBoxById(driver, "LastName", lastName);
 
         log.info("TC 01 Edit Customer Info - Step: Select Day of Birth");
         myAccountPage.selectDayOfBirth(dayOfBirth);
@@ -86,10 +86,10 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage.selectYearOfBirth(yearOfBirth);
 
         log.info("TC 01 Edit Customer Info - Step: Input into Email text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Email", email);
+        myAccountPage.inputIntoTextBoxById(driver, "Email", email);
 
         log.info("TC 01 Edit Customer Info - Step: Input into Company text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Company", company);
+        myAccountPage.inputIntoTextBoxById(driver, "Company", company);
 
         log.info("TC 01 Edit Customer Info - Step: Click on Save button");
         myAccountPage.clickOnSaveButton();
@@ -98,10 +98,10 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage.refreshPage(driver);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited First Name");
-        verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "FirstName"), firstName);
+        verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "FirstName"), firstName);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Last Name");
-        verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "LastName"), lastName);
+        verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "LastName"), lastName);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Day of Birth");
         verifyEquals(myAccountPage.getDayOfBirth(), dayOfBirth);
@@ -113,10 +113,10 @@ public class TC_03_My_Account extends AbstractTest {
         verifyEquals(myAccountPage.getYearOfBirth(), yearOfBirth);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Email");
-        verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "Email"), email);
+        verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "Email"), email);
 
         log.info("TC 01 Edit Customer Info - Step: Verify edited Company");
-        verifyEquals(myAccountPage.getValueTextFromTextBoxByID(driver, "Company"), company);
+        verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "Company"), company);
     }
 
     @Test
@@ -128,16 +128,16 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage.clickOnAddNewAddressButton();
 
         log.info("TC 02 - Add New Address - Step: Input into First Name text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_FirstName", firstName);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_FirstName", firstName);
 
         log.info("TC 02 - Add New Address - Step: Input into Last Name text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_LastName", lastName);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_LastName", lastName);
 
         log.info("TC 02 - Add New Address - Step: Input into Email text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_Email", email);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_Email", email);
 
         log.info("TC 02 - Add New Address - Step: Input into Company text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_Company", company);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_Company", company);
 
         log.info("TC 02 - Add New Address - Step: Select Country");
         myAccountPage.selectAddressCountry(country);
@@ -146,22 +146,22 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage.selectAddressStateProvince(state);
 
         log.info("TC 02 - Add New Address - Step: Input into City text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_City", city);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_City", city);
 
         log.info("TC 02 - Add New Address - Step: Input into Address 1 text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_Address1", address1);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_Address1", address1);
 
         log.info("TC 02 - Add New Address - Step: Input into Address 2 text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_Address2", address2);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_Address2", address2);
 
         log.info("TC 02 - Add New Address - Step: Input into Zip/Postal Code text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_ZipPostalCode", zipPostalCode);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_ZipPostalCode", zipPostalCode);
 
         log.info("TC 02 - Add New Address - Step: Input into Phone Number text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_PhoneNumber", phone);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_PhoneNumber", phone);
 
         log.info("TC 02 - Add New Address - Step: Input into Fax Number text box");
-        myAccountPage.inputIntoTextBoxByID(driver, "Address_FaxNumber", fax);
+        myAccountPage.inputIntoTextBoxById(driver, "Address_FaxNumber", fax);
 
         log.info("TC 02 - Add New Address - Step: Click on Save button");
         myAccountPage.clickOnSaveAddressButton();
@@ -200,13 +200,13 @@ public class TC_03_My_Account extends AbstractTest {
         myAccountPage.clickOnDynamicLeftMenuLinkByClassName("change-password");
 
         log.info("TC 03 - Change Password - Step: Input old Password");
-        myAccountPage.inputIntoTextBoxByID(driver, "OldPassword", Common_01_Register.password);
+        myAccountPage.inputIntoTextBoxById(driver, "OldPassword", Common_01_Register.password);
 
         log.info("TC 03 - Change Password - Step: Input new Password");
-        myAccountPage.inputIntoTextBoxByID(driver, "NewPassword", password);
+        myAccountPage.inputIntoTextBoxById(driver, "NewPassword", password);
 
         log.info("TC 03 - Change Password - Step: Input new confirm Password");
-        myAccountPage.inputIntoTextBoxByID(driver, "ConfirmNewPassword", confirmPassword);
+        myAccountPage.inputIntoTextBoxById(driver, "ConfirmNewPassword", confirmPassword);
 
         log.info("TC 03 - Change Password - Step: Click Change Password button");
         myAccountPage.clickOnChangePasswordButton();
@@ -224,10 +224,10 @@ public class TC_03_My_Account extends AbstractTest {
         userLoginPage = userHomePage.clickOnLoginLink();
 
         log.info("TC 03 - Change Password - Step: Input login Email");
-        userLoginPage.inputIntoTextBoxByID(driver, "Email", Common_01_Register.email);
+        userLoginPage.inputIntoTextBoxById(driver, "Email", Common_01_Register.email);
 
         log.info("TC 03 - Change Password - Step: Input old Password");
-        userLoginPage.inputIntoTextBoxByID(driver, "Password", Common_01_Register.password);
+        userLoginPage.inputIntoTextBoxById(driver, "Password", Common_01_Register.password);
 
         log.info("TC 03 - Change Password - Step: Click on Login button");
         userLoginPage.clickOnLoginButton();
@@ -236,7 +236,7 @@ public class TC_03_My_Account extends AbstractTest {
         verifyEquals(userLoginPage.getTextOfLoginValidationErrorMessage(), "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect");
 
         log.info("TC 03 - Change Password - Step: Re-input new Password");
-        userLoginPage.inputIntoTextBoxByID(driver, "Password", password);
+        userLoginPage.inputIntoTextBoxById(driver, "Password", password);
 
         log.info("TC 03 - Change Password - Step: Click on Login button");
         userLoginPage.clickOnLoginButton();
@@ -260,7 +260,7 @@ public class TC_03_My_Account extends AbstractTest {
         productReviewPage = productDetailPage.clickOnAddYourReviewLink();
 
         log.info("TC 04 - Add New Product Review - Step: Input Review Title");
-        productReviewPage.inputIntoTextBoxByID(driver, "AddProductReview_Title", "This is a Review Title");
+        productReviewPage.inputIntoTextBoxById(driver, "AddProductReview_Title", "This is a Review Title");
 
         log.info("TC 04 - Add New Product Review - Step: Input Review Text");
         productReviewPage.inputIntoReviewTextTextArea("This is a Review Content");
