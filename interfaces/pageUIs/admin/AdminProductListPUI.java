@@ -6,6 +6,7 @@ public class AdminProductListPUI {
     public static final String SELECT_MANUFACTURER_DROPDOWN = "//select[@id='SearchManufacturerId']";
     public static final String SEARCH_INCLUDE_SUB_CATEGORIES_CHECKBOX = "//input[@id='SearchIncludeSubCategories']";
     public static final String TABLE_NO_DATA_MESSAGE = "//td[@class='dataTables_empty']";
+    public static final String GO_TO_PRODUCT_BY_SKU_BUTTON = "//button[@id='go-to-product-by-sku']";
 
     public static final String DYNAMIC_SEARCHED_PRODUCT_IN_LIST = "//table[@id='products-grid']//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td/i[@class='fas fa-check %s-icon']";
 }

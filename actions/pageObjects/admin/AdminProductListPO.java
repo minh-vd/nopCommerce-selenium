@@ -1,7 +1,9 @@
 package pageObjects.admin;
 
 import commons.AbstractPage;
+import commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
+import pageObjects.PageGeneratorManager;
 import pageUIs.admin.AdminProductListPUI;
 
 public class AdminProductListPO extends AbstractPage {
@@ -45,5 +47,12 @@ public class AdminProductListPO extends AbstractPage {
     public void selectManufacturer(String manufacturer) {
         waitForElementVisible(driver, AdminProductListPUI.SELECT_MANUFACTURER_DROPDOWN);
         selectItemInDefaultDropdown(driver, AdminProductListPUI.SELECT_MANUFACTURER_DROPDOWN, manufacturer);
+    }
+
+    public AdminProductDetailPO clickOnGoButton() {
+        waitForElementClickable(driver, AdminProductListPUI.GO_TO_PRODUCT_BY_SKU_BUTTON);
+        clickOnElement(driver, AdminProductListPUI.GO_TO_PRODUCT_BY_SKU_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+        return PageGeneratorManager.getAdminProductDetailPage(driver);
     }
 }
