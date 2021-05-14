@@ -13,6 +13,7 @@ public class AbstractPageUI {
     public static final String DYNAMIC_LINK_AT_FOOTER_BY_TEXT = "//div[@class='footer']//a[text()='%s']";
     public static final String DYNAMIC_UPLOAD_FILES_INPUT_BY_PANEL_ID = "//div[@id='%s']//input[@type='file']";
     public static final String DYNAMIC_EXPAND_ICON_FIND_BY_PANEL_ID = "//div[@id='%s']//i[contains(@class, 'toggle-icon')]";
+    public static final String DYNAMIC_DROPDOWN_BY_ID = "//select[@id='%s']";
 
     public static final String DYNAMIC_RADIO_BUTTON_BY_ID = "//input[@id='%s']";
     public static final String DYNAMIC_BUTTON_BY_VALUE = "//input[@value='%s']";
@@ -51,5 +52,4 @@ public class AbstractPageUI {
     // Admin Left Menu
     public static final String ADMIN_DYNAMIC_LEFT_MENU_BY_LABEL = "(//ul[@data-widget='treeview']/li//p[contains(text(), '%s')])[1]";
     public static final String ADMIN_DYNAMIC_LEFT_SUB_MENU_BY_LABEL = "//li[@class='nav-item']//p[text()=' %s']";
-
 }

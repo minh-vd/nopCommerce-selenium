@@ -132,7 +132,7 @@ public class Admin_02_Customer extends AbstractTest {
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
-    @Test
+    //@Test
     public void Customer_02_Search_Customer_With_Email() {
         log.info("Customer 02 - Search Customer With Email - Step: Input \"" + newCustomerEmail + "\" into Search Email text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", newCustomerEmail);
@@ -144,6 +144,78 @@ public class Admin_02_Customer extends AbstractTest {
         adminCustomerPage.clickOnSearchButton();
 
         log.info("Customer 02 - Search Customer With Email - Step: Verify Searched New Customer is displayed");
+        verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
+    }
+
+    //@Test
+    public void Customer_03_Search_Customer_With_First_Name_And_Last_Name() {
+        log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Refresh Page");
+        adminCustomerPage.refreshPage(driver);
+
+        log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Input \"" + newCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", newCustomerFirstName);
+
+        log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Input \"" + newCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", newCustomerLastName);
+
+        log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Verify Searched New Customer is displayed");
+        verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
+    }
+
+    //@Test
+    public void Customer_04_Search_Customer_With_Company_Name() {
+        log.info("Customer 04 - Search Customer With Company Name - Step: Refresh Page");
+        adminCustomerPage.refreshPage(driver);
+
+        log.info("Customer 04 - Search Customer With Company Name - Step: Input \"" + newCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", newCustomerCompany);
+
+        log.info("Customer 04 - Search Customer With Company Name - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 04 - Search Customer With Company Name - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 04 - Search Customer With Company Name - Step: Verify Searched New Customer is displayed");
+        verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
+    }
+
+    @Test
+    public void Customer_05_Search_Customer_With_Full_Data() {
+        log.info("Customer 05 - Search Customer With Full Data - Step: Refresh Page");
+        adminCustomerPage.refreshPage(driver);
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Input \"" + newCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", newCustomerEmail);
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Input \"" + newCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", newCustomerFirstName);
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Input \"" + newCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", newCustomerLastName);
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Select Month of Birth = \"1\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchMonthOfBirth", "1");
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Select Day of Birth = \"1\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchDayOfBirth", "1");
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Input \"" + newCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", newCustomerCompany);
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 05 - Search Customer With Full Data - Step: Verify Searched New Customer is displayed");
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 

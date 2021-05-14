@@ -163,6 +163,12 @@ public class AbstractPage {
         select.selectByVisibleText(itemValue);
     }
 
+    public void selectItemInDefaultDropdown(WebDriver driver, String selectXPathLocator, String itemValue, String... dynamicXPathValues) {
+        WebElement selectElement = getElementByXPath(driver, getDynamicXPathLocator(selectXPathLocator, dynamicXPathValues));
+        select = new Select(selectElement);
+        select.selectByVisibleText(itemValue);
+    }
+
     public String getSelectedTextInDefaultDropdown(WebDriver driver, String selectXPathLocator) {
         WebElement selectElement = getElementByXPath(driver, selectXPathLocator);
         select = new Select(selectElement);
@@ -777,5 +783,10 @@ public class AbstractPage {
 
     public void waitForPageOfAdminPortalFinishedLoading(WebDriver driver) {
         waitForElementInvisible(driver, AbstractPageUI.ADMIN_PORTAL_LOADING_ICON);
+    }
+
+    public void selectDefaultDropdownById(WebDriver driver, String dropdownId, String option) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
+        selectItemInDefaultDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, option, dropdownId);
     }
 }
