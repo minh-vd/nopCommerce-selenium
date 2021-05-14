@@ -53,82 +53,97 @@ public class Admin_02_Customer extends AbstractTest {
 
     @Test
     public void Customer_01_Create_New_Customer() {
-        log.info("Customer - 01 Create New Customer - Step: Click on <Add new> button");
+        log.info("Customer 01 - Create New Customer - Step: Click on <Add new> button");
         adminCustomerPage.clickOnAddNewButton();
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerEmail + "\" into Email text box");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerEmail + "\" into Email text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "Email", newCustomerEmail);
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerPassword + "\" into Password text box");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerPassword + "\" into Password text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "Password", newCustomerPassword);
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerFirstName + "\" into First name text box");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerFirstName + "\" into First name text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "FirstName", newCustomerFirstName);
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerLastName + "\" into Last name text box");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerLastName + "\" into Last name text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "LastName", newCustomerLastName);
 
-        log.info("Customer - 01 Create New Customer - Step: Check on Gender = \"Male\"");
+        log.info("Customer 01 - Create New Customer - Step: Check on Gender = \"Male\"");
         adminCustomerPage.checkOnGenderCheckbox("Male");
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerDOB + "\" into Date of birth text box");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerDOB + "\" into Date of birth text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "DateOfBirth", newCustomerDOB);
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerCompany + "\" into Company name text box");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerCompany + "\" into Company name text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "Company", newCustomerCompany);
 
-        log.info("Customer - 01 Create New Customer - Step: Select Customer roles = \"Guests\"");
+        log.info("Customer 01 - Create New Customer - Step: Select Customer roles = \"Guests\"");
         adminCustomerPage.selectCustomerRoles("Guests");
 
-        log.info("Customer - 01 Create New Customer - Step: Check on Active checkbox");
+        log.info("Customer 01 - Create New Customer - Step: Check on Active checkbox");
         adminCustomerPage.checkOnActiveCheckbox();
 
-        log.info("Customer - 01 Create New Customer - Step: Input \"" + newCustomerAdminComment + "\" into Admin comment text area");
+        log.info("Customer 01 - Create New Customer - Step: Input \"" + newCustomerAdminComment + "\" into Admin comment text area");
         adminCustomerPage.inputIntoAdminCommentTextArea(newCustomerAdminComment);
 
-        log.info("Customer - 01 Create New Customer - Step: Click on <Save and Continue Edit> button");
+        log.info("Customer 01 - Create New Customer - Step: Click on <Save and Continue Edit> button");
         adminCustomerPage.clickOnSaveAndContinueEditButton();
 
-        log.info("Customer - 01 Create New Customer - Step: Verify Alert message");
+        log.info("Customer 01 - Create New Customer - Step: Verify Alert message");
         verifyEquals(adminCustomerPage.getAlertMessage(), "The new customer has been added successfully.");
 
-        log.info("Customer - 01 Create New Customer - Step: Verify New Customer Email");
+        log.info("Customer 01 - Create New Customer - Step: Verify New Customer Email");
         verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Email"), newCustomerEmail);
 
-        log.info("Customer - 01 Create New Customer - Step: Verify New Customer First Name");
+        log.info("Customer 01 - Create New Customer - Step: Verify New Customer First Name");
         verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "FirstName"), newCustomerFirstName);
 
-        log.info("Customer - 01 Create New Customer - Step: Verify New Customer Last Name");
+        log.info("Customer 01 - Create New Customer - Step: Verify New Customer Last Name");
         verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "LastName"), newCustomerLastName);
 
-        log.info("Customer - 01 Create New Customer - Step: Verify Gender Male checkbox is checked");
+        log.info("Customer 01 - Create New Customer - Step: Verify Gender Male checkbox is checked");
         verifyTrue(adminCustomerPage.isGenderCheckboxChecked("Male"));
 
-        log.info("Customer - 01 Create New Customer - Step: Verify New Customer DOB");
+        log.info("Customer 01 - Create New Customer - Step: Verify New Customer DOB");
         verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "DateOfBirth"), newCustomerDOB);
 
-        log.info("Customer - 01 Create New Customer - Step: Verify New Customer Company Name");
+        log.info("Customer 01 - Create New Customer - Step: Verify New Customer Company Name");
         verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Company"), newCustomerCompany);
 
-        log.info("Customer - 01 Create New Customer - Step: Verify Customer Roles = \"Guests\" is selected");
+        log.info("Customer 01 - Create New Customer - Step: Verify Customer Roles = \"Guests\" is selected");
         verifyTrue(adminCustomerPage.isCustomerRolesSelected("Guests"));
 
-        log.info("Customer - 01 Create New Customer - Step: Verify Active checkbox is checked");
+        log.info("Customer 01 - Create New Customer - Step: Verify Active checkbox is checked");
         verifyTrue(adminCustomerPage.isActiveCheckboxChecked());
 
-        log.info("Customer - 01 Create New Customer - Step: Verify Admin Comment");
+        log.info("Customer 01 - Create New Customer - Step: Verify Admin Comment");
         verifyEquals(adminCustomerPage.getAdminCommentText(), newCustomerAdminComment);
 
-        log.info("Customer - 01 Create New Customer - Step: Click on \"back to customer list\" link");
+        log.info("Customer 01 - Create New Customer - Step: Click on \"back to customer list\" link");
         adminCustomerPage.clickOnBackToCustomerListLink();
 
-        log.info("Customer - 01 Create New Customer - Step: Select Customer roles = \"Guests\"");
+        log.info("Customer 01 - Create New Customer - Step: Select Customer roles = \"Guests\"");
         adminCustomerPage.selectCustomerRoles("Guests");
 
-        log.info("Customer - 01 Create New Customer - Step: Click on <Search> button");
+        log.info("Customer 01 - Create New Customer - Step: Click on <Search> button");
         adminCustomerPage.clickOnSearchButton();
 
-        log.info("Customer - 01 Create New Customer - Step: Verify New Customer is displayed");
+        log.info("Customer 01 - Create New Customer - Step: Verify New Customer is displayed");
+        verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
+    }
+
+    @Test
+    public void Customer_02_Search_Customer_With_Email() {
+        log.info("Customer 02 - Search Customer With Email - Step: Input \"" + newCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", newCustomerEmail);
+
+        log.info("Customer 02 - Search Customer With Email - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 02 - Search Customer With Email - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 02 - Search Customer With Email - Step: Verify Searched New Customer is displayed");
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
