@@ -32,6 +32,19 @@ public class Admin_02_Customer extends AbstractTest {
     String editedCustomerCompany = "Edit Automation FC Company";
     String editedCustomerAdminComment = "Edit Customer (Guest)";
 
+    String newAddressFirstName = newCustomerFirstName;
+    String newAddressLastName = newCustomerLastName;
+    String newAddressEmail = newCustomerEmail;
+    String newAddressCompany = newCustomerCompany;
+    String newAddressCountry = "Viet Nam";
+    String newAddressState = "Other";
+    String newAddressCity = "HCM";
+    String newAddress1 = "1 De La Thanh";
+    String newAddress2 = "2 De La Thanh";
+    String newAddressZipCode = "00001";
+    String newAddressPhone = "0123456789";
+    String newAddressFax = "0987456321";
+
     @Parameters({"browserName", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
@@ -311,6 +324,129 @@ public class Admin_02_Customer extends AbstractTest {
 
         log.info("Customer 06 - Edit Customer - Step: Verify Edited Customer is displayed");
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(editedCustomerFirstName + " " + editedCustomerLastName, "Guests", editedCustomerCompany, "true"));
+    }
+
+    @Test
+    public void Customer_07_Add_New_Address_In_Customer_Detail() {
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Refresh Page");
+        adminCustomerPage.refreshPage(driver);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + editedCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", editedCustomerEmail);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + editedCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", editedCustomerFirstName);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + editedCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", editedCustomerLastName);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Select Month of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchMonthOfBirth", "2");
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Select Day of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchDayOfBirth", "2");
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + editedCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", editedCustomerCompany);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Click on <Edit> icon of Searched Customer \"" + editedCustomerFirstName + editedCustomerLastName + "\"");
+        adminCustomerPage.clickOnDynamicEditIconByCustomerInfo(editedCustomerFirstName + " " + editedCustomerLastName, "Guests", editedCustomerCompany, "true");
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Click on \"Address\" section title");
+        adminCustomerPage.clickOnDynamicSectionTitleById("customer-address");
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Click on <Add new address> button");
+        adminCustomerPage.clickOnAddNewAddressButton();
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressFirstName + "\" into First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_FirstName", newAddressFirstName);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressLastName + "\" into Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_LastName", newAddressLastName);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressEmail + "\" into Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Email", newAddressEmail);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressCompany + "\" into Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Company", newAddressCompany);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Select \"" + newAddressCountry + "\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "Address_CountryId", newAddressCountry);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Select \"" + newAddressState + "\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "Address_StateProvinceId", newAddressState);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressCity + "\" into City text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_City", newAddressCity);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddress1 + "\" into Address 1 text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Address1", newAddress1);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddress2 + "\" into Address 2 text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Address2", newAddress2);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressZipCode + "\" into Zip / postal code text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_ZipPostalCode", newAddressZipCode);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressPhone + "\" into Phone number text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_PhoneNumber", newAddressPhone);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Input \"" + newAddressFax + "\" into Fax number text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_FaxNumber", newAddressFax);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Click on <Save> button");
+        adminCustomerPage.clickOnSaveButton();
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify Alert message");
+        verifyEquals(adminCustomerPage.getAlertMessage(), "The new address has been added successfully.");
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address First Name");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_FirstName"), newAddressFirstName);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Last Name");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_LastName"), newAddressLastName);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Email");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Email"), newAddressEmail);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Company");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Company"), newAddressCompany);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Country");
+        verifyEquals(adminCustomerPage.getSelectedTextInDefaultDropdownById(driver, "Address_CountryId"), newAddressCountry);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address State");
+        verifyEquals(adminCustomerPage.getSelectedTextInDefaultDropdownById(driver, "Address_StateProvinceId"), newAddressState);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address City");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_City"), newAddressCity);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Address 1");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Address1"), newAddress1);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Address 2");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Address2"), newAddress2);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Zip Code");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_ZipPostalCode"), newAddressZipCode);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Phone number");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_PhoneNumber"), newAddressPhone);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address Fax number");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_FaxNumber"), newAddressFax);
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Click on \"back to customer details\" link");
+        adminCustomerPage.clickOnBackToCustomerDetailLink();
+
+        log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address is displayed");
+        verifyTrue(adminCustomerPage.isAddressDisplayed(newAddressFirstName, newAddressLastName, newAddressEmail, newAddressPhone, newAddressFax, newAddressCompany, newAddress1, newAddress2, newAddressCity, newAddressZipCode, newAddressCountry));
     }
 
     @AfterClass(alwaysRun = true)

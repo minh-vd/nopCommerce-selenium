@@ -13,9 +13,15 @@ public class AdminCustomerPUI {
     public static final String BACK_TO_CUSTOMER_LIST_LINK = "//a[text()='back to customer list']";
     public static final String SEARCH_BUTTON = "//button[@id='search-customers']";
 
+    // Address Section
+    public static final String ADD_NEW_ADDRESS_BUTTON = "//button[contains(text(), 'Add new address')]";
+    public static final String SAVE_BUTTON = "//button[contains(text(), 'Save')]";
+    public static final String BACK_TO_CUSTOMER_DETAIL_LINK = "//a[text()='back to customer details']";
+    public static final String DYNAMIC_ADDRESS_FIELD_IN_LIST = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']//following-sibling::td/div";
+
     public static final String DYNAMIC_GENDER_CHECKBOX_BY_GENDER = "//input[@id='Gender_%s']";
     public static final String DYNAMIC_SELECTING_CUSTOMER_ROLE = "//ul[@id='SelectedCustomerRoleIds_taglist']/li/span[text()='%s']";
     public static final String DYNAMIC_CUSTOMER_DETAIL_IN_LIST = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td/i[@nop-value='%s']";
     public static final String DYNAMIC_EDIT_ICON_BY_CUSTOMER_DETAIL = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td/i[@nop-value='%s']/parent::td/following-sibling::td/a";
-
+    public static final String DYNAMIC_SECTION_TITLE_BY_ID = "//div[@id='%s']//div[@class='card-title']";
 }

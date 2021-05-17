@@ -95,4 +95,36 @@ public class AdminCustomerPO extends AbstractPage {
         clickOnElement(driver, AdminCustomerPUI.DYNAMIC_EDIT_ICON_BY_CUSTOMER_DETAIL, customerName, customerRole, customerCompany, customerActiveStatus);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
+
+    public void clickOnDynamicSectionTitleById(String sectionId) {
+        waitForElementVisible(driver, AdminCustomerPUI.DYNAMIC_SECTION_TITLE_BY_ID, sectionId);
+        clickOnElement(driver, AdminCustomerPUI.DYNAMIC_SECTION_TITLE_BY_ID, sectionId);
+        sleepInSecond(1);
+    }
+
+    public void clickOnAddNewAddressButton() {
+        waitForElementClickable(driver, AdminCustomerPUI.ADD_NEW_ADDRESS_BUTTON);
+        clickOnElement(driver, AdminCustomerPUI.ADD_NEW_ADDRESS_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void clickOnSaveButton() {
+        waitForElementClickable(driver, AdminCustomerPUI.SAVE_BUTTON);
+        clickOnElement(driver, AdminCustomerPUI.SAVE_BUTTON);
+    }
+
+    public void clickOnBackToCustomerDetailLink() {
+        waitForElementClickable(driver, AdminCustomerPUI.BACK_TO_CUSTOMER_DETAIL_LINK);
+        clickOnElement(driver, AdminCustomerPUI.BACK_TO_CUSTOMER_DETAIL_LINK);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public boolean isAddressDisplayed(String addressFirstName, String addressLastName, String addressEmail, String addressPhone, String addressFax, String addressCompany, String address1, String address2, String addressCity, String addressZipCode, String addressCountry) {
+        waitForElementVisible(driver, AdminCustomerPUI.DYNAMIC_ADDRESS_FIELD_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax);
+        boolean isDisplayedFlag = false;
+        if (getElementText(driver, AdminCustomerPUI.DYNAMIC_ADDRESS_FIELD_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax).trim().equals(addressCompany + "\n" + address1 + "\n" + address2 + "\n" + addressCity + "," + addressZipCode + "\n" + addressCountry)) {
+            isDisplayedFlag = true;
+        }
+        return isDisplayedFlag;
+    }
 }

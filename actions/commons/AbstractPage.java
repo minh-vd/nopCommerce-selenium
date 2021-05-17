@@ -175,6 +175,12 @@ public class AbstractPage {
         return select.getFirstSelectedOption().getText();
     }
 
+    public String getSelectedTextInDefaultDropdown(WebDriver driver, String selectXPathLocator, String... dynamicXPathValues) {
+        WebElement selectElement = getElementByXPath(driver, getDynamicXPathLocator(selectXPathLocator, dynamicXPathValues));
+        select = new Select(selectElement);
+        return select.getFirstSelectedOption().getText();
+    }
+
     public boolean isDefaultDropdownMultiple(WebDriver driver, String selectXPathLocator) {
         WebElement selectElement = getElementByXPath(driver, selectXPathLocator);
         select = new Select(selectElement);
@@ -788,5 +794,10 @@ public class AbstractPage {
     public void selectDefaultDropdownById(WebDriver driver, String dropdownId, String option) {
         waitForElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
         selectItemInDefaultDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, option, dropdownId);
+    }
+
+    public String getSelectedTextInDefaultDropdownById(WebDriver driver, String dropdownId) {
+        waitForElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
+        return getSelectedTextInDefaultDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
     }
 }
