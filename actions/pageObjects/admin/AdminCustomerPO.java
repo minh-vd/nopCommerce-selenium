@@ -119,12 +119,30 @@ public class AdminCustomerPO extends AbstractPage {
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
-    public boolean isAddressDisplayed(String addressFirstName, String addressLastName, String addressEmail, String addressPhone, String addressFax, String addressCompany, String address1, String address2, String addressCity, String addressZipCode, String addressCountry) {
+    public boolean isAddressDisplayed(String addressFirstName, String addressLastName, String addressEmail, String addressPhone, String addressFax, String addressCompany, String address1, String address2, String addressCity, String addressState, String addressZipCode, String addressCountry) {
         waitForElementVisible(driver, AdminCustomerPUI.DYNAMIC_ADDRESS_FIELD_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax);
         boolean isDisplayedFlag = false;
-        if (getElementText(driver, AdminCustomerPUI.DYNAMIC_ADDRESS_FIELD_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax).trim().equals(addressCompany + "\n" + address1 + "\n" + address2 + "\n" + addressCity + "," + addressZipCode + "\n" + addressCountry)) {
-            isDisplayedFlag = true;
+        if (!addressState.equals("")) {
+            if (getElementText(driver, AdminCustomerPUI.DYNAMIC_ADDRESS_FIELD_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax).trim().equals(addressCompany + "\n" + address1 + "\n" + address2 + "\n" + addressCity + "," + addressState + "," + addressZipCode + "\n" + addressCountry)) {
+                isDisplayedFlag = true;
+            }
+        } else {
+            if (getElementText(driver, AdminCustomerPUI.DYNAMIC_ADDRESS_FIELD_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax).trim().equals(addressCompany + "\n" + address1 + "\n" + address2 + "\n" + addressCity + "," + addressZipCode + "\n" + addressCountry)) {
+                isDisplayedFlag = true;
+            }
         }
         return isDisplayedFlag;
+    }
+
+    public void clickOnDynamicEditAddressIcon(String addressFirstName, String addressLastName, String addressEmail, String addressPhone, String addressFax) {
+        waitForElementClickable(driver, AdminCustomerPUI.DYNAMIC_EDIT_ADDRESS_ICON_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax);
+        clickOnElement(driver, AdminCustomerPUI.DYNAMIC_EDIT_ADDRESS_ICON_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void clickOnSaveButtonOnEditAddressPage() {
+        waitForElementClickable(driver, AdminCustomerPUI.EDIT_ADDRESS_PAGE_SAVE_BUTTON);
+        clickOnElement(driver, AdminCustomerPUI.EDIT_ADDRESS_PAGE_SAVE_BUTTON);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 }

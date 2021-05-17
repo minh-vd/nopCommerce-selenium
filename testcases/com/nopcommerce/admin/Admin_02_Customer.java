@@ -45,6 +45,19 @@ public class Admin_02_Customer extends AbstractTest {
     String newAddressPhone = "0123456789";
     String newAddressFax = "0987456321";
 
+    String editedAddressFirstName = editedCustomerFirstName;
+    String editedAddressLastName = editedCustomerLastName;
+    String editedAddressEmail = editedCustomerEmail;
+    String editedAddressCompany = editedCustomerCompany;
+    String editedAddressCountry = "United States";
+    String editedAddressState = "California";
+    String editedAddressCity = "Albany";
+    String editedAddress1 = "123 PO Box";
+    String editedAddress2 = "356 Los Bancos";
+    String editedAddressZipCode = "986589";
+    String editedAddressPhone = "0987654666";
+    String editedAddressFax = "+441619998888";
+
     @Parameters({"browserName", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
@@ -446,7 +459,127 @@ public class Admin_02_Customer extends AbstractTest {
         adminCustomerPage.clickOnBackToCustomerDetailLink();
 
         log.info("Customer 07 - Add New Address In Customer Detail - Step: Verify New Address is displayed");
-        verifyTrue(adminCustomerPage.isAddressDisplayed(newAddressFirstName, newAddressLastName, newAddressEmail, newAddressPhone, newAddressFax, newAddressCompany, newAddress1, newAddress2, newAddressCity, newAddressZipCode, newAddressCountry));
+        verifyTrue(adminCustomerPage.isAddressDisplayed(newAddressFirstName, newAddressLastName, newAddressEmail, newAddressPhone, newAddressFax, newAddressCompany, newAddress1, newAddress2, newAddressCity, "", newAddressZipCode, newAddressCountry));
+    }
+
+    @Test
+    public void Customer_08_Edit_Address_In_Customer_Detail() {
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Click on \"back to customer list\" link");
+        adminCustomerPage.clickOnBackToCustomerListLink();
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", editedCustomerEmail);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", editedCustomerFirstName);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", editedCustomerLastName);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Select Month of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchMonthOfBirth", "2");
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Select Day of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchDayOfBirth", "2");
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", editedCustomerCompany);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Click on <Edit> icon of Searched Customer \"" + editedCustomerFirstName + editedCustomerLastName + "\"");
+        adminCustomerPage.clickOnDynamicEditIconByCustomerInfo(editedCustomerFirstName + " " + editedCustomerLastName, "Guests", editedCustomerCompany, "true");
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Click on <Edit> icon of new Address");
+        adminCustomerPage.clickOnDynamicEditAddressIcon(newAddressFirstName, newAddressLastName, newAddressEmail, newAddressPhone, newAddressFax);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressFirstName + "\" into First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_FirstName", editedAddressFirstName);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressLastName + "\" into Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_LastName", editedAddressLastName);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressEmail + "\" into Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Email", editedAddressEmail);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressCompany + "\" into Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Company", editedAddressCompany);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Select \"" + editedAddressCountry + "\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "Address_CountryId", editedAddressCountry);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Select \"" + editedAddressState + "\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "Address_StateProvinceId", editedAddressState);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressCity + "\" into City text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_City", editedAddressCity);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddress1 + "\" into Address 1 text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Address1", editedAddress1);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddress2 + "\" into Address 2 text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_Address2", editedAddress2);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressZipCode + "\" into Zip / postal code text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_ZipPostalCode", editedAddressZipCode);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressPhone + "\" into Phone number text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_PhoneNumber", editedAddressPhone);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Input \"" + editedAddressFax + "\" into Fax number text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Address_FaxNumber", editedAddressFax);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Click on <Save> button");
+        adminCustomerPage.clickOnSaveButtonOnEditAddressPage();
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Alert message");
+        verifyEquals(adminCustomerPage.getAlertMessage(), "The address has been updated successfully.");
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address First Name");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_FirstName"), editedAddressFirstName);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Last Name");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_LastName"), editedAddressLastName);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Email");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Email"), editedAddressEmail);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Company");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Company"), editedAddressCompany);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Country");
+        verifyEquals(adminCustomerPage.getSelectedTextInDefaultDropdownById(driver, "Address_CountryId"), editedAddressCountry);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address State");
+        verifyEquals(adminCustomerPage.getSelectedTextInDefaultDropdownById(driver, "Address_StateProvinceId"), editedAddressState);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address City");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_City"), editedAddressCity);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Address 1");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Address1"), editedAddress1);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Address 2");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_Address2"), editedAddress2);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Zip Code");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_ZipPostalCode"), editedAddressZipCode);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Phone number");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_PhoneNumber"), editedAddressPhone);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address Fax number");
+        verifyEquals(adminCustomerPage.getValueTextFromTextBoxById(driver, "Address_FaxNumber"), editedAddressFax);
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Click on \"back to customer details\" link");
+        adminCustomerPage.clickOnBackToCustomerDetailLink();
+
+        log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address is displayed");
+        verifyTrue(adminCustomerPage.isAddressDisplayed(editedAddressFirstName, editedAddressLastName, editedAddressEmail, editedAddressPhone, editedAddressFax, editedAddressCompany, editedAddress1, editedAddress2, editedAddressCity, editedAddressState, editedAddressZipCode, editedAddressCountry));
     }
 
     @AfterClass(alwaysRun = true)
