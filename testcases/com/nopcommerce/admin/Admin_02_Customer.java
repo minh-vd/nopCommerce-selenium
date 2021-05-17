@@ -25,6 +25,13 @@ public class Admin_02_Customer extends AbstractTest {
     String newCustomerCompany = "Automation FC Company";
     String newCustomerAdminComment = "Add new Customer (Guest)";
 
+    String editedCustomerEmail = "edit_automationfc+" + getRandomNumberByDateTime() + "@gmail.com";
+    String editedCustomerFirstName = "Edit Automation";
+    String editedCustomerLastName = "Edit FC";
+    String editedCustomerDOB = "2/2/2000";
+    String editedCustomerCompany = "Edit Automation FC Company";
+    String editedCustomerAdminComment = "Edit Customer (Guest)";
+
     @Parameters({"browserName", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
@@ -186,7 +193,7 @@ public class Admin_02_Customer extends AbstractTest {
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
-    @Test
+    //@Test
     public void Customer_05_Search_Customer_With_Full_Data() {
         log.info("Customer 05 - Search Customer With Full Data - Step: Refresh Page");
         adminCustomerPage.refreshPage(driver);
@@ -217,6 +224,93 @@ public class Admin_02_Customer extends AbstractTest {
 
         log.info("Customer 05 - Search Customer With Full Data - Step: Verify Searched New Customer is displayed");
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
+    }
+
+    @Test
+    public void Customer_06_Edit_Customer() {
+        log.info("Customer 06 - Edit Customer - Step: Refresh Page");
+        adminCustomerPage.refreshPage(driver);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + newCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", newCustomerEmail);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + newCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", newCustomerFirstName);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + newCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", newCustomerLastName);
+
+        log.info("Customer 06 - Edit Customer - Step: Select Month of Birth = \"1\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchMonthOfBirth", "1");
+
+        log.info("Customer 06 - Edit Customer - Step: Select Day of Birth = \"1\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchDayOfBirth", "1");
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + newCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", newCustomerCompany);
+
+        log.info("Customer 06 - Edit Customer - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 06 - Edit Customer - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 06 - Edit Customer - Step: Click on <Edit> icon of Searched Customer \"" + newCustomerFirstName + newCustomerLastName + "\"");
+        adminCustomerPage.clickOnDynamicEditIconByCustomerInfo(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true");
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerEmail + "\" into Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Email", editedCustomerEmail);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerFirstName + "\" into First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "FirstName", editedCustomerFirstName);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerLastName + "\" into Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "LastName", editedCustomerLastName);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerDOB + "\" into Date of birth text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "DateOfBirth", editedCustomerDOB);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerCompany + "\" into Company name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "Company", editedCustomerCompany);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerAdminComment + "\" into Admin comment text area");
+        adminCustomerPage.inputIntoAdminCommentTextArea(editedCustomerAdminComment);
+
+        log.info("Customer 06 - Edit Customer - Step: Click on <Save and Continue Edit> button");
+        adminCustomerPage.clickOnSaveAndContinueEditButton();
+
+        log.info("Customer 06 - Edit Customer - Step: Verify Alert message");
+        verifyEquals(adminCustomerPage.getAlertMessage(), "The customer has been updated successfully.");
+
+        log.info("Customer 06 - Edit Customer - Step: Click on \"back to customer list\" link");
+        adminCustomerPage.clickOnBackToCustomerListLink();
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", editedCustomerEmail);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", editedCustomerFirstName);
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", editedCustomerLastName);
+
+        log.info("Customer 06 - Edit Customer - Step: Select Month of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchMonthOfBirth", "2");
+
+        log.info("Customer 06 - Edit Customer - Step: Select Day of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchDayOfBirth", "2");
+
+        log.info("Customer 06 - Edit Customer - Step: Input \"" + editedCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", editedCustomerCompany);
+
+        log.info("Customer 06 - Edit Customer - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 06 - Edit Customer - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 06 - Edit Customer - Step: Verify Edited Customer is displayed");
+        verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(editedCustomerFirstName + " " + editedCustomerLastName, "Guests", editedCustomerCompany, "true"));
     }
 
     @AfterClass(alwaysRun = true)

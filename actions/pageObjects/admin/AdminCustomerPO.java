@@ -89,4 +89,10 @@ public class AdminCustomerPO extends AbstractPage {
         waitForElementVisible(driver, AdminCustomerPUI.DYNAMIC_CUSTOMER_DETAIL_IN_LIST, customerName, customerRole, customerCompany, customerActiveStatus);
         return isElementDisplayed(driver, AdminCustomerPUI.DYNAMIC_CUSTOMER_DETAIL_IN_LIST, customerName, customerRole, customerCompany, customerActiveStatus);
     }
+
+    public void clickOnDynamicEditIconByCustomerInfo(String customerName, String customerRole, String customerCompany, String customerActiveStatus) {
+        waitForElementVisible(driver, AdminCustomerPUI.DYNAMIC_EDIT_ICON_BY_CUSTOMER_DETAIL, customerName, customerRole, customerCompany, customerActiveStatus);
+        clickOnElement(driver, AdminCustomerPUI.DYNAMIC_EDIT_ICON_BY_CUSTOMER_DETAIL, customerName, customerRole, customerCompany, customerActiveStatus);
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
 }

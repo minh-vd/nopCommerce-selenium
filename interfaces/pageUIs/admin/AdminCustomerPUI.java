@@ -16,4 +16,6 @@ public class AdminCustomerPUI {
     public static final String DYNAMIC_GENDER_CHECKBOX_BY_GENDER = "//input[@id='Gender_%s']";
     public static final String DYNAMIC_SELECTING_CUSTOMER_ROLE = "//ul[@id='SelectedCustomerRoleIds_taglist']/li/span[text()='%s']";
     public static final String DYNAMIC_CUSTOMER_DETAIL_IN_LIST = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td/i[@nop-value='%s']";
+    public static final String DYNAMIC_EDIT_ICON_BY_CUSTOMER_DETAIL = "//td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td[text()='%s']/following-sibling::td/i[@nop-value='%s']/parent::td/following-sibling::td/a";
+
 }
