@@ -19,8 +19,6 @@ public class PageGeneratorManager {
     private static RecentlyViewedProductsPO recentlyViewedProductsPage;
     private static CheckoutPO checkoutPage;
     private static OrderDetailPO orderDetailPage;
-    private static AdminLoginPO adminLoginPage;
-    private static AdminHomePO adminHomePage;
     private static AdminProductListPO adminProductListPage;
     private static AdminProductDetailPO adminProductDetailPage;
     private static AdminCustomerPO adminCustomerPage;
@@ -134,17 +132,11 @@ public class PageGeneratorManager {
     }
 
     public static AdminLoginPO getAdminLoginPage(WebDriver driver) {
-        if (adminLoginPage == null) {
-            adminLoginPage = new AdminLoginPO(driver);
-        }
-        return adminLoginPage;
+        return new AdminLoginPO(driver);
     }
 
     public static AdminHomePO getAdminHomePage(WebDriver driver) {
-        if (adminHomePage == null) {
-            adminHomePage = new AdminHomePO(driver);
-        }
-        return adminHomePage;
+        return new AdminHomePO(driver);
     }
 
     public static AdminProductListPO getAdminProductListPage(WebDriver driver) {

@@ -626,6 +626,6 @@ public class Admin_02_Customer extends AbstractTest {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        //closeBrowserAndDriver(driver);
+        closeBrowserAndDriver(driver);
     }
 }
