@@ -60,6 +60,7 @@ public class AbstractPage {
 
     public void acceptAlert(WebDriver driver) {
         driver.switchTo().alert().accept();
+        sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
     }
 
     public void cancelAlert(WebDriver driver) {

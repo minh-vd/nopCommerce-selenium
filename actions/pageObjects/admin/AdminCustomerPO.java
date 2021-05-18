@@ -98,8 +98,14 @@ public class AdminCustomerPO extends AbstractPage {
 
     public void clickOnDynamicSectionTitleById(String sectionId) {
         waitForElementVisible(driver, AdminCustomerPUI.DYNAMIC_SECTION_TITLE_BY_ID, sectionId);
-        clickOnElement(driver, AdminCustomerPUI.DYNAMIC_SECTION_TITLE_BY_ID, sectionId);
+        scrollToElementUsingJS(driver, AdminCustomerPUI.DYNAMIC_SECTION_TITLE_BY_ID, sectionId);
         sleepInSecond(1);
+        overrideImplicitWaitTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+        if (isElementDisplayed(driver, AdminCustomerPUI.DYNAMIC_EXPAND_ICON_BY_SECTION_ID, sectionId)) {
+            clickOnElement(driver, AdminCustomerPUI.DYNAMIC_SECTION_TITLE_BY_ID, sectionId);
+            sleepInSecond(1);
+        }
+        overrideImplicitWaitTimeout(driver, GlobalConstants.LONG_TIMEOUT);
     }
 
     public void clickOnAddNewAddressButton() {
@@ -144,5 +150,16 @@ public class AdminCustomerPO extends AbstractPage {
         waitForElementClickable(driver, AdminCustomerPUI.EDIT_ADDRESS_PAGE_SAVE_BUTTON);
         clickOnElement(driver, AdminCustomerPUI.EDIT_ADDRESS_PAGE_SAVE_BUTTON);
         sleepInSecond(GlobalConstants.SLEEP_TIME_WAIT_FOR_PAGE_LOAD);
+    }
+
+    public void clickOnDynamicDeleteAddressIcon(String addressFirstName, String addressLastName, String addressEmail, String addressPhone, String addressFax) {
+        waitForElementClickable(driver, AdminCustomerPUI.DYNAMIC_DELETE_ADDRESS_ICON_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax);
+        clickOnElement(driver, AdminCustomerPUI.DYNAMIC_DELETE_ADDRESS_ICON_IN_LIST, addressFirstName, addressLastName, addressEmail, addressPhone, addressFax);
+        sleepInSecond(1);
+    }
+
+    public String getNoDataInTableText() {
+        waitForElementVisible(driver, AdminCustomerPUI.ADDRESS_SECTION_NO_DATA_IN_TABLE_MESSAGE);
+        return getElementText(driver, AdminCustomerPUI.ADDRESS_SECTION_NO_DATA_IN_TABLE_MESSAGE);
     }
 }

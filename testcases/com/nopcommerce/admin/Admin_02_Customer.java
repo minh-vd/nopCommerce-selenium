@@ -165,7 +165,7 @@ public class Admin_02_Customer extends AbstractTest {
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
-    //@Test
+    @Test
     public void Customer_02_Search_Customer_With_Email() {
         log.info("Customer 02 - Search Customer With Email - Step: Input \"" + newCustomerEmail + "\" into Search Email text box");
         adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", newCustomerEmail);
@@ -180,7 +180,7 @@ public class Admin_02_Customer extends AbstractTest {
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
-    //@Test
+    @Test
     public void Customer_03_Search_Customer_With_First_Name_And_Last_Name() {
         log.info("Customer 03 - Search Customer With First Name And Last Name - Step: Refresh Page");
         adminCustomerPage.refreshPage(driver);
@@ -201,7 +201,7 @@ public class Admin_02_Customer extends AbstractTest {
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
-    //@Test
+    @Test
     public void Customer_04_Search_Customer_With_Company_Name() {
         log.info("Customer 04 - Search Customer With Company Name - Step: Refresh Page");
         adminCustomerPage.refreshPage(driver);
@@ -219,7 +219,7 @@ public class Admin_02_Customer extends AbstractTest {
         verifyTrue(adminCustomerPage.isSearchedCustomerDisplayed(newCustomerFirstName + " " + newCustomerLastName, "Guests", newCustomerCompany, "true"));
     }
 
-    //@Test
+    @Test
     public void Customer_05_Search_Customer_With_Full_Data() {
         log.info("Customer 05 - Search Customer With Full Data - Step: Refresh Page");
         adminCustomerPage.refreshPage(driver);
@@ -580,6 +580,48 @@ public class Admin_02_Customer extends AbstractTest {
 
         log.info("Customer 08 - Edit Address In Customer Detail - Step: Verify Edited Address is displayed");
         verifyTrue(adminCustomerPage.isAddressDisplayed(editedAddressFirstName, editedAddressLastName, editedAddressEmail, editedAddressPhone, editedAddressFax, editedAddressCompany, editedAddress1, editedAddress2, editedAddressCity, editedAddressState, editedAddressZipCode, editedAddressCountry));
+    }
+
+    @Test
+    public void Customer_09_Delete_Address_In_Customer_Detail() {
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Click on \"back to customer list\" link");
+        adminCustomerPage.clickOnBackToCustomerListLink();
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Input \"" + editedCustomerEmail + "\" into Search Email text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchEmail", editedCustomerEmail);
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Input \"" + editedCustomerFirstName + "\" into Search First name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchFirstName", editedCustomerFirstName);
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Input \"" + editedCustomerLastName + "\" into Search Last name text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchLastName", editedCustomerLastName);
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Select Month of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchMonthOfBirth", "2");
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Select Day of Birth = \"2\"");
+        adminCustomerPage.selectDefaultDropdownById(driver, "SearchDayOfBirth", "2");
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Input \"" + editedCustomerCompany + "\" into Search Company text box");
+        adminCustomerPage.inputIntoTextBoxById(driver, "SearchCompany", editedCustomerCompany);
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Select Customer roles = \"Guests\"");
+        adminCustomerPage.selectCustomerRoles("Guests");
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Click on <Search> button");
+        adminCustomerPage.clickOnSearchButton();
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Click on <Edit> icon of Searched Customer \"" + editedCustomerFirstName + editedCustomerLastName + "\"");
+        adminCustomerPage.clickOnDynamicEditIconByCustomerInfo(editedCustomerFirstName + " " + editedCustomerLastName, "Guests", editedCustomerCompany, "true");
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Click on <Delete> icon of edited Address");
+        adminCustomerPage.clickOnDynamicDeleteAddressIcon(editedAddressFirstName, editedAddressLastName, editedAddressEmail, editedAddressPhone, editedAddressFax);
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Accept Delete Warning Alert");
+        adminCustomerPage.acceptAlert(driver);
+
+        log.info("Customer 09 - Delete Address In Customer Detail - Step: Verify No Address Data message");
+        verifyEquals(adminCustomerPage.getNoDataInTableText(), "No data available in table");
     }
 
     @AfterClass(alwaysRun = true)
