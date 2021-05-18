@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class TC_05_Sort_Display_Paging extends AbstractTest {
+public class User_05_Sort_Display_Paging extends AbstractTest {
     WebDriver driver;
 
     UserHomePO userHomePage;
@@ -31,7 +31,7 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         productListPage = userHomePage.clickOnDynamicHeaderSubmenuByText(driver, "Notebooks");
     }
 
-    //@Test
+    @Test
     public void TC_01_Sort_By_Product_Name_A_To_Z() {
         log.info("TC 01 - Sort By Product Name A To Z - Step: Select Sort By Name: A to Z");
         productListPage.selectSortBy("Name: A to Z");
@@ -40,7 +40,7 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isProductListSortedByName("ASC"));
     }
 
-    //@Test
+    @Test
     public void TC_02_Sort_By_Product_Name_Z_To_A() {
         log.info("TC 02 - Sort By Product Name Z To A - Step: Select Sort By Name: Z to A");
         productListPage.selectSortBy("Name: Z to A");
@@ -49,7 +49,7 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isProductListSortedByName("DESC"));
     }
 
-    //@Test
+    @Test
     public void TC_03_Sort_By_Product_Price_Low_To_High() {
         log.info("TC 03 - Sort By Product Price Low To High - Step: Select Sort by Price: Low to High");
         productListPage.selectSortBy("Price: Low to High");
@@ -58,7 +58,7 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isProductListSortedByPrice("ASC"));
     }
 
-    //@Test
+    @Test
     public void TC_04_Sort_By_Product_Price_High_To_Low() {
         log.info("TC 04 - Sort By Product Price High To Low - Step: Select Sort by Price: High to Low");
         productListPage.selectSortBy("Price: High to Low");
@@ -67,50 +67,50 @@ public class TC_05_Sort_Display_Paging extends AbstractTest {
         verifyTrue(productListPage.isProductListSortedByPrice("DESC"));
     }
 
-    //@Test
+    @Test
     public void TC_05_Check_Display_With_Only_Three_Products_Per_Page() {
-        log.info("TC 05 Check Display With Only Three Products Per Page - Step: Select Display 3 Products per page");
+        log.info("TC 05 - Check Display With Only Three Products Per Page - Step: Select Display 3 Products per page");
         productListPage.selectNumberOfProductsToDisplay("3");
 
-        log.info("TC 05 Check Display With Only Three Products Per Page - Step: Verify only 3 or fewer products are displayed");
+        log.info("TC 05 - Check Display With Only Three Products Per Page - Step: Verify only 3 or fewer products are displayed");
         verifyTrue(productListPage.isNumberOfProductsDisplayedFewerThan(3));
 
-        log.info("TC 05 Check Display With Only Three Products Per Page - Step: Verify Next Page icon displayed");
+        log.info("TC 05 - Check Display With Only Three Products Per Page - Step: Verify Next Page icon displayed");
         verifyTrue(productListPage.isNextPageIconDisplayed());
 
-        log.info("TC 05 Check Display With Only Three Products Per Page - Step: Click on Next Page icon");
+        log.info("TC 05 - Check Display With Only Three Products Per Page - Step: Click on Next Page icon");
         productListPage.clickOnNextPageIcon();
 
-        log.info("TC 05 Check Display With Only Three Products Per Page - Step: Verify Previous Page icon displayed");
+        log.info("TC 05 - Check Display With Only Three Products Per Page - Step: Verify Previous Page icon displayed");
         verifyTrue(productListPage.isPreviousPageIconDisplayed());
     }
 
-    //@Test
+    @Test
     public void TC_06_Check_Display_With_Only_Six_Products_Per_Page() {
-        log.info("TC 06 Check Display With Only Six Products Per Page - Step: Select Display 6 Products per page");
+        log.info("TC 06 - Check Display With Only Six Products Per Page - Step: Select Display 6 Products per page");
         productListPage.selectNumberOfProductsToDisplay("6");
 
-        log.info("TC 06 Check Display With Only Six Products Per Page - Step: Verify only 6 or fewer products are displayed");
+        log.info("TC 06 - Check Display With Only Six Products Per Page - Step: Verify only 6 or fewer products are displayed");
         verifyTrue(productListPage.isNumberOfProductsDisplayedFewerThan(6));
 
-        log.info("TC 06 Check Display With Only Six Products Per Page - Step: Verify Paging section is NOT shown");
+        log.info("TC 06 - Check Display With Only Six Products Per Page - Step: Verify Paging section is NOT shown");
         verifyTrue(productListPage.isPagingSectionNotDisplayed());
     }
 
     @Test
     public void TC_07_Check_Display_With_Only_Nine_Products_Per_Page() {
-        log.info("TC 07 Check Display With Only Nine Products Per Page - Step: Select Display 9 Products per page");
+        log.info("TC 07 - Check Display With Only Nine Products Per Page - Step: Select Display 9 Products per page");
         productListPage.selectNumberOfProductsToDisplay("9");
 
-        log.info("TC 07 Check Display With Only Nine Products Per Page - Step: Verify only 9 or fewer products are displayed");
+        log.info("TC 07 - Check Display With Only Nine Products Per Page - Step: Verify only 9 or fewer products are displayed");
         verifyTrue(productListPage.isNumberOfProductsDisplayedFewerThan(9));
 
-        log.info("TC 07 Check Display With Only Nine Products Per Page - Step: Verify Paging section is NOT shown");
+        log.info("TC 07 - Check Display With Only Nine Products Per Page - Step: Verify Paging section is NOT shown");
         verifyTrue(productListPage.isPagingSectionNotDisplayed());
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        //closeBrowserAndDriver(driver);
+        closeBrowserAndDriver(driver);
     }
 }

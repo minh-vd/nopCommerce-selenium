@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class TC_01_Register extends AbstractTest {
+public class User_01_Register extends AbstractTest {
     WebDriver driver;
 
     UserHomePO userHomePage;

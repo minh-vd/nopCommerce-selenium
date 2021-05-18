@@ -10,7 +10,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class TC_04_Search_And_Advanced_Search extends AbstractTest {
+public class User_04_Search_And_Advanced_Search extends AbstractTest {
     WebDriver driver;
 
     UserHomePO userHomePage;
@@ -68,120 +68,120 @@ public class TC_04_Search_And_Advanced_Search extends AbstractTest {
 
     @Test
     public void TC_03_Relative_Search_With_Product_Name() {
-        log.info("TC 03 Relative Search With Product Name - Step: Input into Search Keyword with related keyword");
+        log.info("TC 03 - Relative Search With Product Name - Step: Input into Search Keyword with related keyword");
         searchPage.inputIntoTextBoxById(driver, "q", "Lenovo");
 
-        log.info("TC 03 Relative Search With Product Name - Step: Click on Search button");
+        log.info("TC 03 - Relative Search With Product Name - Step: Click on Search button");
         searchPage.clickOnSearchButton();
 
-        log.info("TC 03 Relative Search With Product Name - Step: Verify related Products displayed");
+        log.info("TC 03 - Relative Search With Product Name - Step: Verify related Products displayed");
         verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Lenovo"));
     }
 
     @Test
     public void TC_04_Absolute_Search_With_Product_Name() {
-        log.info("TC 04 Absolute Search With Product Name - Step: Input into Search Keyword with absolute keyword");
+        log.info("TC 04 - Absolute Search With Product Name - Step: Input into Search Keyword with absolute keyword");
         searchPage.inputIntoTextBoxById(driver, "q", "Thinkpad X1 Carbon");
 
-        log.info("TC 04 Absolute Search With Product Name - Step: Click on Search button");
+        log.info("TC 04 - Absolute Search With Product Name - Step: Click on Search button");
         searchPage.clickOnSearchButton();
 
-        log.info("TC 04 Absolute Search With Product Name - Step: Verify related Products displayed");
+        log.info("TC 04 - Absolute Search With Product Name - Step: Verify related Products displayed");
         verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Lenovo Thinkpad X1 Carbon Laptop"));
     }
 
     @Test
     public void TC_05_Advanced_Search_With_Parent_Categories() {
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Input into Search Keyword text box");
+        log.info("TC 05 - Advanced Search With Parent Categories - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Check on Advanced search checkbox");
+        log.info("TC 05 - Advanced Search With Parent Categories - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
 
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Select Computers category");
+        log.info("TC 05 - Advanced Search With Parent Categories - Step: Select Computers category");
         searchPage.selectCategory("Computers");
 
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Uncheck Automatically search sub categories checkbox");
+        log.info("TC 05 - Advanced Search With Parent Categories - Step: Uncheck Automatically search sub categories checkbox");
         searchPage.uncheckAutomaticallySearchSubCategoriesCheckbox();
 
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Click on Search button");
+        log.info("TC 05 - Advanced Search With Parent Categories - Step: Click on Search button");
         searchPage.clickOnSearchButton();
 
-        log.info("TC 05 Advanced Search With Parent Categories - Step: Verify No Product message");
+        log.info("TC 05 - Advanced Search With Parent Categories - Step: Verify No Product message");
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
     }
 
     @Test
     public void TC_06_Advanced_Search_With_Sub_Categories() {
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Input into Search Keyword text box");
+        log.info("TC 06 - Advanced Search With Sub Categories - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Advanced search checkbox");
+        log.info("TC 06 - Advanced Search With Sub Categories - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
 
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Select Computers category");
+        log.info("TC 06 - Advanced Search With Sub Categories - Step: Select Computers category");
         searchPage.selectCategory("Computers");
 
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Check on Automatically search sub categories checkbox");
+        log.info("TC 06 - Advanced Search With Sub Categories - Step: Check on Automatically search sub categories checkbox");
         searchPage.checkOnAutomaticallySearchSubCategoriesCheckbox();
 
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Click on Search button");
+        log.info("TC 06 - Advanced Search With Sub Categories - Step: Click on Search button");
         searchPage.clickOnSearchButton();
 
-        log.info("TC 06 Advanced Search With Sub Categories - Step: Verify 1 Product is displayed in Search Result");
+        log.info("TC 06 - Advanced Search With Sub Categories - Step: Verify 1 Product is displayed in Search Result");
         verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Apple MacBook Pro 13-inch"));
     }
 
     @Test
     public void TC_07_Advanced_Search_With_Incorrect_Manufacturer() {
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Input into Search Keyword text box");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Check on Advanced search checkbox");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
 
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Select Computers category");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Select Computers category");
         searchPage.selectCategory("Computers");
 
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Check on Automatically search sub categories checkbox");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Check on Automatically search sub categories checkbox");
         searchPage.checkOnAutomaticallySearchSubCategoriesCheckbox();
 
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Select HP manufacturer");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Select HP manufacturer");
         searchPage.selectManufacturer("HP");
 
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Click on Search button");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Click on Search button");
         searchPage.clickOnSearchButton();
 
-        log.info("TC 07 Advanced Search With Incorrect Manufacturer - Step: Verify No Product message");
+        log.info("TC 07 - Advanced Search With Incorrect Manufacturer - Step: Verify No Product message");
         verifyEquals(searchPage.getTextOfSearchNoResultMessage(), "No products were found that matched your criteria.");
     }
 
     @Test
     public void TC_08_Advanced_Search_With_Correct_Manufacturer() {
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Input into Search Keyword text box");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Input into Search Keyword text box");
         searchPage.inputIntoTextBoxById(driver, "q", "Apple MacBook Pro");
 
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Check on Advanced search checkbox");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Check on Advanced search checkbox");
         searchPage.checkOnAdvancedSearchCheckbox();
 
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Select Computers category");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Select Computers category");
         searchPage.selectCategory("Computers");
 
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Check on Automatically search sub categories checkbox");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Check on Automatically search sub categories checkbox");
         searchPage.checkOnAutomaticallySearchSubCategoriesCheckbox();
 
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Select Apple manufacturer");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Select Apple manufacturer");
         searchPage.selectManufacturer("Apple");
 
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Click on Search button");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Click on Search button");
         searchPage.clickOnSearchButton();
 
-        log.info("TC 08 Advanced Search With Correct Manufacturer - Step: Verify 1 Product is displayed in Search Result");
+        log.info("TC 08 - Advanced Search With Correct Manufacturer - Step: Verify 1 Product is displayed in Search Result");
         verifyTrue(searchPage.isRelatedProductsDisplayedByAbsoluteKeyword("Apple MacBook Pro 13-inch"));
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        //closeBrowserAndDriver(driver);
+        closeBrowserAndDriver(driver);
     }
 }

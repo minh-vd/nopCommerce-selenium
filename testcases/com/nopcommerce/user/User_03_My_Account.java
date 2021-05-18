@@ -10,7 +10,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class TC_03_My_Account extends AbstractTest {
+public class User_03_My_Account extends AbstractTest {
     WebDriver driver;
 
     UserHomePO userHomePage;
@@ -67,56 +67,62 @@ public class TC_03_My_Account extends AbstractTest {
 
     @Test
     public void TC_01_Edit_Customer_Info() {
-        log.info("TC 01 Edit Customer Info - Step: Check on Gender Female checkbox");
+        log.info("TC 01 - Edit Customer Info - Step: Check on Gender Female checkbox");
         myAccountPage.checkOnGenderFemaleCheckbox();
 
-        log.info("TC 01 Edit Customer Info - Step: Input into First Name text box");
+        log.info("TC 01 - Edit Customer Info - Step: Input into First Name text box");
         myAccountPage.inputIntoTextBoxById(driver, "FirstName", firstName);
 
-        log.info("TC 01 Edit Customer Info - Step: Input into Last Name text box");
+        log.info("TC 01 - Edit Customer Info - Step: Input into Last Name text box");
         myAccountPage.inputIntoTextBoxById(driver, "LastName", lastName);
 
-        log.info("TC 01 Edit Customer Info - Step: Select Day of Birth");
+        log.info("TC 01 - Edit Customer Info - Step: Select Day of Birth");
         myAccountPage.selectDayOfBirth(dayOfBirth);
 
-        log.info("TC 01 Edit Customer Info - Step: Select Month Of Birth");
+        log.info("TC 01 - Edit Customer Info - Step: Select Month Of Birth");
         myAccountPage.selectMonthOfBirth(monthOfBirth);
 
-        log.info("TC 01 Edit Customer Info - Step: Select Year Of Birth");
+        log.info("TC 01 - Edit Customer Info - Step: Select Year Of Birth");
         myAccountPage.selectYearOfBirth(yearOfBirth);
 
-        log.info("TC 01 Edit Customer Info - Step: Input into Email text box");
+        log.info("TC 01 - Edit Customer Info - Step: Input into Email text box");
         myAccountPage.inputIntoTextBoxById(driver, "Email", email);
 
-        log.info("TC 01 Edit Customer Info - Step: Input into Company text box");
+        log.info("TC 01 - Edit Customer Info - Step: Input into Company text box");
         myAccountPage.inputIntoTextBoxById(driver, "Company", company);
 
-        log.info("TC 01 Edit Customer Info - Step: Click on Save button");
+        log.info("TC 01 - Edit Customer Info - Step: Click on Save button");
         myAccountPage.clickOnSaveButton();
 
-        log.info("TC 01 Edit Customer Info - Step: Refresh Page");
+        log.info("TC 01 - Edit Customer Info - Step: Refresh Page");
         myAccountPage.refreshPage(driver);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited First Name");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited First Name");
         verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "FirstName"), firstName);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited Last Name");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited Last Name");
         verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "LastName"), lastName);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited Day of Birth");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited Day of Birth");
         verifyEquals(myAccountPage.getDayOfBirth(), dayOfBirth);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited Month of Birth");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited Month of Birth");
         verifyEquals(myAccountPage.getMonthOfBirth(), monthOfBirth);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited Year of Birth");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited Year of Birth");
         verifyEquals(myAccountPage.getYearOfBirth(), yearOfBirth);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited Email");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited Email");
         verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "Email"), email);
 
-        log.info("TC 01 Edit Customer Info - Step: Verify edited Company");
+        log.info("TC 01 - Edit Customer Info - Step: Verify edited Company");
         verifyEquals(myAccountPage.getValueTextFromTextBoxById(driver, "Company"), company);
+
+        log.info("TC 01 - Edit Customer Info - Step: Change back Email");
+        myAccountPage.inputIntoTextBoxById(driver, "Email", Common_01_Register.email);
+
+        log.info("TC 01 - Edit Customer Info - Step: Click on Save button");
+        myAccountPage.clickOnSaveButton();
     }
 
     @Test
@@ -283,6 +289,6 @@ public class TC_03_My_Account extends AbstractTest {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        //closeBrowserAndDriver(driver);
+        closeBrowserAndDriver(driver);
     }
 }

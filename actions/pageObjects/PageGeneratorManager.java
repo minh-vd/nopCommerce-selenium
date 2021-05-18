@@ -4,10 +4,6 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.admin.*;
 
 public class PageGeneratorManager {
-    private static UserHomePO userHomePage;
-    private static UserRegisterPO userRegisterPage;
-    private static UserRegisterResultPO userRegisterResultPage;
-    private static UserLoginPO userLoginPage;
     private static MyAccountPO myAccountPage;
     private static ProductDetailPO productDetailPage;
     private static ProductReviewPO productReviewPage;
@@ -27,31 +23,19 @@ public class PageGeneratorManager {
     }
 
     public static UserHomePO getUserHomePage(WebDriver driver) {
-        /*if (userHomePage == null) {
-            userHomePage = new UserHomePO(driver);
-        }*/
         return new UserHomePO(driver);
     }
 
     public static UserRegisterPO getUserRegisterPage(WebDriver driver) {
-        if (userRegisterPage == null) {
-            userRegisterPage = new UserRegisterPO(driver);
-        }
-        return userRegisterPage;
+        return new UserRegisterPO(driver);
     }
 
     public static UserRegisterResultPO getUserRegisterResultPage(WebDriver driver) {
-        if (userRegisterResultPage == null) {
-            userRegisterResultPage = new UserRegisterResultPO(driver);
-        }
-        return userRegisterResultPage;
+        return new UserRegisterResultPO(driver);
     }
 
     public static UserLoginPO getUserLoginPage(WebDriver driver) {
-        if (userLoginPage == null) {
-            userLoginPage = new UserLoginPO(driver);
-        }
-        return userLoginPage;
+        return new UserLoginPO(driver);
     }
 
     public static MyAccountPO getMyAccountPage(WebDriver driver) {
