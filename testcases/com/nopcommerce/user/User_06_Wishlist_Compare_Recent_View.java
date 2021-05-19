@@ -98,12 +98,19 @@ public class User_06_Wishlist_Compare_Recent_View extends AbstractTest {
 
         log.info("TC 02 - Add Product From Wishlist To Cart - Step: Verify Product is removed from Wishlist");
         verifyTrue(wishlistPage.isAddedProductNotDisplayed(productName));
+
+        log.info("TC 02 - Add Product From Wishlist To Cart - Step: Clean up: Click on Shopping cart link in Footer");
+        wishlistPage.clickOnDynamicLinkAtFooterByText(driver, "Shopping cart");
+        cartPage = PageGeneratorManager.getCartPage(driver);
+
+        log.info("TC 02 - Add Product From Wishlist To Cart - Step: Clean up: Remove Product from Shopping cart");
+        cartPage.clickOnDynamicRemoveIconByProductName(productName);
     }
 
     @Test
     public void TC_03_Remove_Product_From_Wishlist() {
         log.info("TC 03 - Remove Product From Wishlist - Step: Click on Logo to navigate to HomePage");
-        userHomePage = wishlistPage.clickOnLogo(driver);
+        userHomePage = cartPage.clickOnLogo(driver);
 
         log.info("TC 03 - Remove Product From Wishlist - Step: Click on Product Title of 2nd Product in Featured List");
         productDetailPage = userHomePage.clickOnTitleOfDynamicProductInFeaturedListByIndex("2");

@@ -4,21 +4,6 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.admin.*;
 
 public class PageGeneratorManager {
-    private static MyAccountPO myAccountPage;
-    private static ProductDetailPO productDetailPage;
-    private static ProductReviewPO productReviewPage;
-    private static SearchPO searchPage;
-    private static ProductListPO productListPage;
-    private static WishlistPO wishlistPage;
-    private static CartPO cartPage;
-    private static CompareProductsPO compareProductsPage;
-    private static RecentlyViewedProductsPO recentlyViewedProductsPage;
-    private static CheckoutPO checkoutPage;
-    private static OrderDetailPO orderDetailPage;
-    private static AdminProductListPO adminProductListPage;
-    private static AdminProductDetailPO adminProductDetailPage;
-    private static AdminCustomerPO adminCustomerPage;
-
     private PageGeneratorManager() {
     }
 
@@ -39,80 +24,47 @@ public class PageGeneratorManager {
     }
 
     public static MyAccountPO getMyAccountPage(WebDriver driver) {
-        if (myAccountPage == null) {
-            myAccountPage = new MyAccountPO(driver);
-        }
-        return myAccountPage;
+        return new MyAccountPO(driver);
     }
 
     public static ProductDetailPO getProductDetailPage(WebDriver driver) {
-        if (productDetailPage == null) {
-            productDetailPage = new ProductDetailPO(driver);
-        }
-        return productDetailPage;
+        return new ProductDetailPO(driver);
     }
 
     public static ProductReviewPO getProductReviewPage(WebDriver driver) {
-        if (productReviewPage == null) {
-            productReviewPage = new ProductReviewPO(driver);
-        }
-        return productReviewPage;
+        return new ProductReviewPO(driver);
     }
 
     public static SearchPO getSearchPage(WebDriver driver) {
-        if (searchPage == null) {
-            searchPage = new SearchPO(driver);
-        }
-        return searchPage;
+        return new SearchPO(driver);
     }
 
     public static ProductListPO getProductListPage(WebDriver driver) {
-        if (productListPage == null) {
-            productListPage = new ProductListPO(driver);
-        }
-        return productListPage;
+        return new ProductListPO(driver);
     }
 
     public static WishlistPO getWishlistPage(WebDriver driver) {
-        if (wishlistPage == null) {
-            wishlistPage = new WishlistPO(driver);
-        }
-        return wishlistPage;
+        return new WishlistPO(driver);
     }
 
     public static CartPO getCartPage(WebDriver driver){
-        if (cartPage == null) {
-            cartPage = new CartPO(driver);
-        }
-        return cartPage;
+        return new CartPO(driver);
     }
 
     public static CompareProductsPO getCompareProductsPage(WebDriver driver) {
-        if (compareProductsPage == null) {
-            compareProductsPage = new CompareProductsPO(driver);
-        }
-        return compareProductsPage;
+        return new CompareProductsPO(driver);
     }
 
     public static RecentlyViewedProductsPO getRecentlyViewedProductsPage(WebDriver driver) {
-        if (recentlyViewedProductsPage == null) {
-            recentlyViewedProductsPage = new RecentlyViewedProductsPO(driver);
-        }
-        return recentlyViewedProductsPage;
+        return new RecentlyViewedProductsPO(driver);
     }
 
     public static CheckoutPO getCheckoutPage(WebDriver driver) {
-        if (checkoutPage == null) {
-            checkoutPage = new CheckoutPO(driver);
-        }
-        return checkoutPage;
+        return new CheckoutPO(driver);
     }
 
     public static OrderDetailPO getOrderDetailPage(WebDriver driver) {
-        if (orderDetailPage == null) {
-            orderDetailPage = new OrderDetailPO(driver);
-        }
-        return orderDetailPage;
+        return new OrderDetailPO(driver);
     }
 
     public static AdminLoginPO getAdminLoginPage(WebDriver driver) {
@@ -124,23 +76,14 @@ public class PageGeneratorManager {
     }
 
     public static AdminProductListPO getAdminProductListPage(WebDriver driver) {
-        if (adminProductListPage == null) {
-            adminProductListPage = new AdminProductListPO(driver);
-        }
-        return adminProductListPage;
+        return new AdminProductListPO(driver);
     }
 
     public static AdminProductDetailPO getAdminProductDetailPage(WebDriver driver) {
-        if (adminProductDetailPage == null) {
-            adminProductDetailPage = new AdminProductDetailPO(driver);
-        }
-        return adminProductDetailPage;
+        return new AdminProductDetailPO(driver);
     }
 
     public static AdminCustomerPO getAdminCustomerPage(WebDriver driver) {
-        if (adminCustomerPage == null) {
-            adminCustomerPage = new AdminCustomerPO(driver);
-        }
-        return adminCustomerPage;
+        return new AdminCustomerPO(driver);
     }
 }
